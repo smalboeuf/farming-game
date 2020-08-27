@@ -20,10 +20,10 @@ public class Character : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) {
-        
-            if (IsInRange()) {
+            Vector3 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (IsInRange(clickedPosition)) {
                 if (hotbarManager.GetSelectedItem() is Tool tool) {
-                    tool.UseTool();
+                    tool.UseTool((int)clickedPosition.x, (int)clickedPosition.y);
                 }
             }
           
@@ -31,10 +31,9 @@ public class Character : MonoBehaviour
     }
 
 
-    private bool IsInRange() {
-        Vector3 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        
-        if (Vector2.Distance(gameObject.transform.position, clickedPosition) <= range) {
+    private bool IsInRange(Vector3 clickedPos) {
+
+        if (Vector2.Distance(gameObject.transform.position, clickedPos) <= range) {
             return true;
         } else {
             return false;

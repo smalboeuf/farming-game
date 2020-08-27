@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class Tool : InventoryItem
 {
-    public abstract void UseTool();
+    public abstract void UseTool(int xPos, int yPos);
 }

@@ -35,6 +35,8 @@ public class GameTile
         return canBeFarmed;
     }
 
+   
+
 }
 
 public enum FarmingTileStatus {

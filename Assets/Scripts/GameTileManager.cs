@@ -9,7 +9,7 @@ public class GameTileManager : MonoBehaviour
     [SerializeField] int xSize;
     [SerializeField] int ySize;
 
-    public GameTile[,] gameTileMap;
+    public static GameTile[,] gameTileMap;
 
     [SerializeField] private Tilemap tilemap;
 
@@ -167,6 +167,7 @@ public class GameTileManager : MonoBehaviour
             if (gameTileMap[xPos, yPos].GetTileType() == TileType.Grass)
             {
                //Change status of tile
+              
                //Change the sprite to match status
             }
         }

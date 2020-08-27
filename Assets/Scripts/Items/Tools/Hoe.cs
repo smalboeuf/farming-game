@@ -8,14 +8,16 @@ public class Hoe : Tool
 
     public GameTileManager gameTileManager;
 
-    public override void UseTool()
+    public override void UseTool(int xPos, int yPos)
     {
         //Get position of the mouse 
 
         //Farm the specific block using gametilemanager
-
+        
         //gameTileManager.UseHoeOnTile(int xPos, int yPos);
         Debug.Log("Used a Hoe");
+
+        //if (GameTileManager.gameTileMap[xPos, yPos].)
     }
 
 

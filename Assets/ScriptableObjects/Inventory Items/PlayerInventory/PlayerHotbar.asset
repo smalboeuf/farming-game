@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 392a1bb3dfed93e418f51e103926b8e1, type: 3}
+  m_Name: PlayerHotbar
+  m_EditorClassIdentifier: 
+  myHotbar:
+  - {fileID: 11400000, guid: d0a494ac93441014ea5fe242abd72f7c, type: 2}
+  - {fileID: 11400000, guid: 017e3d5a70c68a748a7e6d5b0558340b, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 66bf5eb973edd1f41a071f64febab154, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

@@ -27,6 +27,10 @@ public class GameTile
         return tileType;
     }
 
+    public FarmingTileStatus GetFarmingTileStatus() {
+        return farmingTileStatus;
+    }
+
     public bool CanBeHarvested() {
         return canBeHarvested;
     }
@@ -35,19 +39,15 @@ public class GameTile
         return canBeFarmed;
     }
 
-   
-
 }
 
 public enum FarmingTileStatus {
-    
     Basic,
     Tilled,
     TilledAndWatered,
     Planted,
     PlantedAndWatered,
     Crops
-
 }
 
 public enum TileType {

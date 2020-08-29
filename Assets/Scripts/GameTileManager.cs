@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -24,6 +25,7 @@ public class GameTileManager : MonoBehaviour
     [SerializeField] private List<Tile> plantedAndWateredFarmTiles;
     [SerializeField] private List<Tile> cropsFarmTiles;
 
+ 
 
     // Start is called before the first frame update
     void Start()
@@ -164,12 +166,7 @@ public class GameTileManager : MonoBehaviour
     public void UseHoeOnTile(int xPos, int yPos) {
         if (CoordinatesAreValid(xPos, yPos))
         {
-            if (gameTileMap[xPos, yPos].GetTileType() == TileType.Grass)
-            {
-               //Change status of tile
-              
-               //Change the sprite to match status
-            }
+           
         }
     }
 

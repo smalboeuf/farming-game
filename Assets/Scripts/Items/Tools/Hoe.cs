@@ -6,30 +6,32 @@ using UnityEngine;
 public class Hoe : Tool
 {
 
-    public GameTileManager gameTileManager;
 
-    public override void UseTool(int xPos, int yPos)
-    {
-        //Get position of the mouse 
+    public override void Grass(GameTile currentTile) {
 
-        //Farm the specific block using gametilemanager
-        
-        //gameTileManager.UseHoeOnTile(int xPos, int yPos);
-        Debug.Log("Used a Hoe");
+        if (currentTile.GetFarmingTileStatus() == FarmingTileStatus.Basic) {
+            //Go to tilled tile
+        }
+        else if (currentTile.GetFarmingTileStatus() == FarmingTileStatus.Tilled) {
+            //Do nothing, thump sound
 
-        //if (GameTileManager.gameTileMap[xPos, yPos].)
+        }
+        else if (currentTile.GetFarmingTileStatus() == FarmingTileStatus.TilledAndWatered)
+        {
+            //Do nothing, thump sound
+        }
+        else if (currentTile.GetFarmingTileStatus() == FarmingTileStatus.Planted)
+        {
+            //Destroy current planted crop
+        }
+        else if (currentTile.GetFarmingTileStatus() == FarmingTileStatus.PlantedAndWatered)
+        {
+            //Destroy current planted crop
+        }
+        else if (currentTile.GetFarmingTileStatus() == FarmingTileStatus.Crops)
+        {
+            //Do nothing, thump sound
+        }
     }
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

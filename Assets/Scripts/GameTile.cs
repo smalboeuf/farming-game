@@ -9,34 +9,62 @@ public class GameTile
     private int y;
 
     private TileType tileType;
-    private bool canBeFarmed;
+    private bool canBeTilled;
     private bool canBeHarvested;
     private FarmingTileStatus farmingTileStatus;
 
 
-    public GameTile(int xPos, int yPos, TileType type, bool canFarm, bool canHarvest, FarmingTileStatus farmTileStatus) {
+    public GameTile(int xPos, int yPos, TileType type, bool canTill, bool canHarvest, FarmingTileStatus farmTileStatus) {
         x = xPos;
         y = yPos;
         tileType = type;
-        canBeFarmed = canFarm;
+        canBeTilled = canTill;
         canBeHarvested = canHarvest;
         farmingTileStatus = farmTileStatus;
     }
 
-    public TileType GetTileType() {
+    public int GetX() {
+        return x;
+    }
+
+    public int GetY() {
+        return y;
+    }
+
+
+    public TileType GetTileType()
+    {
         return tileType;
     }
 
-    public FarmingTileStatus GetFarmingTileStatus() {
+    public void SetTileType(TileType newTiletype) {
+        tileType = newTiletype;
+    }
+
+
+    public FarmingTileStatus GetFarmingTileStatus()
+    {
         return farmingTileStatus;
     }
 
-    public bool CanBeHarvested() {
+    public void SetFarmingTileStatus(FarmingTileStatus newFarmingTileStatus) {
+        farmingTileStatus = newFarmingTileStatus;
+    }
+
+    public bool GetCanBeTilled() {
+        return canBeTilled;
+    }
+
+    public void SetCanBeTilled(bool newCanBeTilled) {
+        canBeTilled = newCanBeTilled;
+    }
+
+    public bool GetCanBeHarvested() {
         return canBeHarvested;
     }
 
-    public bool CanBeFarmed() {
-        return canBeFarmed;
+    public void SetCanBeHarvested(bool newCanBeHarvested) {
+        canBeHarvested = newCanBeHarvested;
     }
 
 }

@@ -6,15 +6,20 @@ using UnityEngine;
 public class Hoe : Tool
 {
 
-
     public override void Grass(GameTile currentTile) {
 
         if (currentTile.GetFarmingTileStatus() == FarmingTileStatus.Basic) {
-            //Go to tilled tile
-        }
-        else if (currentTile.GetFarmingTileStatus() == FarmingTileStatus.Tilled) {
-            //Do nothing, thump sound
+            //Change the sprite 
+            Manager.gameTileManager.TillGrass(currentTile.GetX(), currentTile.GetY());
+            //Change the tile data
+            currentTile.SetCanBeTilled(false);
 
+        
+            //Sound of tilling grass
+        }
+        else if (currentTile.GetFarmingTileStatus() == FarmingTileStatus.Tilled)
+        {
+            //Do nothing, thump sound
         }
         else if (currentTile.GetFarmingTileStatus() == FarmingTileStatus.TilledAndWatered)
         {

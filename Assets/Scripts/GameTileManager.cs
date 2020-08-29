@@ -10,7 +10,7 @@ public class GameTileManager : MonoBehaviour
     [SerializeField] int xSize;
     [SerializeField] int ySize;
 
-    public static GameTile[,] gameTileMap;
+    public GameTile[,] gameTileMap;
 
     [SerializeField] private Tilemap tilemap;
 
@@ -25,7 +25,10 @@ public class GameTileManager : MonoBehaviour
     [SerializeField] private List<Tile> plantedAndWateredFarmTiles;
     [SerializeField] private List<Tile> cropsFarmTiles;
 
- 
+    [SerializeField] private Tile summerTilledTile;
+    [SerializeField] private Tile summerTilledAndWateredFarmTile;
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -55,8 +58,6 @@ public class GameTileManager : MonoBehaviour
                    // Debug.Log("Grass");
                 }
             }
-
-
         }
     }
 
@@ -71,7 +72,6 @@ public class GameTileManager : MonoBehaviour
         } 
 
     }
-
 
 
     private bool FindIfCanBeHarvested(int xPos, int yPos)
@@ -163,11 +163,8 @@ public class GameTileManager : MonoBehaviour
 
     //Tools
 
-    public void UseHoeOnTile(int xPos, int yPos) {
-        if (CoordinatesAreValid(xPos, yPos))
-        {
-           
-        }
+    public void TillGrass(int xPos, int yPos) {
+        tilemap.SetTile(new Vector3Int(xPos, yPos, 0), summerTilledTile);
     }
 
 

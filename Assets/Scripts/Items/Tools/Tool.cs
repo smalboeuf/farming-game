@@ -11,7 +11,8 @@ public abstract class Tool : InventoryItem
 
 
     public void UseTool(int xPos, int yPos) {
-       GameTile currentTile = GameTileManager.gameTileMap[xPos, yPos];
+
+       GameTile currentTile = Manager.gameTileManager.gameTileMap[xPos, yPos];
 
         switch (currentTile.GetTileType())
         {

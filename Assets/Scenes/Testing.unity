@@ -3323,6 +3323,7 @@ GameObject:
   - component: {fileID: 769465452}
   - component: {fileID: 769465454}
   - component: {fileID: 769465453}
+  - component: {fileID: 769465455}
   m_Layer: 0
   m_Name: Seeds/Crops
   m_TagString: Untagged
@@ -3429,6 +3430,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &769465455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769465451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c748c9c8eae0d4c951620701b6ddd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &788062767 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8486366501916800898, guid: 5fa4d0afeabdce649aca6ee172d77238,
@@ -6803,7 +6816,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853852954}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.15, y: -1.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 673685367}

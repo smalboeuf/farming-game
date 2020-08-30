@@ -12,7 +12,7 @@ public abstract class Tool : InventoryItem
 
     public void UseTool(int xPos, int yPos) {
 
-       GameTile currentTile = Manager.gameTileManager.gameTileMap[xPos, yPos];
+        GameTile currentTile = Manager.gameTileManager.gameTileMap[xPos, yPos];
 
         switch (currentTile.GetTileType())
         {
@@ -31,7 +31,9 @@ public abstract class Tool : InventoryItem
             default:
                 Debug.Log("TileType not found.");
                 break;
-        
+
         }
+        
+       
     }
 }

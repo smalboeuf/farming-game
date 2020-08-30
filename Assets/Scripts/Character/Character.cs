@@ -25,7 +25,7 @@ public class Character : MonoBehaviour
             Vector3 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (hotbarManager.GetSelectedItem() is Tool tool) {
 
-                if (IsInRange(clickedPosition))
+                if (IsInRange(clickedPosition) && IsAValidCoordinate((int)clickedPosition.x, (int)clickedPosition.y))
                 {
                    tool.UseTool((int)clickedPosition.x, (int)clickedPosition.y);
                 }
@@ -60,6 +60,17 @@ public class Character : MonoBehaviour
             currentHP = currentHP + amount;
         }
 
+    }
+
+    public bool IsAValidCoordinate(int xPos, int yPos) {
+        if (xPos >= 0 && yPos >= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
    
 }

@@ -17,19 +17,23 @@ public class InventoryItem : ScriptableObject
     public Sprite itemImage;
     public int currentStack;
     public int maxStack;
-    public bool usable;
+    //public bool usable;
     public bool unique;
+    public ItemType itemType;
 
 
     public enum ItemType
     {
-        Consumable,
         Sword,
         Hoe,
         Seeds,
         Creature,
-        Bucket
+        Tool,
+        Food,
+        Weapon
     };
+
+    
 
 
     private void OnValidate()
@@ -39,11 +43,8 @@ public class InventoryItem : ScriptableObject
     }
 
 
-
-    public UnityEvent thisEvent;
-
-    public void Use() {
-        thisEvent.Invoke();
+    public ItemType GetItemType() {
+        return itemType;
     }
 
 

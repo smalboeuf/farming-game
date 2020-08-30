@@ -198,17 +198,53 @@ public class InventoryManager : MonoBehaviour
     }
 
 
-    public bool RemoveItem(InventoryItem item)
-    {
-        for (int i = 0; i < itemSlots.Length; i++) {
-            if (itemSlots[i].Item == item) {
-                itemSlots[i].Item = null;
-                return true;
-            }
+    public bool RemoveItemAtHotbarIndex(int hotbarIndex, InventoryItem item) {
+
+        if (itemSlots[hotbarIndex].Amount > 1)
+        {
+            itemSlots[hotbarIndex].Amount--;
+
+            return true;
+        }
+        else if (itemSlots[hotbarIndex].Amount == 1)
+        {
+
+            itemSlots[hotbarIndex].Item = null;
+
+            return true;
         }
 
         return false;
+    }
 
+    public bool RemoveItem(InventoryItem item)
+    {
+
+        for (int i = 0; i < itemSlots.Length; i++) {
+
+            if (itemSlots[i].Item) {
+                if (itemSlots[i].Item.ID == item.ID)
+                {
+                    if (itemSlots[i].Amount > 1)
+                    {
+                        itemSlots[i].Amount--;
+
+                        return true;
+                    }
+                    else if (itemSlots[i].Amount == 1)
+                    {
+
+                        itemSlots[i].Item = null;
+
+                        return true;
+                    }
+
+                }
+            }
+        
+        }
+
+        return false;
     }
 
 
@@ -225,16 +261,6 @@ public class InventoryManager : MonoBehaviour
         return true;
 
     }
-
-
-    //public bool CanBeStacked(InventoryItem itemInSlot, InventoryItem itemBeingAdded) {
-
-
-    //}
-
-
-
-
 
 }
 

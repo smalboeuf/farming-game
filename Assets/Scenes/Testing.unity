@@ -4816,11 +4816,11 @@ MonoBehaviour:
   inventoryPanel: {fileID: 1310230415}
   hotbarManager: {fileID: 1844140677}
   startingItems:
-  - {fileID: 11400000, guid: d0a494ac93441014ea5fe242abd72f7c, type: 2}
+  - {fileID: 11400000, guid: b4c7fb20231a2864fa24b20aacc988ab, type: 2}
   - {fileID: 11400000, guid: 66bf5eb973edd1f41a071f64febab154, type: 2}
   - {fileID: 11400000, guid: 839cd959fc30ded4cae44785b20a0858, type: 2}
   - {fileID: 11400000, guid: 610ba6a11370e0845aa00d8369d5b21c, type: 2}
-  - {fileID: 11400000, guid: d0a494ac93441014ea5fe242abd72f7c, type: 2}
+  - {fileID: 11400000, guid: b4c7fb20231a2864fa24b20aacc988ab, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -5201,6 +5201,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setTileManager: {fileID: 1853852958}
+  setCharacter: {fileID: 1011608134}
+  setInventoryManager: {fileID: 1310230419}
+  setHotbarManager: {fileID: 1844140677}
 --- !u!4 &1453902899
 Transform:
   m_ObjectHideFlags: 0

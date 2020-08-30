@@ -6,6 +6,8 @@ public class Character : MonoBehaviour
 {
     public float range = 10f;
     int speed = 5;
+    int maxHP = 100;
+    int currentHP = 90;
     public InventoryManager inventoryManager;
     public HotbarManager hotbarManager;
     public GameTileManager tileManager;
@@ -21,12 +23,19 @@ public class Character : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) {
             Vector3 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (IsInRange(clickedPosition)) {
-                if (hotbarManager.GetSelectedItem() is Tool tool) {
-                    tool.UseTool((int)clickedPosition.x, (int)clickedPosition.y);
+            if (hotbarManager.GetSelectedItem() is Tool tool) {
+
+                if (IsInRange(clickedPosition))
+                {
+                   tool.UseTool((int)clickedPosition.x, (int)clickedPosition.y);
                 }
             }
           
+        }
+        if (Input.GetMouseButtonDown(1)) {
+            if (hotbarManager.GetSelectedItem() is Consumable consumable) {
+                consumable.UseConsumable(hotbarManager.selectedSlot, consumable);
+            }
         }
     }
 
@@ -40,5 +49,17 @@ public class Character : MonoBehaviour
         }
     }
 
+
+    public void Heal(int amount) {
+
+        if (amount + currentHP > maxHP)
+        {
+            currentHP = maxHP;
+        }
+        else {
+            currentHP = currentHP + amount;
+        }
+
+    }
    
 }

@@ -9,18 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75ca8f2d3d9d27d488933b054c86d788, type: 3}
+  m_Script: {fileID: 11500000, guid: c2ffd0c4782c08d43809d5e16729d30e, type: 3}
   m_Name: Carrot
   m_EditorClassIdentifier: 
-  id: d0a494ac93441014ea5fe242abd72f7c
+  id: b4c7fb20231a2864fa24b20aacc988ab
   itemName: Carrot
   itemDescription: A great ingredient and a better snack.
   itemImage: {fileID: 21300000, guid: 9f7413e6534ef4e46a8544914d59b16b, type: 3}
   currentStack: 0
   maxStack: 99
-  usable: 0
   unique: 1
-  itemType: 0
-  thisEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  itemType: 5
+  healing: 15

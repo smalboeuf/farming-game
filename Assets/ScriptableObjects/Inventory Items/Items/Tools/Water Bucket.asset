@@ -18,9 +18,5 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: b89e5d12ec237904ca823ae6c3440346, type: 3}
   currentStack: 0
   maxStack: 1
-  usable: 0
   unique: 1
-  itemType: 5
-  thisEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  itemType: 4

@@ -6,7 +6,6 @@ using UnityEngine.Tilemaps;
 public class CropsTileManager : MonoBehaviour
 {
 
-    public CropTile[,] cropTileMap;
     [SerializeField] private Tilemap tilemap;
 
     // Start is called before the first frame update
@@ -24,7 +23,6 @@ public class CropsTileManager : MonoBehaviour
 
     public void LoadCrops() {
 
-        cropTileMap = new CropTile[Manager.gameTileManager.GetXSize(), Manager.gameTileManager.GetYSize()];
         tilemap = GetComponent<Tilemap>();
 
         for (int x = 0; x < Manager.gameTileManager.GetXSize(); x++) {

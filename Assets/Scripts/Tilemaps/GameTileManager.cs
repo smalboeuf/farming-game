@@ -39,26 +39,26 @@ public class GameTileManager : MonoBehaviour
         for (int x = 0; x < xSize; x++) {
             for (int y = 0; y < ySize; y++) {
 
-                gameTileMap[x, y] = new GameTile(x, y, FindTileType(x, y), FindIfCanBeFarmed(x, y), FindIfCanBeHarvested(x,y), FindFarmingTileStatus(x, y));
+                gameTileMap[x, y] = new GameTile(x, y, FindTileType(x, y), FindIfCanBeFarmed(x, y), FindIfCanBeHarvested(x,y), FindFarmingTileStatus(x, y), null, 0);
             }   
         }
+
+        Manager.cropsTileManager.LoadCrops();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) {
-            
-            Vector3 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
- 
 
-            if ((int)clickedPosition.x > 0 && (int)clickedPosition.y > 0) {
-                if (gameTileMap[(int)clickedPosition.x, (int)clickedPosition.y].GetTileType() == TileType.Grass)
-                {
-                   // Debug.Log("Grass");
-                }
-            }
-        }
+    }
+
+
+    public int GetXSize() {
+        return xSize;
+    }
+
+    public int GetYSize() {
+        return ySize;
     }
 
     private TileType FindTileType(int xPos, int yPos) {

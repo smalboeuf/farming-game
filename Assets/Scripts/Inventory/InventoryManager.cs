@@ -164,11 +164,6 @@ public class InventoryManager : MonoBehaviour
     
     }
 
-    public void SetupDescriptionAndButton() {
-
-    }
-
-
     public bool AddItem(InventoryItem item) {
 
         for (int i = 0; i < itemSlots.Length; i++) {

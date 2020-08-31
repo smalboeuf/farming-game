@@ -12,16 +12,21 @@ public class GameTile
     private bool canBeTilled;
     private bool canBeHarvested;
     private FarmingTileStatus farmingTileStatus;
+    private Seed plantedSeed;
+    private int daysPlanted;
 
-
-    public GameTile(int xPos, int yPos, TileType type, bool canTill, bool canHarvest, FarmingTileStatus farmTileStatus) {
+    //Constructor
+    public GameTile(int xPos, int yPos, TileType type, bool canTill, bool canHarvest, FarmingTileStatus farmTileStatus, Seed newPlantedSeed, int amountPlanted) {
         x = xPos;
         y = yPos;
         tileType = type;
         canBeTilled = canTill;
         canBeHarvested = canHarvest;
         farmingTileStatus = farmTileStatus;
+        plantedSeed = newPlantedSeed;
+        daysPlanted = amountPlanted;
     }
+
 
     public int GetX() {
         return x;
@@ -65,6 +70,15 @@ public class GameTile
 
     public void SetCanBeHarvested(bool newCanBeHarvested) {
         canBeHarvested = newCanBeHarvested;
+    }
+
+
+    public Seed GetPlantedSeed() {
+        return plantedSeed; 
+    }
+
+    public void SetPlantedSeed(Seed seed) {
+        plantedSeed = seed;
     }
 
 }

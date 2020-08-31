@@ -5,7 +5,6 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public float range = 10f;
-    int speed = 5;
     int maxHP = 100;
     int currentHP = 90;
     public InventoryManager inventoryManager;
@@ -33,8 +32,14 @@ public class Character : MonoBehaviour
           
         }
         if (Input.GetMouseButtonDown(1)) {
+            Vector3 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
             if (hotbarManager.GetSelectedItem() is Consumable consumable) {
                 consumable.UseConsumable(hotbarManager.selectedSlot, consumable);
+            }
+            if (hotbarManager.GetSelectedItem() is Seed seed) {
+               
+                seed.UseSeed(seed, (int)clickedPosition.x, (int)clickedPosition.y);
             }
         }
     }

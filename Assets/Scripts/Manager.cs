@@ -8,7 +8,6 @@ public class Manager : MonoBehaviour
     [SerializeField] private GameTileManager setTileManager;
     public static GameTileManager gameTileManager;
 
-
     [SerializeField] private Character setCharacter;
     public static Character character;
 
@@ -17,6 +16,9 @@ public class Manager : MonoBehaviour
 
     [SerializeField] private HotbarManager setHotbarManager;
     public static HotbarManager hotbarManager;
+
+    [SerializeField] private CropsTileManager setCropsTileManager;
+    public static CropsTileManager cropsTileManager;
 
 
 
@@ -27,6 +29,7 @@ public class Manager : MonoBehaviour
         character = setCharacter;
         inventoryManager = setInventoryManager;
         hotbarManager = setHotbarManager;
+        cropsTileManager = setCropsTileManager;
        
     }
 

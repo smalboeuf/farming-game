@@ -58,6 +58,22 @@ public class HotbarSlot : MonoBehaviour
             stackCount.color = normalColor;
             hotbarItemIcon.sprite = itemSlot.itemImage.sprite;
             stackCount.text = itemSlot.Amount.ToString();
+
+            if (itemSlot.Item.unique == true)
+            {
+                stackCount.color = disabledColor;
+            }
+            else {
+                stackCount.color = normalColor;
+            }
+
+            if (itemSlot.Amount <= 1)
+            {
+                stackCount.color = disabledColor;
+            }
+            else {
+                stackCount.color = normalColor;
+            }
        
         }
     }

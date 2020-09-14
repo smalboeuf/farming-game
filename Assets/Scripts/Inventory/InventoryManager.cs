@@ -26,12 +26,12 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] ItemTooltip itemTooltip;
 
     //Events
-    public event Action<InventorySlot> OnPointerEnterEvent;
-    public event Action<InventorySlot> OnPointerExitEvent;
-    public event Action<InventorySlot> OnBeginDragEvent;
-    public event Action<InventorySlot> OnEndDragEvent;
-    public event Action<InventorySlot> OnDragEvent;
-    public event Action<InventorySlot> OnDropEvent;
+    //public event Action<InventorySlot> OnPointerEnterEvent;
+    //public event Action<InventorySlot> OnPointerExitEvent;
+    //public event Action<InventorySlot> OnBeginDragEvent;
+    //public event Action<InventorySlot> OnEndDragEvent;
+    //public event Action<InventorySlot> OnDragEvent;
+    //public event Action<InventorySlot> OnDropEvent;
 
     private void Awake()
     {

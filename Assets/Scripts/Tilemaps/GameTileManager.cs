@@ -165,6 +165,16 @@ public class GameTileManager : MonoBehaviour
 
     public void TillGrass(int xPos, int yPos) {
         tilemap.SetTile(new Vector3Int(xPos, yPos, 0), summerTilledTile);
+        //Set tile status
+        Manager.gameTileManager.gameTileMap[xPos, yPos].SetFarmingTileStatus(FarmingTileStatus.Tilled);
+    }
+
+    public void WaterTilledTile(int xPos, int yPos) {
+
+        GameTile currentTile = Manager.gameTileManager.gameTileMap[xPos, yPos];
+
+        tilemap.SetTile(new Vector3Int(xPos, yPos, 0), summerTilledAndWateredFarmTile);
+
     }
 
 

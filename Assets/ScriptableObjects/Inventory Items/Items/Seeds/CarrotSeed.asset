@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 754c0228419c70f4eb36a5d8730e2703, type: 3}
+  m_Name: CarrotSeed
+  m_EditorClassIdentifier: 
+  id: 58bb30da57dc92444bd2290ec1b5fcb5
+  itemName: Carrot Seeds
+  itemDescription: Useful to snack on and a rabbit favorite.
+  itemImage: {fileID: 21300000, guid: 9d08c394af42bf74f8c157d5a29b6ff1, type: 3}
+  currentStack: 0
+  maxStack: 99
+  unique: 0
+  itemType: 2
+  daysGrowed: 0
+  daysToGrow: 5
+  daysForMidPlant: 3
+  daysForFinalPlant: 5
+  plantedTile: {fileID: 11400000, guid: b863a02ca718ef74892cf1047a76ccc9, type: 2}
+  midPlantedTile: {fileID: 11400000, guid: dced172a917cf65498b6d4d57743c5d6, type: 2}
+  finalPlantedTile: {fileID: 11400000, guid: 036fcb41703b31649aab1c99b355ea1d, type: 2}

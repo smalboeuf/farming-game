@@ -81,6 +81,25 @@ public class GameTile
         plantedSeed = seed;
     }
 
+    public bool CanPlantSeed() {
+        if (farmingTileStatus == FarmingTileStatus.Tilled || farmingTileStatus == FarmingTileStatus.TilledAndWatered) {
+            return true;
+        }
+        return false;
+    }
+
+    public int GetDaysPlanted() {
+        return daysPlanted;
+    }
+
+    public void SetDaysPlanted(int amountOfDays) {
+        daysPlanted = amountOfDays;
+    }
+
+    public void IncreaseDaysPlanted(int amountOfDays) {
+        daysPlanted = daysPlanted + amountOfDays;
+    }
+
 }
 
 public enum FarmingTileStatus {

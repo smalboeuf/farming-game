@@ -20,6 +20,9 @@ public class Manager : MonoBehaviour
     [SerializeField] private CropsTileManager setCropsTileManager;
     public static CropsTileManager cropsTileManager;
 
+    [SerializeField] private DateManager setDateManager;
+    public static DateManager dateManager;
+
 
 
     // Start is called before the first frame update
@@ -30,6 +33,7 @@ public class Manager : MonoBehaviour
         inventoryManager = setInventoryManager;
         hotbarManager = setHotbarManager;
         cropsTileManager = setCropsTileManager;
+        dateManager = setDateManager;
        
     }
 

@@ -34,16 +34,45 @@ public class Character : MonoBehaviour
         if (Input.GetMouseButtonDown(1)) {
             Vector3 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            if (hotbarManager.GetSelectedItem() is Consumable consumable) {
+
+            if (CanPickUpItem(clickedPosition)) {
+                HarvestCrop(clickedPosition);
+
+            } else if (hotbarManager.GetSelectedItem() is Consumable consumable) {
                 consumable.UseConsumable(hotbarManager.selectedSlot, consumable);
-            }
-            if (hotbarManager.GetSelectedItem() is Seed seed) {
-               
+            } else if (hotbarManager.GetSelectedItem() is Seed seed) {
                 seed.UseSeed(seed, (int)clickedPosition.x, (int)clickedPosition.y);
             }
         }
     }
 
+    private bool CanPickUpItem(Vector3 pos) {
+
+        GameTile currentTile = Manager.gameTileManager.gameTileMap[(int)pos.x, (int)pos.y];
+
+        if (currentTile.GetCanBeHarvested() == true && currentTile.GetFarmingTileStatus() == FarmingTileStatus.Crops)
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+
+    private void HarvestCrop(Vector3 tilePos) {
+
+        GameTile currentTile = Manager.gameTileManager.gameTileMap[(int)tilePos.x, (int)tilePos.y];
+        Seed seedPlantedInTile = currentTile.GetPlantedSeed();
+
+        //Add item to inventory
+        Manager.inventoryManager.AddItem(seedPlantedInTile.GetCropForHarvesting());
+
+        //Reset the crop
+        currentTile.ResetPlantedCrop();
+
+
+    }
 
     private bool IsInRange(Vector3 clickedPos) {
 

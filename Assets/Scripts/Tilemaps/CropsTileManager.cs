@@ -96,7 +96,8 @@ public class CropsTileManager : MonoBehaviour
 
                     //Check if seed daysPlanted is equal to the mid or final point
 
-                    if (currentTile.GetDaysPlanted() >= currentTile.GetPlantedSeed().GetDaysForMidPlant() && currentTile.GetDaysPlanted() < currentTile.GetPlantedSeed().GetDaysForFinalPlant()) {
+                    if (currentTile.GetDaysPlanted() >= currentTile.GetPlantedSeed().GetDaysForMidPlant() && currentTile.GetDaysPlanted() < currentTile.GetPlantedSeed().GetDaysForFinalPlant())
+                    {
                         //Set the tile to the mid tile
                         cropTilemap.SetTile(new Vector3Int(x, y, 0), currentSeed.GetMidPlantedTile());
                     }
@@ -107,7 +108,10 @@ public class CropsTileManager : MonoBehaviour
                         cropTilemap.SetTile(new Vector3Int(x, y, 0), currentSeed.GetFinalPlantedTile());
 
                     }
+                    
 
+                } else {
+                    cropTilemap.SetTile(new Vector3Int(x, y, 0), null);
 
                 }
 

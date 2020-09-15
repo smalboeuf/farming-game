@@ -20,10 +20,10 @@ MonoBehaviour:
   maxStack: 99
   unique: 0
   itemType: 2
-  daysGrowed: 0
   daysToGrow: 5
   daysForMidPlant: 3
   daysForFinalPlant: 5
   plantedTile: {fileID: 11400000, guid: b863a02ca718ef74892cf1047a76ccc9, type: 2}
   midPlantedTile: {fileID: 11400000, guid: dced172a917cf65498b6d4d57743c5d6, type: 2}
   finalPlantedTile: {fileID: 11400000, guid: 036fcb41703b31649aab1c99b355ea1d, type: 2}
+  crop: {fileID: 11400000, guid: b4c7fb20231a2864fa24b20aacc988ab, type: 2}

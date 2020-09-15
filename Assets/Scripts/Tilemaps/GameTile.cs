@@ -101,7 +101,27 @@ public class GameTile
 
         if (daysPlanted >= plantedSeed.GetDaysForFinalPlant()) {
             SetCanBeHarvested(true);
+            SetFarmingTileStatus(FarmingTileStatus.Crops);
         }
+    }
+
+    public void ResetPlantedCrop() {
+
+        canBeHarvested = false;
+        farmingTileStatus = FarmingTileStatus.Tilled;
+        plantedSeed = null;
+        daysPlanted = 0;
+
+        if (farmingTileStatus == FarmingTileStatus.PlantedAndWatered)
+        {
+            farmingTileStatus = FarmingTileStatus.TilledAndWatered;
+        }   
+        else {
+            farmingTileStatus = FarmingTileStatus.Tilled;
+        }
+
+        //Change Sprites on the CropsTileManager
+        Manager.cropsTileManager.UpdateCropTiles();
     }
 
 }

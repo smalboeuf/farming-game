@@ -16,6 +16,8 @@ public abstract class Seed : InventoryItem
     [SerializeField] private Tile midPlantedTile;
     [SerializeField] private Tile finalPlantedTile;
 
+    [SerializeField] private InventoryItem crop;
+
 
     public void UseSeed(Seed seed, int xPos, int yPos) {
         
@@ -56,5 +58,9 @@ public abstract class Seed : InventoryItem
 
     public int GetDaysForFinalPlant() {
         return daysForFinalPlant;
+    }
+
+    public InventoryItem GetCropForHarvesting() {
+        return crop;
     }
 }

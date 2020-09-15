@@ -98,6 +98,10 @@ public class GameTile
 
     public void IncreaseDaysPlanted(int amountOfDays) {
         daysPlanted = daysPlanted + amountOfDays;
+
+        if (daysPlanted >= plantedSeed.GetDaysForFinalPlant()) {
+            SetCanBeHarvested(true);
+        }
     }
 
 }

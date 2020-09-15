@@ -6,6 +6,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Watering Can", menuName = "Inventory/Tools/WateringCan")]
 public class WateringCan : Tool
 {
+
+    [SerializeField] private int maxAmountOfUses;
+    [SerializeField] private int amountOfUses;
+
+
     public override void Grass(GameTile currentTile) {
 
 

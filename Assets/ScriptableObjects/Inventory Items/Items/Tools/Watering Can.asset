@@ -20,3 +20,5 @@ MonoBehaviour:
   maxStack: 1
   unique: 1
   itemType: 4
+  maxAmountOfUses: 6
+  amountOfUses: 0

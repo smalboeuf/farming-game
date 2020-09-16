@@ -9,20 +9,23 @@ public class GameTile
     private int y;
 
     private TileType tileType;
-    private bool canBeTilled;
+    private bool isTilled;
     private bool canBeHarvested;
-    private FarmingTileStatus farmingTileStatus;
+    private bool isWatered;
+    //private FarmingTileStatus farmingTileStatus;
     private Seed plantedSeed;
     private int daysPlanted;
 
+
+
     //Constructor
-    public GameTile(int xPos, int yPos, TileType type, bool canTill, bool canHarvest, FarmingTileStatus farmTileStatus, Seed newPlantedSeed, int amountPlanted) {
+    public GameTile(int xPos, int yPos, TileType type, bool tileIsTilled, bool canHarvest, bool tileIsWatered, Seed newPlantedSeed, int amountPlanted) {
         x = xPos;
         y = yPos;
         tileType = type;
-        canBeTilled = canTill;
+        isTilled = tileIsTilled;
         canBeHarvested = canHarvest;
-        farmingTileStatus = farmTileStatus;
+        //farmingTileStatus = farmTileStatus;
         plantedSeed = newPlantedSeed;
         daysPlanted = amountPlanted;
     }
@@ -36,6 +39,17 @@ public class GameTile
         return y;
     }
 
+    public bool GetIsWatered() {
+        return isWatered;
+    }
+
+    public void SetIsWatered(bool newIsWatered)
+    {
+        isWatered = newIsWatered;
+    }
+
+ 
+
 
     public TileType GetTileType()
     {
@@ -47,21 +61,21 @@ public class GameTile
     }
 
 
-    public FarmingTileStatus GetFarmingTileStatus()
-    {
-        return farmingTileStatus;
+    //public FarmingTileStatus GetFarmingTileStatus()
+    //{
+    //    return farmingTileStatus;
+    //}
+
+    //public void SetFarmingTileStatus(FarmingTileStatus newFarmingTileStatus) {
+    //    farmingTileStatus = newFarmingTileStatus;
+    //}
+
+    public bool GetIsTilled() {
+        return isTilled;
     }
 
-    public void SetFarmingTileStatus(FarmingTileStatus newFarmingTileStatus) {
-        farmingTileStatus = newFarmingTileStatus;
-    }
-
-    public bool GetCanBeTilled() {
-        return canBeTilled;
-    }
-
-    public void SetCanBeTilled(bool newCanBeTilled) {
-        canBeTilled = newCanBeTilled;
+    public void SetIsTilled(bool newCanBeTilled) {
+        isTilled = newCanBeTilled;
     }
 
     public bool GetCanBeHarvested() {
@@ -82,7 +96,12 @@ public class GameTile
     }
 
     public bool CanPlantSeed() {
-        if (farmingTileStatus == FarmingTileStatus.Tilled || farmingTileStatus == FarmingTileStatus.TilledAndWatered) {
+
+        //if (farmingTileStatus == FarmingTileStatus.Tilled || farmingTileStatus == FarmingTileStatus.TilledAndWatered) {
+        //    return true;
+        //}
+
+        if (isTilled == true || plantedSeed == null) {
             return true;
         }
         return false;
@@ -101,30 +120,24 @@ public class GameTile
 
         if (daysPlanted >= plantedSeed.GetDaysForFinalPlant()) {
             SetCanBeHarvested(true);
-            SetFarmingTileStatus(FarmingTileStatus.Crops);
+            //SetFarmingTileStatus(FarmingTileStatus.Crops);
         }
     }
 
     public void ResetPlantedCrop() {
 
         canBeHarvested = false;
-        farmingTileStatus = FarmingTileStatus.Tilled;
+       // farmingTileStatus = FarmingTileStatus.Tilled;
         plantedSeed = null;
         daysPlanted = 0;
-
-        if (farmingTileStatus == FarmingTileStatus.PlantedAndWatered)
-        {
-            farmingTileStatus = FarmingTileStatus.TilledAndWatered;
-        }   
-        else {
-            farmingTileStatus = FarmingTileStatus.Tilled;
-        }
 
         //Change Sprites on the CropsTileManager
         Manager.cropsTileManager.UpdateCropTiles();
     }
 
 }
+
+
 
 public enum FarmingTileStatus {
     Basic,

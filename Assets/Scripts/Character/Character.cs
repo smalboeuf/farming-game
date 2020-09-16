@@ -50,7 +50,7 @@ public class Character : MonoBehaviour
 
         GameTile currentTile = Manager.gameTileManager.gameTileMap[(int)pos.x, (int)pos.y];
 
-        if (currentTile.GetCanBeHarvested() == true && currentTile.GetFarmingTileStatus() == FarmingTileStatus.Crops)
+        if (currentTile.GetCanBeHarvested() == true)
         {
             return true;
         }

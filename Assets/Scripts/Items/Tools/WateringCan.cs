@@ -13,38 +13,17 @@ public class WateringCan : Tool
 
     public override void Grass(GameTile currentTile) {
 
-
-        if (currentTile.GetFarmingTileStatus() == FarmingTileStatus.Basic)
-        {
-            //Change the sprite 
-            
-
-            //Sound of tilling grass
-        }
-        else if (currentTile.GetFarmingTileStatus() == FarmingTileStatus.Tilled)
+        if (currentTile.GetIsTilled() == true)
         {
             //Do nothing, thump sound
 
             Manager.gameTileManager.WaterTilledTile(currentTile.GetX(), currentTile.GetY());
-            Manager.gameTileManager.gameTileMap[currentTile.GetX(), currentTile.GetY()].SetFarmingTileStatus(FarmingTileStatus.TilledAndWatered);
+            currentTile.SetIsWatered(true);
+
         }
-        else if (currentTile.GetFarmingTileStatus() == FarmingTileStatus.TilledAndWatered)
-        {
-            //Do nothing, thump sound
+        else {
+            //Do nothing and still make sounds
         }
-        else if (currentTile.GetFarmingTileStatus() == FarmingTileStatus.Planted)
-        {
-            //Destroy current planted crop
-            Manager.gameTileManager.WaterTilledTile(currentTile.GetX(), currentTile.GetY());
-            Manager.gameTileManager.gameTileMap[currentTile.GetX(), currentTile.GetY()].SetFarmingTileStatus(FarmingTileStatus.PlantedAndWatered);
-        }
-        else if (currentTile.GetFarmingTileStatus() == FarmingTileStatus.PlantedAndWatered)
-        {
-            //Destroy current planted crop
-        }
-        else if (currentTile.GetFarmingTileStatus() == FarmingTileStatus.Crops)
-        {
-            //Do nothing, thump sound
-        }
+
     }
 }

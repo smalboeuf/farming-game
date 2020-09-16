@@ -39,7 +39,7 @@ public class GameTileManager : MonoBehaviour
         for (int x = 0; x < xSize; x++) {
             for (int y = 0; y < ySize; y++) {
 
-                gameTileMap[x, y] = new GameTile(x, y, FindTileType(x, y), FindIfCanBeFarmed(x, y), FindIfCanBeHarvested(x,y), FindFarmingTileStatus(x, y), null, 0);
+                gameTileMap[x, y] = new GameTile(x, y, FindTileType(x, y), FindIfIsTilled(x, y), FindIfCanBeHarvested(x,y), false, null, 0);
             }   
         }
 
@@ -74,25 +74,27 @@ public class GameTileManager : MonoBehaviour
     }
 
 
+
+
     private bool FindIfCanBeHarvested(int xPos, int yPos)
     {
         return canBeHarvestedTiles.Contains((Tile)tilemap.GetTile(new Vector3Int(xPos, yPos, 0)));
     }
 
 
-    private bool FindIfCanBeFarmed(int xPos, int yPos) {
+    private bool FindIfIsTilled(int xPos, int yPos) {
 
         //Check for each tile type that can farm
 
         if (IsAGrassTile(xPos, yPos)) {
-            return true;
+            return false;
         }
 
         if (IsASnowTile(xPos, yPos)) {
-            return true;
+            return false;
         }
 
-        return false;
+        return true;
     }
 
     private FarmingTileStatus FindFarmingTileStatus(int xPos, int yPos) {
@@ -166,7 +168,7 @@ public class GameTileManager : MonoBehaviour
     public void TillGrass(int xPos, int yPos) {
         tilemap.SetTile(new Vector3Int(xPos, yPos, 0), summerTilledTile);
         //Set tile status
-        Manager.gameTileManager.gameTileMap[xPos, yPos].SetFarmingTileStatus(FarmingTileStatus.Tilled);
+        Manager.gameTileManager.gameTileMap[xPos, yPos].SetIsTilled(true);
     }
 
     public void WaterTilledTile(int xPos, int yPos) {

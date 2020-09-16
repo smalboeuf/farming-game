@@ -54,17 +54,14 @@ public class CropsTileManager : MonoBehaviour
     public void PlantSeed(Seed seed, int xPos, int yPos) {
         //Set tile
         cropTilemap.SetTile(new Vector3Int(xPos, yPos, 0), seed.GetPlantedTile());
-        //Change FarmingTileStatusOfTile
-        if (Manager.gameTileManager.gameTileMap[xPos, yPos].GetFarmingTileStatus() == FarmingTileStatus.Tilled)
-        {
-            Manager.gameTileManager.gameTileMap[xPos, yPos].SetFarmingTileStatus(FarmingTileStatus.Planted);
-            Manager.gameTileManager.gameTileMap[xPos, yPos].SetPlantedSeed(seed);
-        }
-        else if (Manager.gameTileManager.gameTileMap[xPos, yPos].GetFarmingTileStatus() == FarmingTileStatus.TilledAndWatered) {
-            Manager.gameTileManager.gameTileMap[xPos, yPos].SetFarmingTileStatus(FarmingTileStatus.PlantedAndWatered);
-            Manager.gameTileManager.gameTileMap[xPos, yPos].SetPlantedSeed(seed);
-        }
 
+        GameTile currentTile = Manager.gameTileManager.gameTileMap[xPos, yPos];
+        //Change FarmingTileStatusOfTile
+        if (currentTile.GetIsTilled() == true && currentTile.GetPlantedSeed() == null)
+        {
+            Manager.gameTileManager.gameTileMap[xPos, yPos].SetPlantedSeed(seed);
+        }
+    
     }
     
     public void IncreaseCropDays(int amountOfDays)
@@ -73,8 +70,10 @@ public class CropsTileManager : MonoBehaviour
         {
             for (int y = 0; y < Manager.gameTileManager.GetYSize(); y++)
             {
+                GameTile currentTile = Manager.gameTileManager.gameTileMap[x, y];
+
                 //Check if a seed is planted
-                if (Manager.gameTileManager.gameTileMap[x, y].GetPlantedSeed() != null && Manager.gameTileManager.gameTileMap[x, y].GetFarmingTileStatus() == FarmingTileStatus.PlantedAndWatered) {
+                if (currentTile.GetPlantedSeed() != null && currentTile.GetIsTilled() == true && currentTile.GetIsWatered() == true) {
                     Manager.gameTileManager.gameTileMap[x, y].IncreaseDaysPlanted(amountOfDays);
                 }
             }

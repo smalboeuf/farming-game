@@ -66,12 +66,12 @@ public class InventoryManager : MonoBehaviour
 
     //Inventory Drag Events
 
-    private void ShowTooltip(InventorySlot inventorySlot)
+    public void ShowTooltip(InventorySlot inventorySlot)
     {
         itemTooltip.ShowTooltip(inventorySlot.Item);
     }
 
-    private void HideTooltip(InventorySlot inventorySlot)
+    public void HideTooltip(InventorySlot inventorySlot)
     {
         itemTooltip.HideTooltip();
     }

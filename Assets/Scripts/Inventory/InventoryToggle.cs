@@ -19,7 +19,30 @@ public class InventoryToggle : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E)) {
             inventory.SetActive(!inventory.activeSelf);
+
+            if (inventory.activeSelf == true)
+            {
+                TurnOnInventoryPanel();
+            }
+            else {
+                TurnOffInventoryPanel();
+            }
+            
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            inventory.SetActive(false);
+            TurnOffInventoryPanel();
         }
         
+    }
+
+    public void TurnOffInventoryPanel() {
+        Manager.inventoryManager.HideTooltip(null);
+        Manager.character.SetCanMove(true);
+    }   
+
+    public void TurnOnInventoryPanel() {
+        Manager.character.SetCanMove(false);
     }
 }

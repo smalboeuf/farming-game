@@ -7,6 +7,8 @@ public class Character : MonoBehaviour
     public float range = 10f;
     int maxHP = 100;
     int currentHP = 90;
+    bool canMove = true;
+
     public InventoryManager inventoryManager;
     public HotbarManager hotbarManager;
     public GameTileManager tileManager;
@@ -20,7 +22,9 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) {
+
+
+        if (Input.GetMouseButtonDown(0) && canMove == true) {
             Vector3 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (hotbarManager.GetSelectedItem() is Tool tool) {
 
@@ -29,11 +33,10 @@ public class Character : MonoBehaviour
                    tool.UseTool((int)clickedPosition.x, (int)clickedPosition.y);
                 }
             }
-          
         }
-        if (Input.GetMouseButtonDown(1)) {
-            Vector3 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+        if (Input.GetMouseButtonDown(1) && canMove == true) {
+            Vector3 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             if (CanPickUpItem(clickedPosition)) {
                 HarvestCrop(clickedPosition);
@@ -44,6 +47,15 @@ public class Character : MonoBehaviour
                 seed.UseSeed(seed, (int)clickedPosition.x, (int)clickedPosition.y);
             }
         }
+    }
+
+
+    public bool GetCanMove() {
+        return canMove;
+    }
+
+    public void SetCanMove(bool newCanMove) {
+        canMove = newCanMove;
     }
 
     private bool CanPickUpItem(Vector3 pos) {

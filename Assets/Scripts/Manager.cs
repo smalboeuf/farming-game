@@ -23,6 +23,8 @@ public class Manager : MonoBehaviour
     [SerializeField] private DateManager setDateManager;
     public static DateManager dateManager;
 
+ 
+
 
 
     // Start is called before the first frame update

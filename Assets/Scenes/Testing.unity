@@ -9074,8 +9074,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f856438cc37d347b9bc017711d6d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 24
-  ySize: 24
+  xSize: 100
+  ySize: 100
   tilemap: {fileID: 0}
   grassList:
   - {fileID: 11400000, guid: 3c44cd415fdad96488273995d0920997, type: 2}

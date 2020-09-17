@@ -6,7 +6,6 @@ public class CharacterController : MonoBehaviour
 {
 
     public float speed;
-
     private Rigidbody2D rb;
     private Animator animator;
     private Vector3 change;
@@ -33,20 +32,26 @@ public class CharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MoveCharacter();
+        if (Manager.character.GetCanMove() == true) {
+            MoveCharacter();
+        }
     }
 
     void UpdateAnimationAndMove() {
-        if (change != Vector3.zero)
+
+        if (Manager.character.GetCanMove() == true)
         {
-            MoveCharacter();
-            animator.SetFloat("moveX", change.x);
-            animator.SetFloat("moveY", change.y);
-            animator.SetBool("moving", true);
-        }
-        else
-        {
-            animator.SetBool("moving", false);
+            if (change != Vector3.zero)
+            {
+                MoveCharacter();
+                animator.SetFloat("moveX", change.x);
+                animator.SetFloat("moveY", change.y);
+                animator.SetBool("moving", true);
+            }
+            else
+            {
+                animator.SetBool("moving", false);
+            }
         }
     }
 

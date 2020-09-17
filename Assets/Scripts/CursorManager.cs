@@ -23,15 +23,21 @@ public class CursorManager : MonoBehaviour
     void Update()
     {
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        GameTile currentTile = Manager.gameTileManager.gameTileMap[(int)cursorPosition.x, (int)cursorPosition.y];
 
-        if (currentTile.GetCanBeHarvested() == true)
-        {
-            Cursor.SetCursor(pickupCursor, Vector2.zero, CursorMode.Auto);
+        if ((int)cursorPosition.x >= 0 && (int)cursorPosition.y >= 0) {
+
+            GameTile currentTile = Manager.gameTileManager.gameTileMap[(int)cursorPosition.x, (int)cursorPosition.y];
+
+            if (currentTile.GetCanBeHarvested() == true)
+            {
+                Cursor.SetCursor(pickupCursor, Vector2.zero, CursorMode.Auto);
+            }
+            else
+            {
+                Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
+            }
         }
-        else {
-            Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
-        }
+      
 
     }
 

@@ -9093,6 +9093,25 @@ MonoBehaviour:
   summerTilledTile: {fileID: 11400000, guid: 08c03c2e946efbe47b3551d5645ff768, type: 2}
   summerTilledAndWateredFarmTile: {fileID: 11400000, guid: f8c369e4e794ac941a48ed25b6251c13,
     type: 2}
+  soloTillTile: {fileID: 0}
+  leftUpTopLeft: {fileID: 0}
+  leftTile: {fileID: 0}
+  rightTile: {fileID: 0}
+  bottomTile: {fileID: 0}
+  upTile: {fileID: 0}
+  leftBottomTile: {fileID: 0}
+  rightBottomTile: {fileID: 0}
+  rightUpTopRightTile: {fileID: 0}
+  allDirectionsTile: {fileID: 0}
+  upBottomLeftRightTile: {fileID: 0}
+  leftBottomBottomLeftTile: {fileID: 0}
+  rightBottomBottomRightTile: {fileID: 0}
+  rightTopTile: {fileID: 0}
+  leftTopTile: {fileID: 0}
+  rightLeftUpTopRightTopLeftTile: {fileID: 0}
+  rightLeftBottomBottomRightBottomLeftTile: {fileID: 0}
+  topBottomLeftTopLeftBottomLeftTile: {fileID: 0}
+  topBottomRightTopRightBottomRightTile: {fileID: 0}
 --- !u!224 &1856143524 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6824773045489490125, guid: 822203207b008d043a34037168948255,

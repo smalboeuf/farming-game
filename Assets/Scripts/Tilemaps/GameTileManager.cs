@@ -27,7 +27,38 @@ public class GameTileManager : MonoBehaviour
 
     [SerializeField] private Tile summerTilledTile;
     [SerializeField] private Tile summerTilledAndWateredFarmTile;
-    
+
+    [Header("Tilled Tiles")]
+    [SerializeField] private Tile soloTillTile;
+    [SerializeField] private Tile leftUpTopLeft;
+    [SerializeField] private Tile leftTile;
+    [SerializeField] private Tile rightTile;
+    [SerializeField] private Tile bottomTile;
+    [SerializeField] private Tile upTile;
+    [SerializeField] private Tile leftBottomTile;
+    [SerializeField] private Tile rightBottomTile;
+    [SerializeField] private Tile rightUpTopRightTile;
+    [SerializeField] private Tile allDirectionsTile;
+    [SerializeField] private Tile upBottomLeftRightTile;
+    [SerializeField] private Tile leftBottomBottomLeftTile;
+    [SerializeField] private Tile rightBottomBottomRightTile;
+    [SerializeField] private Tile rightTopTile;
+    [SerializeField] private Tile leftTopTile;
+    [SerializeField] private Tile rightLeftUpTopRightTopLeftTile;
+    [SerializeField] private Tile rightLeftBottomBottomRightBottomLeftTile;
+    [SerializeField] private Tile topBottomLeftTopLeftBottomLeftTile;
+    [SerializeField] private Tile topBottomRightTopRightBottomRightTile;
+
+    [SerializeField] private Tile everythingExceptBottomRight;
+    [SerializeField] private Tile everythingExceptBottomLeft;
+    [SerializeField] private Tile everythingExceptTopRight;
+    [SerializeField] private Tile everythingExceptTopLeft;
+
+    [SerializeField] private Tile everythingExceptTopLeftAndBottomLeft;
+    [SerializeField] private Tile everythingExceptTopRightAndBottomRight;
+    [SerializeField] private Tile everythingExceptTopRightAndTopLeft;
+    [SerializeField] private Tile everythingExceptBottomRightAndBottomLeft;
+
 
 
     // Start is called before the first frame update
@@ -39,8 +70,8 @@ public class GameTileManager : MonoBehaviour
         for (int x = 0; x < xSize; x++) {
             for (int y = 0; y < ySize; y++) {
 
-                gameTileMap[x, y] = new GameTile(x, y, FindTileType(x, y), FindIfIsTilled(x, y), FindIfCanBeHarvested(x,y), false, null, 0);
-            }   
+                gameTileMap[x, y] = new GameTile(x, y, FindTileType(x, y), FindIfIsTilled(x, y), FindIfCanBeHarvested(x, y), false, null, 0);
+            }
         }
 
         Manager.cropsTileManager.LoadCrops();
@@ -53,11 +84,21 @@ public class GameTileManager : MonoBehaviour
     }
 
 
-    public int GetXSize() {
+
+
+
+    private void PlaceTilledTile(int xPos, int yPos)
+    {
+
+    }
+
+    public int GetXSize()
+    {
         return xSize;
     }
 
-    public int GetYSize() {
+    public int GetYSize()
+    {
         return ySize;
     }
 
@@ -69,7 +110,7 @@ public class GameTileManager : MonoBehaviour
         }
         else {
             return TileType.Stone;
-        } 
+        }
 
     }
 
@@ -95,34 +136,6 @@ public class GameTileManager : MonoBehaviour
         }
 
         return true;
-    }
-
-    private FarmingTileStatus FindFarmingTileStatus(int xPos, int yPos) {
-   
-
-        if (IsATilledFarmTile(xPos, yPos)) {
-            return FarmingTileStatus.Tilled;
-
-        } else if (IsATilledAndWateredFarmTile(xPos, yPos))
-        {
-            return FarmingTileStatus.TilledAndWatered;
-
-        } else if (IsAPlantedFarmTile(xPos, yPos))
-        {
-            return FarmingTileStatus.Planted;
-
-        } else if (IsAPlantedAndWateredFarmTile(xPos, yPos))
-        {
-            return FarmingTileStatus.PlantedAndWatered;
-
-        } else if (IsACropsFarmTile(xPos, yPos)) {
-
-            return FarmingTileStatus.Crops;
-
-        } else {
-            return FarmingTileStatus.Basic;
-        }
-
     }
 
     private bool IsABasicFarmTile(int xPos, int yPos) {
@@ -161,6 +174,8 @@ public class GameTileManager : MonoBehaviour
     private bool IsASnowTile(int xPos, int yPos) {
         return snowList.Contains((Tile)tilemap.GetTile(new Vector3Int(xPos, yPos, 0)));
     }
+
+
 
 
     //Tools

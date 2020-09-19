@@ -8996,6 +8996,10 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -9004,6 +9008,10 @@ Tilemap:
   - m_RefCount: 220
     m_Data: {fileID: -8254611960270271380, guid: edb074770c641894a88c5dc7db415a3b,
       type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
@@ -9093,25 +9101,59 @@ MonoBehaviour:
   summerTilledTile: {fileID: 11400000, guid: 08c03c2e946efbe47b3551d5645ff768, type: 2}
   summerTilledAndWateredFarmTile: {fileID: 11400000, guid: f8c369e4e794ac941a48ed25b6251c13,
     type: 2}
-  soloTillTile: {fileID: 0}
-  leftUpTopLeft: {fileID: 0}
-  leftTile: {fileID: 0}
-  rightTile: {fileID: 0}
-  bottomTile: {fileID: 0}
-  upTile: {fileID: 0}
-  leftBottomTile: {fileID: 0}
-  rightBottomTile: {fileID: 0}
-  rightUpTopRightTile: {fileID: 0}
-  allDirectionsTile: {fileID: 0}
-  upBottomLeftRightTile: {fileID: 0}
-  leftBottomBottomLeftTile: {fileID: 0}
-  rightBottomBottomRightTile: {fileID: 0}
-  rightTopTile: {fileID: 0}
-  leftTopTile: {fileID: 0}
-  rightLeftUpTopRightTopLeftTile: {fileID: 0}
-  rightLeftBottomBottomRightBottomLeftTile: {fileID: 0}
-  topBottomLeftTopLeftBottomLeftTile: {fileID: 0}
-  topBottomRightTopRightBottomRightTile: {fileID: 0}
+  soloTillTile: {fileID: 11400000, guid: 45d15ccd2ed3e8c42a6f167ad761363e, type: 2}
+  leftUpTopLeft: {fileID: 11400000, guid: 73d352523285da946acb2f545e0871eb, type: 2}
+  leftTile: {fileID: 11400000, guid: 7d858328ea7df754dbc1ac2404f82377, type: 2}
+  rightTile: {fileID: 11400000, guid: ff70278a690464b47b937e6eeed0c30a, type: 2}
+  bottomTile: {fileID: 11400000, guid: 862fd3e3c3906c14db0a9bf97ffd8734, type: 2}
+  upTile: {fileID: 11400000, guid: feb43eb80ac1e254b8e15edabaec71cf, type: 2}
+  leftBottomTile: {fileID: 11400000, guid: e56a1d169e0e5a744a865c79fb99f010, type: 2}
+  rightBottomTile: {fileID: 11400000, guid: 23661f9458bb0c4479bbf7e18dfbe920, type: 2}
+  rightUpTopRightTile: {fileID: 11400000, guid: 56089c2e978ca2e44ba2f14e0fef2d2b,
+    type: 2}
+  allDirectionsTile: {fileID: 11400000, guid: 72767a996076d704387746b0a9457c93, type: 2}
+  upBottomLeftRightTile: {fileID: 11400000, guid: b16273a6a43e5334dbdce4b6a6e92c70,
+    type: 2}
+  leftBottomBottomLeftTile: {fileID: 11400000, guid: 0ad161d44bc41a0459ba536152033b8c,
+    type: 2}
+  rightBottomBottomRightTile: {fileID: 11400000, guid: a27fb9440a617814382cd36c8c821b27,
+    type: 2}
+  rightTopTile: {fileID: 11400000, guid: 1a3fcf7889d4fd34990093baa027c97b, type: 2}
+  leftTopTile: {fileID: 11400000, guid: 33b8cf09a17785c479d71e311380cb09, type: 2}
+  rightLeftUpTopRightTopLeftTile: {fileID: 11400000, guid: 1f29dbd3f006f2449893352c9b826ae2,
+    type: 2}
+  rightLeftBottomBottomRightBottomLeftTile: {fileID: 11400000, guid: 218dbb663e578ac4490e82341e6fa5b3,
+    type: 2}
+  topBottomLeftTopLeftBottomLeftTile: {fileID: 11400000, guid: c170b7698a373ae4991ef92189893dd0,
+    type: 2}
+  topBottomRightTopRightBottomRightTile: {fileID: 11400000, guid: 76e5955d534aec8488a99414d0fd8e27,
+    type: 2}
+  everythingExceptBottomRight: {fileID: 11400000, guid: 9936ebe1cfdb3af429e3c4bf13ef5423,
+    type: 2}
+  everythingExceptBottomLeft: {fileID: 11400000, guid: df3cec127382ebe4ca99a344f3b2e711,
+    type: 2}
+  everythingExceptTopRight: {fileID: 11400000, guid: 0d1364b8f93fcc244ba283f306678840,
+    type: 2}
+  everythingExceptTopLeft: {fileID: 11400000, guid: 9092cc6461ad66340a2040d29c33758a,
+    type: 2}
+  everythingExceptTopLeftAndBottomLeft: {fileID: 11400000, guid: 1e129388f99cec0488573359e1202bf7,
+    type: 2}
+  everythingExceptTopRightAndBottomRight: {fileID: 11400000, guid: 5a16b87c978c4f64b864ad4a9cfafcf7,
+    type: 2}
+  everythingExceptTopRightAndTopLeft: {fileID: 11400000, guid: ab6d77ad108898c4db3ca33134731e97,
+    type: 2}
+  everythingExceptBottomRightAndBottomLeft: {fileID: 11400000, guid: fcc64ca32de99774781112d76c38fa30,
+    type: 2}
+  topAndBottomTile: {fileID: 11400000, guid: f111241977e48344299052592d72f3c9, type: 2}
+  leftAndRightTile: {fileID: 11400000, guid: 14bf852ef4daa024a84a45e75c63e38f, type: 2}
+  leftRightTopNotTopRightLeft: {fileID: 11400000, guid: 379ce7f21a68c164a9e9d320ec74d2dd,
+    type: 2}
+  leftRightBottomNotBottomRightLeft: {fileID: 11400000, guid: 28990d57ee093754384cbecc8ee6163f,
+    type: 2}
+  topBottomRightNotTopRightBottomRight: {fileID: 11400000, guid: 742323c26a0dbce429a0d387eacc0d85,
+    type: 2}
+  topBottomLeftNotTopLeftBottomLeft: {fileID: 11400000, guid: c58a643fd1a814c4090f59209375f30c,
+    type: 2}
 --- !u!224 &1856143524 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6824773045489490125, guid: 822203207b008d043a34037168948255,

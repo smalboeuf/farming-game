@@ -101,7 +101,7 @@ public class GameTile
         //    return true;
         //}
 
-        if (isTilled == true || plantedSeed == null) {
+        if (isTilled == true && plantedSeed == null) {
             return true;
         }
         return false;

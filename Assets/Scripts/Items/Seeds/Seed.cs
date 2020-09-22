@@ -21,6 +21,7 @@ public abstract class Seed : InventoryItem
 
     public void UseSeed(Seed seed, int xPos, int yPos) {
         
+
         //Check to see if can plant
         if (Manager.gameTileManager.gameTileMap[xPos, yPos].CanPlantSeed()) {
             //Plant it

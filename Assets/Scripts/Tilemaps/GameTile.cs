@@ -97,10 +97,6 @@ public class GameTile
 
     public bool CanPlantSeed() {
 
-        //if (farmingTileStatus == FarmingTileStatus.Tilled || farmingTileStatus == FarmingTileStatus.TilledAndWatered) {
-        //    return true;
-        //}
-
         if (isTilled == true && plantedSeed == null) {
             return true;
         }

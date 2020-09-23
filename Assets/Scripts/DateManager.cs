@@ -39,6 +39,7 @@ public class DateManager : MonoBehaviour
         }
         Manager.cropsTileManager.IncreaseCropDays(amount);
         Manager.cropsTileManager.UpdateCropTiles();
+        Manager.gameTileManager.ResetGameTileIsWatered();
     }
 
     

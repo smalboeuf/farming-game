@@ -159,16 +159,31 @@ public class GameTileManager : MonoBehaviour
         bool currentTileIsTilled = Manager.gameTileManager.gameTileMap[xPos, yPos].GetIsTilled();
         bool currentTileIsWatered = Manager.gameTileManager.gameTileMap[xPos, yPos].GetIsWatered();
 
-        bool one = Manager.gameTileManager.gameTileMap[xPos - 1, yPos + 1].GetIsTilled();
-        bool two = Manager.gameTileManager.gameTileMap[xPos, yPos + 1].GetIsTilled();
-        bool three = Manager.gameTileManager.gameTileMap[xPos + 1, yPos + 1].GetIsTilled();
-        bool four = Manager.gameTileManager.gameTileMap[xPos - 1, yPos].GetIsTilled();
-        bool five = Manager.gameTileManager.gameTileMap[xPos + 1, yPos].GetIsTilled(); 
-        bool six = Manager.gameTileManager.gameTileMap[xPos - 1, yPos - 1].GetIsTilled(); 
-        bool seven = Manager.gameTileManager.gameTileMap[xPos, yPos - 1].GetIsTilled();
-        bool eight = Manager.gameTileManager.gameTileMap[xPos + 1, yPos - 1].GetIsTilled();
+        bool one = false;
+        bool two = false;
+        bool three = false;
+        bool four = false;
+        bool five = false;
+        bool six = false;
+        bool seven = false;
+        bool eight = false;
 
+        if (xPos - 1 < 0 || xPos + 1 >= xSize || yPos - 1 < 0 || yPos + 1 >= ySize)
+        {
+            currentTileIsTilled = false;
+        }
+        else {
 
+           one = Manager.gameTileManager.gameTileMap[xPos - 1, yPos + 1].GetIsTilled();
+           two = Manager.gameTileManager.gameTileMap[xPos, yPos + 1].GetIsTilled();
+           three = Manager.gameTileManager.gameTileMap[xPos + 1, yPos + 1].GetIsTilled();
+           four = Manager.gameTileManager.gameTileMap[xPos - 1, yPos].GetIsTilled();
+           five = Manager.gameTileManager.gameTileMap[xPos + 1, yPos].GetIsTilled();
+           six = Manager.gameTileManager.gameTileMap[xPos - 1, yPos - 1].GetIsTilled();
+           seven = Manager.gameTileManager.gameTileMap[xPos, yPos - 1].GetIsTilled();
+           eight = Manager.gameTileManager.gameTileMap[xPos + 1, yPos - 1].GetIsTilled();
+        }
+     
 
         if (currentTileIsTilled)
         {
@@ -183,7 +198,7 @@ public class GameTileManager : MonoBehaviour
                 else {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), topAndBottomTile);
                 }
-       
+
             }
             else if (four && five && !two && !seven)
             {
@@ -196,7 +211,7 @@ public class GameTileManager : MonoBehaviour
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), leftAndRightTile);
                 }
 
-                
+
             }
             else if (one && two && four && seven && five && !three && !eight && !six)
             {
@@ -208,7 +223,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptTopRightBottomRightBottomLeft);
                 }
-        
+
             }
             else if (!one && !three && !eight && two && four && six && seven && five)
             {
@@ -220,7 +235,19 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptTopLeftTopRightBottomRight);
                 }
-                
+
+            }
+            else if (!four && !eight && two && three && five && seven)
+            {
+
+                if (currentTileIsWatered)
+                {
+                    tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptLeftAndBottomRightWatered);
+                }
+                else
+                {
+                    tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptLeftAndBottomRight);
+                }
             }
             else if (!one && !three && !six && two && four && five && eight && seven)
             {
@@ -232,7 +259,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptTopLeftBottomLeftTopRight);
                 }
-              
+
             }
             else if (!one && !six && !eight && two && three && five && four && seven)
             {
@@ -244,7 +271,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptTopLeftBottomLeftBottomRight);
                 }
-            
+
             }
             else if (!seven && !three && one && two && four && five)
             {
@@ -256,7 +283,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptTopRightAndBottom);
                 }
-                
+
             }
             else if (!one && !seven && two && three && five && four)
             {
@@ -268,7 +295,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptTopLeftAndBottom);
                 }
-             
+
             }
             else if (!one && !five && two && four && six && seven)
             {
@@ -280,7 +307,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptTopLeftAndRight);
                 }
-               
+
             }
             else if (!six && !five && two && one && four && seven)
             {
@@ -292,7 +319,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptBottomLeftAndRight);
                 }
-               
+
             }
             else if (!four && !eight && two && three && five && seven)
             {
@@ -304,7 +331,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), leftAndRightTile);
                 }
-               
+
             }
             else if (!four && !three && two && five && eight && seven)
             {
@@ -316,7 +343,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptLeftAndTopRight);
                 }
-               
+
             }
             else if (!two && !six && five && seven && eight && four)
             {
@@ -328,7 +355,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptTopAndBottomLeft);
                 }
-                
+
             }
             else if (!two && !eight && five && seven && six && four)
             {
@@ -340,7 +367,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptTopAndBottomRight);
                 }
-                
+
             }
             else if (!six && !three && two && one && four && five && eight && seven)
             {
@@ -352,7 +379,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptTopRightAndBottomLeft);
                 }
-                
+
             }
             else if (!one && !eight && two && three && five && four && six && seven)
             {
@@ -364,7 +391,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptTopLeftAndBottomRight);
                 }
-            
+
             }
             else if (one && two && three && four && five && six && seven && !eight)
             {
@@ -376,7 +403,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptBottomRight);
                 }
-               
+
             }
             else if (!one && two && three && four && five && six && seven && eight)
             {
@@ -388,7 +415,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptTopLeft);
                 }
-                
+
             }
             else if (one && two && !three && four && five && six && seven && eight)
             {
@@ -400,7 +427,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptTopRight);
                 }
-               
+
             }
             else if (one && two && three && four && five && !six && seven && eight)
             {
@@ -412,7 +439,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptBottomLeft);
                 }
-                
+
             }
             else if (!one && two && three && four && five && !six && seven && eight)
             {
@@ -424,7 +451,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptTopLeftAndBottomLeft);
                 }
-                
+
             }
             else if (one && two && three && four && five && !six && seven && !eight)
             {
@@ -436,7 +463,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptBottomRightAndBottomLeft);
                 }
-                
+
             }
             else if (one && two && !three && four && five && six && seven && !eight)
             {
@@ -448,7 +475,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptTopRightAndBottomRight);
                 }
-                
+
             }
             else if (!one && two && !three && four && five && six && seven && eight)
             {
@@ -460,7 +487,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), everythingExceptTopRightAndTopLeft);
                 }
-               
+
             }
             else if (four && five && two && !one && !three && !seven)
             {
@@ -472,7 +499,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), leftRightTopNotTopRightLeft);
                 }
-                
+
             }
             else if (!two && five && four && seven && !six && !eight)
             {
@@ -484,7 +511,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), leftRightBottomNotBottomRightLeft);
                 }
-                
+
             }
             else if (!four && !three && !eight && two && seven && five)
             {
@@ -496,7 +523,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), topBottomRightNotTopRightBottomRight);
                 }
-                
+
             }
             else if (!one && !six && !five && two && seven && four)
             {
@@ -508,7 +535,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), topBottomLeftNotTopLeftBottomLeft);
                 }
-                
+
             }
             else if (!six && !two && !five && four && seven)
             {
@@ -520,7 +547,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), leftBottomTile);
                 }
-                
+
             }
             else if (!two && !four && eight && seven && five)
             {
@@ -532,7 +559,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), rightBottomBottomRightTile);
                 }
-               
+
             }
             else if (!two && four && five && six && seven && eight)
             {
@@ -544,7 +571,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), rightLeftBottomBottomRightBottomLeftTile);
                 }
-                
+
             }
             else if (!two && !five && four && six && seven)
             {
@@ -556,7 +583,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), leftBottomBottomLeftTile);
                 }
-          
+
             }
             else if (!one && two && four && !five && !seven)
             {
@@ -568,7 +595,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), leftTopTile);
                 }
-                
+
             }
             else if (!four && two && seven && three && five && eight)
             {
@@ -580,7 +607,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), topBottomRightTopRightBottomRightTile);
                 }
-               
+
             }
             else if (one && two && three && four && five && six && seven && eight)
             {
@@ -592,7 +619,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), allDirectionsTile);
                 }
-                
+
             }
             else if (!five && two && seven && four && one && six)
             {
@@ -604,7 +631,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), topBottomLeftTopLeftBottomLeftTile);
                 }
-               
+
             }
             else if (!two && !four && !eight && seven && five)
             {
@@ -616,7 +643,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), rightBottomTile);
                 }
-              
+
             }
             else if (!one && two && !three && four && five && !six && seven && !eight)
             {
@@ -628,7 +655,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), upBottomLeftRightTile);
                 }
-               
+
             }
             else if (!four && !seven && two && three && five)
             {
@@ -640,7 +667,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), rightUpTopRightTile);
                 }
-                
+
             }
             else if (!seven && four && five && two && one && three)
             {
@@ -652,7 +679,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), rightLeftUpTopRightTopLeftTile);
                 }
-                
+
             }
             else if (!five && !seven && four && one && two)
             {
@@ -664,7 +691,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), leftUpTopLeft);
                 }
-                
+
             }
             else if (!three && !four && !seven && two && five)
             {
@@ -676,7 +703,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), rightTopTile);
                 }
-                
+
             }
             else if (!two && !four && !seven && !five)
             {
@@ -688,7 +715,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), soloTillTile);
                 }
-                
+
             }
             else if (!two && !four && !seven && five)
             {
@@ -700,7 +727,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), rightTile);
                 }
-                
+
             }
             else if (!two && !five && !seven && four)
             {
@@ -712,7 +739,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), leftTile);
                 }
-               
+
             }
             else if (!two && !four && !five && seven)
             {
@@ -724,7 +751,7 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), bottomTile);
                 }
-              
+
             }
             else if (two && !four && !five && !seven)
             {
@@ -736,11 +763,11 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), upTile);
                 }
-               
+
             }
             else
             {
-               
+
                 //Do nothing
 
             }
@@ -749,10 +776,18 @@ public class GameTileManager : MonoBehaviour
         
     }
 
-    private void UpdateTilledTile(int xPos, int yPos) {
 
+    public void ResetGameTileIsWatered() {
+
+        for (int x = 0; x < xSize; x++)
+        {
+            for (int y = 0; y < ySize; y++)
+            {
+                gameTileMap[x, y].SetIsWatered(false);
+                UpdateTileSprite(x, y);
+            }
+        }
     }
-
 
 
 
@@ -779,8 +814,6 @@ public class GameTileManager : MonoBehaviour
     }
 
 
-
-
     private bool FindIfCanBeHarvested(int xPos, int yPos)
     {
         return canBeHarvestedTiles.Contains((Tile)tilemap.GetTile(new Vector3Int(xPos, yPos, 0)));
@@ -804,31 +837,6 @@ public class GameTileManager : MonoBehaviour
 
     private bool IsABasicFarmTile(int xPos, int yPos) {
         return basicFarmTiles.Contains((Tile)tilemap.GetTile(new Vector3Int(xPos, yPos, 0)));
-    }
-
-    private bool IsATilledFarmTile(int xPos, int yPos)
-    {
-        return tilledFarmTiles.Contains((Tile)tilemap.GetTile(new Vector3Int(xPos, yPos, 0)));
-    }
-
-    private bool IsATilledAndWateredFarmTile(int xPos, int yPos)
-    {
-        return tilledAndWateredFarmTiles.Contains((Tile)tilemap.GetTile(new Vector3Int(xPos, yPos, 0)));
-    }
-
-    private bool IsAPlantedFarmTile(int xPos, int yPos)
-    {
-        return plantedFarmTiles.Contains((Tile)tilemap.GetTile(new Vector3Int(xPos, yPos, 0)));
-    }
-
-    private bool IsAPlantedAndWateredFarmTile(int xPos, int yPos)
-    {
-        return plantedAndWateredFarmTiles.Contains((Tile)tilemap.GetTile(new Vector3Int(xPos, yPos, 0)));
-    }
-
-    private bool IsACropsFarmTile(int xPos, int yPos)
-    {
-        return cropsFarmTiles.Contains((Tile)tilemap.GetTile(new Vector3Int(xPos, yPos, 0)));
     }
 
     private bool IsAGrassTile(int xPos, int yPos) {

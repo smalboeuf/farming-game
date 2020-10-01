@@ -7,7 +7,11 @@ public class Character : MonoBehaviour
     public float range = 10f;
     int maxHP = 100;
     int currentHP = 90;
+    int maxEnergy = 100;
+    int currentEnergy = 100;
+
     bool canMove = true;
+    
 
     public InventoryManager inventoryManager;
     public HotbarManager hotbarManager;

@@ -17,6 +17,8 @@ public class InventoryItem : ScriptableObject
     public Sprite itemImage;
     public int currentStack;
     public int maxStack;
+    public int sellPrice;
+    public int buyPrice;
     //public bool usable;
     public bool unique;
     public ItemType itemType;

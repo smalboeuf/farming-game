@@ -153,6 +153,16 @@ public class GameTileManager : MonoBehaviour
     }
 
 
+    public bool IsAValidTile(int xPos, int yPos) {
+
+        if (xPos >= 0 && yPos >= 0 && xPos < xSize && yPos < ySize) {
+            return true;
+        }
+
+        return false;
+    }
+
+
     private void UpdateTileSprite(int xPos, int yPos)
     {
         

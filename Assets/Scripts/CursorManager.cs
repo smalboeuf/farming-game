@@ -24,7 +24,9 @@ public class CursorManager : MonoBehaviour
     {
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if ((int)cursorPosition.x >= 0 && (int)cursorPosition.y >= 0) {
+       
+
+        if (Manager.gameTileManager.IsAValidTile((int)cursorPosition.x, (int)cursorPosition.y)) { 
 
             GameTile currentTile = Manager.gameTileManager.gameTileMap[(int)cursorPosition.x, (int)cursorPosition.y];
 
@@ -36,8 +38,8 @@ public class CursorManager : MonoBehaviour
             {
                 Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
             }
+
         }
-      
 
     }
 

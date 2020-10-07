@@ -29,7 +29,7 @@ public class CursorManager : MonoBehaviour
         if (Manager.gameTileManager.IsAValidTile((int)cursorPosition.x, (int)cursorPosition.y)) { 
 
             GameTile currentTile = Manager.gameTileManager.gameTileMap[(int)cursorPosition.x, (int)cursorPosition.y];
-
+                
             if (currentTile.GetCanBeHarvested() == true)
             {
                 Cursor.SetCursor(pickupCursor, Vector2.zero, CursorMode.Auto);

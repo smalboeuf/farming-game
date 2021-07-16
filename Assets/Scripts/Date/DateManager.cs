@@ -8,15 +8,9 @@ public class DateManager : MonoBehaviour
     private int daysPerMonth = 30;
     private int monthsPerYear = 12;
 
-
-
     [SerializeField] private int day = 0;
     [SerializeField] private int month = 0;
     [SerializeField] private int year = 0;
-
-
-
-
 
     public void IncreaseDays(int amount) {
 
@@ -41,9 +35,6 @@ public class DateManager : MonoBehaviour
         Manager.cropsTileManager.UpdateCropTiles();
         Manager.gameTileManager.ResetGameTileIsWatered();
     }
-
-    
-
 
     // Start is called before the first frame update
     void Start()

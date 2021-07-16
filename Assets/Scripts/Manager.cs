@@ -23,8 +23,8 @@ public class Manager : MonoBehaviour
     [SerializeField] private DateManager setDateManager;
     public static DateManager dateManager;
 
- 
-
+    [SerializeField] private QuestManager setQuestManager;
+    public static QuestManager questManager;
 
 
     // Start is called before the first frame update
@@ -36,7 +36,7 @@ public class Manager : MonoBehaviour
         hotbarManager = setHotbarManager;
         cropsTileManager = setCropsTileManager;
         dateManager = setDateManager;
-       
+        questManager = setQuestManager;
     }
 
     // Update is called once per frame

@@ -37,7 +37,6 @@ public class InventoryManager : MonoBehaviour
     {
         SetStartingItems();
         InitializeHotbar();
-
     }
 
 
@@ -58,14 +57,12 @@ public class InventoryManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            AddItem(testItem);
+            AddItem(testItem, 7);
             Debug.Log("added item");
         }
     }
 
-
     //Inventory Drag Events
-
     public void ShowTooltip(InventorySlot inventorySlot)
     {
         itemTooltip.ShowTooltip(inventorySlot.Item);
@@ -75,7 +72,6 @@ public class InventoryManager : MonoBehaviour
     {
         itemTooltip.HideTooltip();
     }
-
 
     private void BeginDrag(InventorySlot inventorySlot) {
         if (inventorySlot.Item != null) {
@@ -96,7 +92,6 @@ public class InventoryManager : MonoBehaviour
         if (draggableItem.enabled) {
             draggableItem.transform.position = Input.mousePosition;
         }
-     
     }
 
     private void Drop(InventorySlot dropInventorySlot) {
@@ -106,12 +101,11 @@ public class InventoryManager : MonoBehaviour
             AddStacks(dropInventorySlot);
        }
        else if (dropInventorySlot.CanRecieveItem(dropInventorySlot.Item) && draggedSlot.CanRecieveItem(dropInventorySlot.Item))
-        {
+       {
             SwapItems(dropInventorySlot);
-        }
+       }
 
         hotbarManager.UpdateHotbarSlots();
-
     }
 
     private void SwapItems(InventorySlot dropInventorySlot)
@@ -124,8 +118,6 @@ public class InventoryManager : MonoBehaviour
 
         dropInventorySlot.Item = draggedItem;
         dropInventorySlot.Amount = draggedItemAmount;
-
-        
     }
 
     private void AddStacks(InventorySlot dropInventorySlot)
@@ -136,9 +128,6 @@ public class InventoryManager : MonoBehaviour
         dropInventorySlot.Amount += stacksToAdd;
         draggedSlot.Amount -= stacksToAdd;
     }
-
-
-
 
     private void InitializeHotbar() {
 
@@ -161,16 +150,25 @@ public class InventoryManager : MonoBehaviour
             itemSlots[i].Item = null;
             itemSlots[i].Amount = 0;
         }
-    
     }
 
-    public bool AddItem(InventoryItem item) {
+    public bool AddItem(InventoryItem item, int quantity) {
 
         for (int i = 0; i < itemSlots.Length; i++) {
             if (itemSlots[i].CanStackItem(item)) {
-
-                itemSlots[i].Item = item;
-                itemSlots[i].Amount++;
+                int sumOfItem = itemSlots[i].Amount + quantity;
+                if (sumOfItem > itemSlots[i].Item.maxStack)
+                {
+                    itemSlots[i].Item = item;
+                    itemSlots[i].Amount = item.maxStack;
+                    hotbarManager.UpdateHotbarSlots();
+                    int maxStackDifference = sumOfItem - itemSlots[i].Item.maxStack;
+                    AddItem(item, maxStackDifference);
+                }
+                else {
+                    itemSlots[i].Item = item;
+                    itemSlots[i].Amount += quantity;
+                }
 
                 //Update hotbar after
                 hotbarManager.UpdateHotbarSlots();
@@ -182,13 +180,13 @@ public class InventoryManager : MonoBehaviour
             if (itemSlots[i].Item == null) {
 
                 itemSlots[i].Item = item;
+                itemSlots[i].Amount = quantity;
                 //Update hotbar after
                 hotbarManager.UpdateHotbarSlots();
                 return true;
             }
         }
       
-
         return false;
     }
 

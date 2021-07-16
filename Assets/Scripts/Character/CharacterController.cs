@@ -9,6 +9,8 @@ public class CharacterController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private Vector3 change;
+    private NPC npcInRange;
+
 
 
     // Start is called before the first frame update
@@ -16,7 +18,6 @@ public class CharacterController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        
     }
 
     // Update is called once per frame
@@ -27,8 +28,8 @@ public class CharacterController : MonoBehaviour
         change.y = Input.GetAxisRaw("Vertical");
 
         UpdateAnimationAndMove();
+        InteractWithNPC();
     }
-
 
     private void FixedUpdate()
     {
@@ -55,9 +56,41 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-
     void MoveCharacter() {
         rb.MovePosition(transform.position + change.normalized * speed * Time.deltaTime);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "NPC")
+        {
+            npcInRange = collision.GetComponent<NPC>();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "NPC")
+        {
+            npcInRange = collision.GetComponent<NPC>();
+        }
+    }
+
+    void InteractWithNPC()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && npcInRange)
+        {
+            
+            print("Here is the quest");
+            QuestGiver questGiver = npcInRange.GetQuestGiver();
+            List<Quest> availableQuests = questGiver.GetAvailableQuests();
+            print(availableQuests);
+
+            for (int i = 0; i < availableQuests.Count; i++)
+            {
+                questGiver.DeliverQuest(availableQuests[i]);
+            }
+
+        }
+    }
 }

@@ -23,6 +23,8 @@ public class InventoryItem : ScriptableObject
     public bool unique;
     public ItemType itemType;
 
+    //public bool triggerCollectionEvent;
+    //public List<Quest> questsThatCollect; 
 
     public enum ItemType
     {
@@ -35,21 +37,13 @@ public class InventoryItem : ScriptableObject
         Weapon
     };
 
-    
-
-
     private void OnValidate()
     {
         string path = AssetDatabase.GetAssetPath(this);
         id = AssetDatabase.AssetPathToGUID(path);
     }
 
-
     public ItemType GetItemType() {
         return itemType;
     }
-
-
- 
-
 }

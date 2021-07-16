@@ -822,7 +822,6 @@ public class GameTileManager : MonoBehaviour
 
     }
 
-
     private bool FindIfCanBeHarvested(int xPos, int yPos)
     {
         return canBeHarvestedTiles.Contains((Tile)tilemap.GetTile(new Vector3Int(xPos, yPos, 0)));
@@ -857,7 +856,7 @@ public class GameTileManager : MonoBehaviour
     }
 
 
-
+    
 
     //Tools
 

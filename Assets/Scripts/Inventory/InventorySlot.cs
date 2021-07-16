@@ -84,12 +84,11 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         itemImage.color = temp;
     }
 
-
-
     public bool CanStackItem(InventoryItem item, int amount = 1) {
     
         return Item != null && Item.ID == item.ID && Amount + amount <= item.maxStack;
     }
+
 
     public void OnPointerEnter(PointerEventData eventData) {
 

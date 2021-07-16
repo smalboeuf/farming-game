@@ -82,12 +82,10 @@ public class Character : MonoBehaviour
         Seed seedPlantedInTile = currentTile.GetPlantedSeed();
 
         //Add item to inventory
-        Manager.inventoryManager.AddItem(seedPlantedInTile.GetCropForHarvesting());
+        Manager.inventoryManager.AddItem(seedPlantedInTile.GetCropForHarvesting(), 1);
 
         //Reset the crop
         currentTile.ResetPlantedCrop();
-
-
     }
 
     private bool IsInRange(Vector3 clickedPos) {
@@ -99,7 +97,6 @@ public class Character : MonoBehaviour
         }
     }
 
-
     public void Heal(int amount) {
 
         if (amount + currentHP > maxHP)
@@ -108,8 +105,7 @@ public class Character : MonoBehaviour
         }
         else {
             currentHP = currentHP + amount;
-        }
-
+        }    
     }
 
     public bool IsAValidCoordinate(int xPos, int yPos) {

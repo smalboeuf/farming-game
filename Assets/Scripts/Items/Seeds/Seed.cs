@@ -6,8 +6,6 @@ using UnityEngine.Tilemaps;
 public abstract class Seed : InventoryItem
 {
 
-
-
     [SerializeField] private int daysToGrow;
     [SerializeField] private int daysForMidPlant;
     [SerializeField] private int daysForFinalPlant;
@@ -21,7 +19,6 @@ public abstract class Seed : InventoryItem
 
     public void UseSeed(Seed seed, int xPos, int yPos) {
         
-
         //Check to see if can plant
         if (Manager.gameTileManager.gameTileMap[xPos, yPos].CanPlantSeed()) {
             //Plant it
@@ -34,8 +31,6 @@ public abstract class Seed : InventoryItem
            
         }
     }
-
-
 
     public Tile GetPlantedTile() {
         return plantedTile;

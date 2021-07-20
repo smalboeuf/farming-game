@@ -12,7 +12,6 @@ public class CharacterController : MonoBehaviour
     private NPC npcInRange;
 
 
-
     // Start is called before the first frame update
     void Start()
     {

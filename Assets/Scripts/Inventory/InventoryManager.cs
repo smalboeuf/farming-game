@@ -10,9 +10,9 @@ public class InventoryManager : MonoBehaviour
 
     [Header("Inventory Information")]
     [SerializeField] private GameObject inventoryPanel;
+    public int gold = 0;
 
     public HotbarManager hotbarManager;
-
 
     [SerializeField] InventoryItem[] startingItems;
     public InventorySlot[] itemSlots;
@@ -150,6 +150,11 @@ public class InventoryManager : MonoBehaviour
             itemSlots[i].Item = null;
             itemSlots[i].Amount = 0;
         }
+    }
+
+    public void AddGold(int goldAdded)
+    {
+        gold += goldAdded;
     }
 
     public bool AddItem(InventoryItem item, int quantity) {

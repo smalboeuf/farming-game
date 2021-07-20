@@ -26,6 +26,12 @@ public class Manager : MonoBehaviour
     [SerializeField] private QuestManager setQuestManager;
     public static QuestManager questManager;
 
+    [SerializeField] private RelationshipManager setRelationshipManager;
+    public static RelationshipManager relationshipManager;
+
+    [SerializeField] private SkillsManager setSkillsManager;
+    public static SkillsManager skillsManager;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +43,8 @@ public class Manager : MonoBehaviour
         cropsTileManager = setCropsTileManager;
         dateManager = setDateManager;
         questManager = setQuestManager;
+        relationshipManager = setRelationshipManager;
+        skillsManager = setSkillsManager;
     }
 
     // Update is called once per frame

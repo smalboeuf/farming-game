@@ -16,17 +16,25 @@ public class Quest : ScriptableObject
     public bool isCompleted = false;
     public QuestType questType;
     
+    [Header("Quest Rewards")]
 
-    //Quest Rewards
-    public int experiencePoints;
-    public int gold;
-    public int relationshipPoints;
-    public InventoryItem inventoryItem;
+    //Skills reward
+    public int experiencePoints = 0;
+    
+    //Gold rewards
+    public int gold = 0;
 
-    //Need to have
-    // Prerequisite quests
+    //Relationship reward
+    public NPC relationshipNPC;
+    public int relationshipPointsGained = 0;
+
+    //Item rewards
+    public List<QuestReward> questRewards = new List<QuestReward>();
+
+    [Header("Quest order information")]
+    //Prerequisite quests
     public Quest prerequisiteQuest;
-    // Next quest if there is any
+    //Next quest if there is any
     public Quest nextQuest;
     
   

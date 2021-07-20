@@ -855,9 +855,6 @@ public class GameTileManager : MonoBehaviour
         return snowList.Contains((Tile)tilemap.GetTile(new Vector3Int(xPos, yPos, 0)));
     }
 
-
-    
-
     //Tools
 
     public void TillGrass(int xPos, int yPos) {

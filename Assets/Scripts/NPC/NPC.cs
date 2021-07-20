@@ -5,11 +5,11 @@ using UnityEngine;
 public class NPC : MonoBehaviour
 {
 
-    [SerializeField] private string name;
+    public string firstName;
+    public string lastName;
+    public string fullName;
     private QuestGiver questGiver;
     public bool playerInRange = false;
-
-
 
     // Start is called before the first frame update
     void Start()

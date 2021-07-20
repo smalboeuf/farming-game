@@ -53,6 +53,18 @@ public class QuestManager : MonoBehaviour
 
     public void GiveQuestRewards(Quest quest)
     {
-        //Manager.inventoryManager.AddItem();
+        //Update UI after all the things have been added
+        
+        //Add gold to players inventory
+        Manager.inventoryManager.AddGold(quest.gold);
+        //Add relationship points (need to create relationship system)
+        
+        //Add experience points (need to develop how experience and progression works)
+
+        //Loop through all reward items and add it to the inventory
+        for (int i = 0; i < quest.questRewards.Count; i++)
+        {
+            Manager.inventoryManager.AddItem(quest.questRewards[i].inventoryItem, quest.questRewards[i].amount);
+        }
     }
 }

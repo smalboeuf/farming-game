@@ -11,7 +11,6 @@ public class Character : MonoBehaviour
     int currentEnergy = 100;
 
     bool canMove = true;
-    
 
     public InventoryManager inventoryManager;
     public HotbarManager hotbarManager;
@@ -26,7 +25,6 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
 
         if (Input.GetMouseButtonDown(0) && canMove == true) {
             Vector3 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

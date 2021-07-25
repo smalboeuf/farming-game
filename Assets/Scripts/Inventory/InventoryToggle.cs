@@ -5,14 +5,7 @@ using UnityEngine;
 public class InventoryToggle : MonoBehaviour
 {
 
-
     [SerializeField] GameObject inventory;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -27,7 +20,6 @@ public class InventoryToggle : MonoBehaviour
             else {
                 TurnOffInventoryPanel();
             }
-            
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)) {

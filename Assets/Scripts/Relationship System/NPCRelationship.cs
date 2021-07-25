@@ -16,6 +16,11 @@ public class NPCRelationship : ScriptableObject
 
     public void AddRelationshipExperience(int amount)
     {
+        if (relationshipLevel == maxRelationshipLevel)
+        {
+            return;
+        }
+
         int newCurrentRelationshipExp = currentRelationshipExp + amount;
 
         if (newCurrentRelationshipExp >= maxRelationshipExp)
@@ -28,9 +33,25 @@ public class NPCRelationship : ScriptableObject
     public void LevelUpRelationship(int excessExp)
     {
         //Increase relationship level
-        relationshipLevel++;
-        currentRelationshipExp = excessExp;
+        if (relationshipLevel < maxRelationshipLevel)
+        {
+            relationshipLevel++;
 
+            if (relationshipLevel == maxRelationshipLevel)
+            {
+                currentRelationshipExp = 0;
+                return;
+            }
+            else
+            {
+                currentRelationshipExp = excessExp;
+            }
+        }
+        else
+        {
+            return;
+        }
+    
         //Change the size of next level required exp
         maxRelationshipExp *= (1 + (levelUpMultiplierPercentage / 100));
 
@@ -39,6 +60,6 @@ public class NPCRelationship : ScriptableObject
 
     public void RelationshipExpDecay()
     {
-
+        //Handle relationship decay over x period of time
     }
 }

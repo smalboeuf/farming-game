@@ -16,18 +16,6 @@ public class ShopItemUI : MonoBehaviour
     private Color normalColor = Color.white;
     private Color disabledColor = new Color(1, 1, 1, 0);
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SetUpShopUI() {
 
         if (shopItem == null)

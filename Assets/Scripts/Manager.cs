@@ -32,9 +32,7 @@ public class Manager : MonoBehaviour
     [SerializeField] private SkillsManager setSkillsManager;
     public static SkillsManager skillsManager;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         gameTileManager = setTileManager;
         character = setCharacter;
@@ -45,6 +43,12 @@ public class Manager : MonoBehaviour
         questManager = setQuestManager;
         relationshipManager = setRelationshipManager;
         skillsManager = setSkillsManager;
+    }
+
+    private void Start()
+    {
+        inventoryManager.SetStartingItems();
+        inventoryManager.InitializeHotbar();
     }
 
     // Update is called once per frame

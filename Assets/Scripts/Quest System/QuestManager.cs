@@ -4,9 +4,45 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    [Header("Quest Manager Data")]
     public List<Quest> activeQuests;
     public List<Quest> completedQuests;
 
+    [Header("UI GameObjects")]
+    [SerializeField] private GameObject questPanelContent;
+    [SerializeField] private GameObject questUIPrefab;
+
+    private void Start()
+    {
+        InitializeQuestPanel();
+    }
+
+    public void ToggleQuestPanel() {
+        gameObject.SetActive(!gameObject.activeSelf);
+
+        if (gameObject.activeSelf == true)
+        {
+            Manager.character.SetCanMove(false);
+        }
+        else {
+            Manager.character.SetCanMove(true);
+        }
+    }
+
+    private void InitializeQuestPanel()
+    {
+        for (int i = 0; i < activeQuests.Count; i++)
+        {
+            CreateQuestUI(activeQuests[i]);
+        }
+    }
+
+    private void CreateQuestUI(Quest quest)
+    {
+        var newQuestGameObject = Instantiate(questUIPrefab, questPanelContent.transform);
+        var newQuest = newQuestGameObject.GetComponent<QuestUI>();
+        newQuest.SetQuestUIElements(quest);
+    }
 
     // Check to see if a quest is active
     public bool isActive(Quest quest)
@@ -28,6 +64,8 @@ public class QuestManager : MonoBehaviour
         //Set quest to active and in active list
         quest.isActive = true;
         activeQuests.Add(quest);
+
+        //Add on collect events whenever quest is accepted
     }
 
     public void CompleteQuest(Quest quest)
@@ -58,8 +96,9 @@ public class QuestManager : MonoBehaviour
         //Add gold to players inventory
         Manager.inventoryManager.AddGold(quest.gold);
         //Add relationship points (need to create relationship system)
-        
-        //Add experience points (need to develop how experience and progression works)
+        Manager.relationshipManager.AddExperienceToRelationship(quest.relationshipNPC, quest.relationshipPointsGained);
+        //Add skill experience
+        Manager.skillsManager.AddExperienceToSkill(quest.skillType, quest.skillExperience);
 
         //Loop through all reward items and add it to the inventory
         for (int i = 0; i < quest.questRewards.Count; i++)

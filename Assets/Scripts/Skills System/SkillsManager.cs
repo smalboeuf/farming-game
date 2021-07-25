@@ -5,39 +5,16 @@ using UnityEngine;
 public class SkillsManager : MonoBehaviour
 {
 
-    //Cooking
-    public int currentCookingExp;
-    public int maxCookingExp;
-    public int cookingLevel;
-    public int maxCookingLevel;
+    public List<PlayerSkill> playerSkills;
 
-    //Farming
-    public int currentFarmingExp;
-    public int maxFarmingExp;
-    public int farmingLevel;
-    public int maxFarmingLevel;
-
-    //Athletics
-    public int currentAthleticsExp;
-    public int maxAthleticsExp;
-    public int athleticsLevel;
-    public int maxAthleticsLevel;
-
-    //Charisma
-    public int currentCharismaExp;
-    public int maxCharismaExp;
-    public int charismaLevel;
-    public int maxCharismaLevel;
-
-    // Start is called before the first frame update
-    void Start()
+    public void AddExperienceToSkill(SkillType skillType, int experienceAmount)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        for (int i = 0; i < playerSkills.Count; i++)
+        {
+            if (playerSkills[i].skillType == skillType)
+            {
+                playerSkills[i].AddSkillExperience(experienceAmount);
+            }
+        }
     }
 }

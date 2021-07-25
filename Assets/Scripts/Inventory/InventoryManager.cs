@@ -12,18 +12,17 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private GameObject inventoryPanel;
     public int gold = 0;
 
-    public HotbarManager hotbarManager;
-
     [SerializeField] InventoryItem[] startingItems;
     public InventorySlot[] itemSlots;
 
     [SerializeField] InventoryItem testItem;
 
-
     [SerializeField] Image draggableItem;
     private InventorySlot draggedSlot;
 
     [SerializeField] ItemTooltip itemTooltip;
+
+    [SerializeField] List<CollectionEvent> collectionEvents;
 
     //Events
     //public event Action<InventorySlot> OnPointerEnterEvent;
@@ -32,12 +31,6 @@ public class InventoryManager : MonoBehaviour
     //public event Action<InventorySlot> OnEndDragEvent;
     //public event Action<InventorySlot> OnDragEvent;
     //public event Action<InventorySlot> OnDropEvent;
-
-    private void Awake()
-    {
-        SetStartingItems();
-        InitializeHotbar();
-    }
 
 
     // Start is called before the first frame update
@@ -105,7 +98,7 @@ public class InventoryManager : MonoBehaviour
             SwapItems(dropInventorySlot);
        }
 
-        hotbarManager.UpdateHotbarSlots();
+        Manager.hotbarManager.UpdateHotbarSlots();
     }
 
     private void SwapItems(InventorySlot dropInventorySlot)
@@ -129,10 +122,10 @@ public class InventoryManager : MonoBehaviour
         draggedSlot.Amount -= stacksToAdd;
     }
 
-    private void InitializeHotbar() {
+    public void InitializeHotbar() {
 
-        for (int i = 0; i < hotbarManager.hotbarSlots.Length; i++) {
-            hotbarManager.hotbarSlots[i].SetHotbarSlot();
+        for (int i = 0; i < Manager.hotbarManager.hotbarSlots.Length; i++) {
+            Manager.hotbarManager.hotbarSlots[i].SetHotbarSlot();
         }
         inventoryPanel.SetActive(false);
     }
@@ -166,7 +159,7 @@ public class InventoryManager : MonoBehaviour
                 {
                     itemSlots[i].Item = item;
                     itemSlots[i].Amount = item.maxStack;
-                    hotbarManager.UpdateHotbarSlots();
+                    Manager.hotbarManager.UpdateHotbarSlots();
                     int maxStackDifference = sumOfItem - itemSlots[i].Item.maxStack;
                     AddItem(item, maxStackDifference);
                 }
@@ -176,7 +169,11 @@ public class InventoryManager : MonoBehaviour
                 }
 
                 //Update hotbar after
-                hotbarManager.UpdateHotbarSlots();
+                Manager.hotbarManager.UpdateHotbarSlots();
+
+                //Check for collection events
+                CheckCollectionEvents(item, quantity);
+
                 return true;
             }
         }
@@ -187,7 +184,10 @@ public class InventoryManager : MonoBehaviour
                 itemSlots[i].Item = item;
                 itemSlots[i].Amount = quantity;
                 //Update hotbar after
-                hotbarManager.UpdateHotbarSlots();
+                Manager.hotbarManager.UpdateHotbarSlots();
+                //Check for collection events
+                CheckCollectionEvents(item, quantity);
+
                 return true;
             }
         }
@@ -195,6 +195,30 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
+    public void CheckCollectionEvents(InventoryItem item, int amount)
+    {
+        for (int i = 0; i < collectionEvents.Count; i++)
+        {
+            if (collectionEvents[i].itemCollectionDemand.item.ID == item.ID)
+            {
+                collectionEvents[i].CollectDemandItem(item, amount);
+            }
+        }
+    }
+
+    public int GetItemAmountInInventory(InventoryItem item) {
+        int totalAmount = 0;
+
+        for (int i = 0; i < itemSlots.Length; i++)
+        {
+            if (itemSlots[i].Item.ID == item.ID)
+            {
+                totalAmount += itemSlots[i].Amount;
+            }
+        }
+
+        return totalAmount;
+    }
 
     public bool RemoveItemAtHotbarIndex(int hotbarIndex, InventoryItem item) {
 

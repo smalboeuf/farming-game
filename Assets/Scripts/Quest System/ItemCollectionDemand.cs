@@ -8,4 +8,5 @@ public class ItemCollectionDemand : ScriptableObject
     public InventoryItem item;
     public int amountRequired;
     public int amountCollected;
+    public bool completed = false;
 }

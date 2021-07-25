@@ -15,11 +15,12 @@ public class Quest : ScriptableObject
     public bool isActive;
     public bool isCompleted = false;
     public QuestType questType;
-    
+
     [Header("Quest Rewards")]
 
     //Skills reward
-    public int experiencePoints = 0;
+    public SkillType skillType;
+    public int skillExperience = 0;
     
     //Gold rewards
     public int gold = 0;

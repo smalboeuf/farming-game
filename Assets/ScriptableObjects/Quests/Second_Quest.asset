@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: Second_Quest
   m_EditorClassIdentifier: 
   id: 40777d0c1575c4b4aa1a681668361340
-  QuestName: 
+  QuestName: Second Time's The Charm
   QuestDescription: 
   isActive: 0
   isCompleted: 0
   questType: 0
-  experiencePoints: 0
+  skillType: 0
+  skillExperience: 0
   gold: 0
-  relationshipPoints: 0
-  inventoryItem: {fileID: 0}
+  relationshipNPC: {fileID: 0}
+  relationshipPointsGained: 0
+  questRewards: []
   prerequisiteQuest: {fileID: 11400000, guid: c233d96f242a47841b4f42fe525ee35e, type: 2}
   nextQuest: {fileID: 0}
   itemDemands: []

@@ -79,17 +79,7 @@ public class CharacterController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && npcInRange)
         {
-            
-            print("Here is the quest");
-            QuestGiver questGiver = npcInRange.GetQuestGiver();
-            List<Quest> availableQuests = questGiver.GetAvailableQuests();
-            print(availableQuests);
-
-            for (int i = 0; i < availableQuests.Count; i++)
-            {
-                questGiver.DeliverQuest(availableQuests[i]);
-            }
-
+            npcInRange.StartNPCInteraction();
         }
     }
 }

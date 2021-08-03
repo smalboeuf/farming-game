@@ -4,30 +4,52 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-
     public string firstName;
     public string lastName;
     public string fullName;
     private QuestGiver questGiver;
-    public bool playerInRange = false;
+    public Dialogue dialogue;
+
+    [SerializeField] private DialogueManager dialogueManager;
 
     // Start is called before the first frame update
     void Start()
     {
         questGiver = GetComponent<QuestGiver>();
+        dialogue.name = fullName;
     }
     
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public QuestGiver GetQuestGiver()
     {
         return questGiver;
     }
 
+    public void StartNPCInteraction() {
+        //if (questGiver != null)
+        //{
+        //    //Offer player a quest
+        //    List<Quest> availableQuests = questGiver.GetAvailableQuests();
+        //    print(availableQuests);
 
+        //    for (int i = 0; i < availableQuests.Count; i++)
+        //    {
+        //        questGiver.DeliverQuest(availableQuests[i]);
+        //    }
+        //}
+
+        StartDialogue();
+    }
+
+    public void StartDialogue()
+    {
+        print(Manager.dialogueManager);
+
+        Manager.dialogueManager.StartDialogue(dialogue);
+    }
+
+    public void OfferQuestToPlayer()
+    {
+
+    }
+    
 }

@@ -32,6 +32,9 @@ public class Manager : MonoBehaviour
     [SerializeField] private SkillsManager setSkillsManager;
     public static SkillsManager skillsManager;
 
+    [SerializeField] private DialogueManager setDialogueManager;
+    public static DialogueManager dialogueManager;
+
     private void Awake()
     {
         gameTileManager = setTileManager;
@@ -43,6 +46,7 @@ public class Manager : MonoBehaviour
         questManager = setQuestManager;
         relationshipManager = setRelationshipManager;
         skillsManager = setSkillsManager;
+        dialogueManager = setDialogueManager;
     }
 
     private void Start()
@@ -51,9 +55,4 @@ public class Manager : MonoBehaviour
         inventoryManager.InitializeHotbar();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

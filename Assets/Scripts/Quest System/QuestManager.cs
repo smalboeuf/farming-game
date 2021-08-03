@@ -11,6 +11,7 @@ public class QuestManager : MonoBehaviour
     [Header("UI GameObjects")]
     [SerializeField] private GameObject questPanelContent;
     [SerializeField] private GameObject questUIPrefab;
+    public QuestDescriptionPanel questDescriptionPanel;
 
     private void Start()
     {
@@ -19,7 +20,7 @@ public class QuestManager : MonoBehaviour
 
     public void ToggleQuestPanel() {
         gameObject.SetActive(!gameObject.activeSelf);
-
+        questDescriptionPanel.gameObject.SetActive(false);
         if (gameObject.activeSelf == true)
         {
             Manager.character.SetCanMove(false);

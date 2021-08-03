@@ -10,11 +10,15 @@ public class QuestUI : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI questName;
 
-
     public void SetQuestUIElements(Quest newQuest)
     {
         //Set UI elements based on the quest
         quest = newQuest;
         questName.text = newQuest.QuestName;
+        Button button = GetComponent<Button>();
+        button.onClick.AddListener(delegate {
+            Manager.questManager.ToggleQuestPanel();
+            Manager.questManager.questDescriptionPanel.ClickOnQuest(quest);
+        });
     }
 }

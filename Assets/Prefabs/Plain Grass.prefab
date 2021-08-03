@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4356477438360580209}
   - component: {fileID: 6069760441318071015}
   - component: {fileID: 224152273}
-  - component: {fileID: 224152272}
   m_Layer: 0
   m_Name: Plain Grass
   m_TagString: Untagged
@@ -48,6 +47,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -110,23 +110,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &224152272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3275285275239851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1933ab0956f888b49a9437aa2e5f3286, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilledPlot: {fileID: -1438123643202720995, guid: edb074770c641894a88c5dc7db415a3b,
-    type: 3}
-  planted: {fileID: 8485241762338496443, guid: edb074770c641894a88c5dc7db415a3b, type: 3}
-  wateredAndPlanted: {fileID: 7675594374705638797, guid: edb074770c641894a88c5dc7db415a3b,
-    type: 3}
-  watered: {fileID: 3399821783673752540, guid: edb074770c641894a88c5dc7db415a3b, type: 3}
-  playerHotbar: {fileID: 0}
-  player: {fileID: 0}

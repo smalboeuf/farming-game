@@ -9,9 +9,6 @@ public class CursorManager : MonoBehaviour
     [SerializeField] private Texture2D defaultCursor;
     [SerializeField] private Texture2D pickupCursor;
 
-
-
-
     // Start is called before the first frame update
     void Start()
     {

@@ -50,8 +50,9 @@ public class DialogueManager : MonoBehaviour, DialogueNodeVisitor
     {
         gameObject.SetActive(true);
 
-        print(node.DialogueLine);
-        m_DialogueText.text = node.DialogueLine.Text;
+        //m_DialogueText.text = node.DialogueLine.Text;
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(node.DialogueLine.Text));
         m_SpeakerText.text = node.DialogueLine.Speaker.CharacterName;
 
         node.Accept(this);
@@ -87,6 +88,16 @@ public class DialogueManager : MonoBehaviour, DialogueNodeVisitor
         {
             UIDialogueChoiceController newChoice = Instantiate(m_ChoiceControllerPrefab, m_ChoicesBoxTransform);
             newChoice.Choice = choice;
+        }
+    }
+
+    IEnumerator TypeSentence(string sentence)
+    {
+        m_DialogueText.text = "";
+        foreach (char letter in sentence.ToCharArray())
+        {
+            m_DialogueText.text += letter;
+            yield return new WaitForSeconds(0.025f);
         }
     }
 }

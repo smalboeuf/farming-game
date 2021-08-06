@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798484eab79f213429f44377cd02e2c9, type: 3}
   m_Name: Susie
   m_EditorClassIdentifier: 
-  m_CharacterName: 
+  m_CharacterName: Susie
   m_CharacterSprite: {fileID: 0}

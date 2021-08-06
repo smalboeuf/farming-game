@@ -8,6 +8,8 @@ public class NPC : MonoBehaviour
     public string lastName;
     public string fullName;
     private QuestGiver questGiver;
+
+    public DialogueChannel dialogueChannel;
     public Dialogue dialogue;
 
     [SerializeField] private DialogueManager dialogueManager;
@@ -25,26 +27,26 @@ public class NPC : MonoBehaviour
     }
 
     public void StartNPCInteraction() {
-        //if (questGiver != null)
-        //{
-        //    //Offer player a quest
-        //    List<Quest> availableQuests = questGiver.GetAvailableQuests();
-        //    print(availableQuests);
 
-        //    for (int i = 0; i < availableQuests.Count; i++)
-        //    {
-        //        questGiver.DeliverQuest(availableQuests[i]);
-        //    }
-        //}
+        if (questGiver != null)
+        {
+            //Offer player a quest
+            List<Quest> availableQuests = questGiver.GetAvailableQuests();
+            print(availableQuests);
+
+            for (int i = 0; i < availableQuests.Count; i++)
+            {
+                questGiver.DeliverQuest(availableQuests[i]);
+            }
+        }
 
         StartDialogue();
     }
 
     public void StartDialogue()
     {
-        print(Manager.dialogueManager);
-
-        Manager.dialogueManager.StartDialogue(dialogue);
+        //Manager.dialogueManager.StartDialogue(dialogue);
+        dialogueChannel.RaiseRequestDialogue(dialogue);
     }
 
     public void OfferQuestToPlayer()

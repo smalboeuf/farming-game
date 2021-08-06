@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Dialogue
+[CreateAssetMenu(menuName = "Scriptable Objects/Narration/Dialogue/Dialogue")]
+public class Dialogue : ScriptableObject
 {
-    public string name;
+    [SerializeField]
+    private DialogueNode m_FirstNode;
 
-    [TextArea(3, 10)]
-    public string[] sentences;
+    public DialogueNode FirstNode => m_FirstNode;
 }

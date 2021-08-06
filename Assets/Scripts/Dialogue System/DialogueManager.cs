@@ -4,81 +4,89 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : MonoBehaviour, DialogueNodeVisitor
 {
-    [SerializeField] private GameObject dialoguePanel;
-    [SerializeField] private Animator animator;
+    [SerializeField]
+    private TextMeshProUGUI m_SpeakerText;
+    [SerializeField]
+    private TextMeshProUGUI m_DialogueText;
 
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI dialogueText;
-    
+    [SerializeField]
+    private RectTransform m_ChoicesBoxTransform;
+    [SerializeField]
+    private UIDialogueChoiceController m_ChoiceControllerPrefab;
 
-    private Queue<string> sentences;
+    [SerializeField]
+    private DialogueChannel m_DialogueChannel;
 
-    private bool inDialogue = false;
-    
-    // Start is called before the first frame update
-    void Start()
+    private bool m_ListenToInput = false;
+    private DialogueNode m_NextNode = null;
+
+    private void Awake()
     {
-        sentences = new Queue<string>();
+        m_DialogueChannel.OnDialogueNodeStart += OnDialogueNodeStart;
+        m_DialogueChannel.OnDialogueNodeEnd += OnDialogueNodeEnd;
+
+        gameObject.SetActive(false);
+        m_ChoicesBoxTransform.gameObject.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        m_DialogueChannel.OnDialogueNodeEnd -= OnDialogueNodeEnd;
+        m_DialogueChannel.OnDialogueNodeStart -= OnDialogueNodeStart;
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && inDialogue)
+        if (m_ListenToInput && Input.GetMouseButtonDown(0))
         {
-            DisplayNextSentece();
+            print("go to next screen");
+            m_DialogueChannel.RaiseRequestDialogueNode(m_NextNode);
         }
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    private void OnDialogueNodeStart(DialogueNode node)
     {
-        //Hide hotbar
+        gameObject.SetActive(true);
 
-        inDialogue = true;
-        nameText.text = dialogue.name;
-        sentences.Clear();
+        print(node.DialogueLine);
+        m_DialogueText.text = node.DialogueLine.Text;
+        m_SpeakerText.text = node.DialogueLine.Speaker.CharacterName;
 
-        dialoguePanel.SetActive(true);
-
-        foreach (string sentence in dialogue.sentences)
-        {
-            sentences.Enqueue(sentence);
-        }
-
-        DisplayNextSentece();
+        node.Accept(this);
     }
 
-    private void DisplayNextSentece()
+    private void OnDialogueNodeEnd(DialogueNode node)
     {
-        if (sentences.Count == 0)
+        m_NextNode = null;
+        m_ListenToInput = false;
+        m_DialogueText.text = "";
+        m_SpeakerText.text = "";
+
+        foreach (Transform child in m_ChoicesBoxTransform)
         {
-            EndDialogue();
-            return;
+            Destroy(child.gameObject);
         }
 
-        string sentence = sentences.Dequeue();
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+        gameObject.SetActive(false);
+        m_ChoicesBoxTransform.gameObject.SetActive(false);
     }
 
-    IEnumerator TypeSentence (string sentence)
+    public void Visit(BasicDialogueNode node)
     {
-        dialogueText.text = "";
+        m_ListenToInput = true;
+        m_NextNode = node.NextNode;
+    }
 
-        foreach (char letter in sentence.ToCharArray())
+    public void Visit(ChoiceDialogueNode node)
+    {
+        m_ChoicesBoxTransform.gameObject.SetActive(true);
+
+        foreach (DialogueChoice choice in node.Choices)
         {
-            dialogueText.text += letter;
-            yield return new WaitForSeconds(0.025f);
+            UIDialogueChoiceController newChoice = Instantiate(m_ChoiceControllerPrefab, m_ChoicesBoxTransform);
+            newChoice.Choice = choice;
         }
-    }
-
-    private void EndDialogue()
-    {
-        //End the dialogue and close the window
-        dialoguePanel.SetActive(false);
-        inDialogue = false;
-        //Show hotbar
-
     }
 }

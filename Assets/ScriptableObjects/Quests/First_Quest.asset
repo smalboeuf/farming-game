@@ -15,12 +15,14 @@ MonoBehaviour:
   id: c233d96f242a47841b4f42fe525ee35e
   QuestName: A Humble Beginning
   QuestDescription: A new day means anything is possible.
-  isActive: 1
-  isCompleted: 0
+  isActive: 0
+  isCompleted: 1
   questType: 0
-  experiencePoints: 100
+  skillType: 0
+  skillExperience: 20
   gold: 10
-  relationshipPoints: 0
+  relationshipNPC: {fileID: 0}
+  relationshipPointsGained: 100
   questRewards:
   - inventoryItem: {fileID: 11400000, guid: c6e22ac9f6619e04eb4c70a97e6b71e4, type: 2}
     amount: 1

@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9378bd5cae4987f40b7aa1a5b1740f05, type: 3}
-  m_Name: FirstChoiceNode
+  m_Name: 02_Choice
   m_EditorClassIdentifier: 
   m_DialogueLine: {fileID: 11400000, guid: 5b06250b7a9a2d34099fef7ef091fdf6, type: 2}
+  questToGive: {fileID: 0}
   m_Choices:
   - m_ChoicePreview: Yes
     m_ChoiceNode: {fileID: 11400000, guid: b4151c95197511f4cafacd3cd7ded3cf, type: 2}

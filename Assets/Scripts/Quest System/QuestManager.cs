@@ -13,9 +13,26 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private GameObject questUIPrefab;
     public QuestDescriptionPanel questDescriptionPanel;
 
+    public Quest TestQuest;
+
     private void Start()
     {
         InitializeQuestPanel();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            print("Adding quest");
+            this.AcceptQuest(TestQuest);
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            print("Completing quest");
+            this.CompleteQuest(TestQuest);
+        }
     }
 
     public void ToggleQuestPanel() {
@@ -35,6 +52,20 @@ public class QuestManager : MonoBehaviour
         for (int i = 0; i < activeQuests.Count; i++)
         {
             CreateQuestUI(activeQuests[i]);
+        }
+    }
+
+    private void RemoveQuestUI(Quest quest)
+    {
+        foreach (Transform child in questPanelContent.transform)
+        {
+            QuestUI questTransformUI = child.GetComponent<QuestUI>();
+
+            if (questTransformUI.quest.ID == quest.ID)
+            {
+                print("removing quest UI");
+                Destroy(child.gameObject);
+            }
         }
     }
 
@@ -65,8 +96,13 @@ public class QuestManager : MonoBehaviour
         //Set quest to active and in active list
         quest.isActive = true;
         activeQuests.Add(quest);
+        CreateQuestUI(quest);
 
         //Add on collect events whenever quest is accepted
+        if (quest.IsCollectionQuest())
+        {
+            Manager.inventoryManager.AddCollectionEvents((CollectionQuest)quest);
+        }
     }
 
     public void CompleteQuest(Quest quest)
@@ -88,6 +124,8 @@ public class QuestManager : MonoBehaviour
 
         //Give rewards
         GiveQuestRewards(quest);
+
+        RemoveQuestUI(quest);
     }
 
     public void GiveQuestRewards(Quest quest)

@@ -201,8 +201,24 @@ public class InventoryManager : MonoBehaviour
         {
             if (collectionEvents[i].itemCollectionDemand.item.ID == item.ID)
             {
+                print("CollectionEvent triggered");
                 collectionEvents[i].CollectDemandItem(item, amount);
             }
+        }
+    }
+
+    public void AddCollectionEvents(CollectionQuest quest)
+    {
+        print(quest);
+        foreach (ItemCollectionDemand itemDemand in quest.itemDemands)
+        {
+            collectionEvents.Add(
+                new CollectionEvent
+                {
+                    itemCollectionDemand = itemDemand,
+                    questEventBelongsTo = quest
+                }
+            );
         }
     }
 
@@ -268,7 +284,6 @@ public class InventoryManager : MonoBehaviour
 
         return false;
     }
-
 
     public bool isFull()
     {

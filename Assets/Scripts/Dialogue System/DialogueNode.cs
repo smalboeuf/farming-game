@@ -7,6 +7,8 @@ public abstract class DialogueNode : ScriptableObject
 
     public NarrationLine DialogueLine => m_DialogueLine;
 
+    public Quest questToGive;
+
     public abstract bool CanBeFollowedByNode(DialogueNode node);
     public abstract void Accept(DialogueNodeVisitor visitor);
 }

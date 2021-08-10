@@ -6600,13 +6600,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc14ae61ce4b2444b7d5ab5745362ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeQuests:
-  - {fileID: 11400000, guid: c233d96f242a47841b4f42fe525ee35e, type: 2}
+  activeQuests: []
   completedQuests: []
   questPanelContent: {fileID: 1726584131}
   questUIPrefab: {fileID: 178639134123969173, guid: bd7060242fba5694cbbf6f8b63f4eeb4,
     type: 3}
   questDescriptionPanel: {fileID: 320090799}
+  TestQuest: {fileID: 11400000, guid: c233d96f242a47841b4f42fe525ee35e, type: 2}
 --- !u!1 &837636731
 GameObject:
   m_ObjectHideFlags: 0

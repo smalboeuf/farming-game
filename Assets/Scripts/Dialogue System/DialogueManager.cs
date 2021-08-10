@@ -78,6 +78,12 @@ public class DialogueManager : MonoBehaviour, DialogueNodeVisitor
     {
         m_ListenToInput = true;
         m_NextNode = node.NextNode;
+           
+        //Give quest if node has a quest to give
+        if (node.questToGive != null)
+        {
+            Manager.questManager.AcceptQuest(node.questToGive);
+        }
     }
 
     public void Visit(ChoiceDialogueNode node)

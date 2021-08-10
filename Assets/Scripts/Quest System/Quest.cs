@@ -38,11 +38,10 @@ public class Quest : ScriptableObject
     //Next quest if there is any
     public Quest nextQuest;
     
-  
     public enum QuestType {
-        Collect = 0,
-        Exploration = 1,
-        Relationship = 2
+        Collection,
+        Exploration,
+        Relationship
     }
 
     private void OnValidate()
@@ -51,9 +50,14 @@ public class Quest : ScriptableObject
         id = AssetDatabase.AssetPathToGUID(path);
     }
 
-    private QuestType GetQuestType()
+    public QuestType GetQuestType()
     {
         return questType;
+    }
+
+    public bool IsCollectionQuest()
+    {
+        return questType == QuestType.Collection;
     }
 
     public void QuestResult()

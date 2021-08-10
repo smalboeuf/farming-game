@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbae4d317d77f4548b3db0c3eced680a, type: 3}
-  m_Name: FirstDialogue
+  m_Name: Dialogue
   m_EditorClassIdentifier: 
   m_FirstNode: {fileID: 11400000, guid: b2ab918b27d48ac42be5700b3e69cc74, type: 2}

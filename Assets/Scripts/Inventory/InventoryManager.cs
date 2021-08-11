@@ -222,6 +222,17 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public void RemoveCollectionEvents(CollectionQuest quest)
+    {
+        for (int i = 0; i < collectionEvents.Count; i++)
+        {
+            if (quest.ID == collectionEvents[i].questEventBelongsTo.ID)
+            {
+                collectionEvents.RemoveAt(i);
+            }
+        }
+    }
+
     public int GetItemAmountInInventory(InventoryItem item) {
         int totalAmount = 0;
 
@@ -296,8 +307,6 @@ public class InventoryManager : MonoBehaviour
         }
 
         return true;
-
     }
-
 }
 

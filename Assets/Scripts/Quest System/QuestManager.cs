@@ -63,7 +63,6 @@ public class QuestManager : MonoBehaviour
 
             if (questTransformUI.quest.ID == quest.ID)
             {
-                print("removing quest UI");
                 Destroy(child.gameObject);
             }
         }
@@ -107,6 +106,7 @@ public class QuestManager : MonoBehaviour
 
     public void CompleteQuest(Quest quest)
     {
+        print("Complete quest" + quest);
         //Change scriptable object variables
         quest.isCompleted = true;
         quest.isActive = false;
@@ -121,6 +121,23 @@ public class QuestManager : MonoBehaviour
         }
 
         completedQuests.Add(quest);
+
+        // If quest is a collection quest, remove the collection events
+        if (quest.IsCollectionQuest())
+        {
+            Manager.inventoryManager.RemoveCollectionEvents((CollectionQuest)quest);
+        }
+
+        // Update the UI based on the new relationship quest values
+        if (quest.IsRelationshipQuest())
+        {
+            
+        }
+
+        if (quest.IsExplorationQuest())
+        {
+
+        }
 
         //Give rewards
         GiveQuestRewards(quest);

@@ -13,7 +13,6 @@ public class NPCRelationship : ScriptableObject
 
     public int levelUpMultiplierPercentage = 5;
 
-
     public void AddRelationshipExperience(int amount)
     {
         if (relationshipLevel == maxRelationshipLevel)

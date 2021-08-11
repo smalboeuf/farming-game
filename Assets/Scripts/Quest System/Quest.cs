@@ -60,6 +60,16 @@ public class Quest : ScriptableObject
         return questType == QuestType.Collection;
     }
 
+    public bool IsRelationshipQuest()
+    {
+        return questType == QuestType.Relationship;
+    }
+
+    public bool IsExplorationQuest()
+    {
+        return questType == QuestType.Exploration;
+    }
+
     public void QuestResult()
     { 
     }

@@ -41,7 +41,6 @@ public class DialogueManager : MonoBehaviour, DialogueNodeVisitor
     {
         if (m_ListenToInput && Input.GetMouseButtonDown(0))
         {
-            print("go to next screen");
             m_DialogueChannel.RaiseRequestDialogueNode(m_NextNode);
         }
     }

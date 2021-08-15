@@ -1,18 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplorationEvent : MonoBehaviour
+[Serializable]
+public class ExplorationEvent
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public ExplorationArea explorationArea;
+    public ExplorationQuest questEventBelongsTo;
 
-    // Update is called once per frame
-    void Update()
+
+    public void ExploreExplorationArea()
     {
-        
+        //Finish this  based on other event structure
+        Manager.questManager.CompleteQuest(questEventBelongsTo);
+        Manager.explorationManager.RemoveExplorationEvents(questEventBelongsTo);
     }
 }

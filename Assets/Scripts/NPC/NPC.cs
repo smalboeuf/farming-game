@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New NPC", menuName = "NPC/New NPC")]
+[System.Serializable]
 public class NPC : MonoBehaviour
 {
     public string firstName;
@@ -48,10 +50,4 @@ public class NPC : MonoBehaviour
         //Manager.dialogueManager.StartDialogue(dialogue);
         dialogueChannel.RaiseRequestDialogue(dialogue);
     }
-
-    public void OfferQuestToPlayer()
-    {
-
-    }
-    
 }

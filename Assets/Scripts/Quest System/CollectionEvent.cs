@@ -23,6 +23,7 @@ public class CollectionEvent : MonoBehaviour
         {
             //All items collected
             Manager.questManager.CompleteQuest(questEventBelongsTo);
+            Manager.inventoryManager.RemoveCollectionEvents(questEventBelongsTo);
         }
     }
 }

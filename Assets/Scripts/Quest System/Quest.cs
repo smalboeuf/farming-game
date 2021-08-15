@@ -26,7 +26,7 @@ public class Quest : ScriptableObject
     public int gold = 0;
 
     //Relationship reward
-    public NPC relationshipNPC;
+    public NPC questGiver;
     public int relationshipPointsGained = 0;
 
     //Item rewards

@@ -22,7 +22,7 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] ItemTooltip itemTooltip;
 
-    [SerializeField] List<CollectionEvent> collectionEvents;
+    [SerializeField] List<CollectionEvent> collectionEvents = new List<CollectionEvent>();
 
     //Events
     //public event Action<InventorySlot> OnPointerEnterEvent;
@@ -161,6 +161,7 @@ public class InventoryManager : MonoBehaviour
                     itemSlots[i].Amount = item.maxStack;
                     Manager.hotbarManager.UpdateHotbarSlots();
                     int maxStackDifference = sumOfItem - itemSlots[i].Item.maxStack;
+                    //Recursion
                     AddItem(item, maxStackDifference);
                 }
                 else {
@@ -209,7 +210,6 @@ public class InventoryManager : MonoBehaviour
 
     public void AddCollectionEvents(CollectionQuest quest)
     {
-        print(quest);
         foreach (ItemCollectionDemand itemDemand in quest.itemDemands)
         {
             collectionEvents.Add(

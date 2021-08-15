@@ -5,6 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Relationship Quest", menuName = "Quest System/Quest/Relationship")]
 public class RelationshipQuest : Quest
 {
-    public NPCRelationship npc;
-    public int relationshipHeartGoal;
+    public NPCRelationship npcRelationship;
+    public int relationshipLevelGoal;
+
+
+    public bool IsRelationshipGoalComplete()
+    {
+        return relationshipLevelGoal <= npcRelationship.relationshipLevel;
+    }
 }

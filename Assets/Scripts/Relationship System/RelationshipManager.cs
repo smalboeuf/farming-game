@@ -7,22 +7,35 @@ public class RelationshipManager : MonoBehaviour
 
     public List<NPCRelationship> npcRelationships;
 
-    public List<RelationshipEvent> relationshipEvents;
+    public List<RelationshipEvent> relationshipEvents = new List<RelationshipEvent>();
 
-    public void AddExperienceToRelationship(NPC npc, int experienceAmount)
+    public void AddExperienceToRelationship(NPC npc, int relationshipPoints)
     {
         for (int i = 0; i < npcRelationships.Count; i++)
         {
             if (npc.fullName == npcRelationships[i].npc.fullName)
             {
-                npcRelationships[i].AddRelationshipExperience(experienceAmount);
+                npcRelationships[i].AddRelationshipExperience(relationshipPoints);
+            }
+        }
+
+        CheckRelationshipEvents(npc, relationshipPoints);
+    }
+
+    public void CheckRelationshipEvents(NPC npc, int relationshipPoints)
+    {
+        for (int i = 0; i < relationshipEvents.Count; i++)
+        {
+            if (relationshipEvents[i].questEventBelongsTo.npcRelationship.npc.fullName == npc.fullName)
+            {
+                print("Relationship Event triggered");
+                relationshipEvents[i].AddRelationshipPoints(relationshipPoints);
             }
         }
     }
 
-    public void AddCollectionEvents(RelationshipQuest quest)
+    public void AddRelationshipEvents(RelationshipQuest quest)
     {
-        print(quest);
         relationshipEvents.Add(
             new RelationshipEvent
             {
@@ -31,7 +44,7 @@ public class RelationshipManager : MonoBehaviour
         );
     }
 
-    public void RemoveCollectionEvents(CollectionQuest quest)
+    public void RemoveRelationshipEvents(RelationshipQuest quest)
     {
         for (int i = 0; i < relationshipEvents.Count; i++)
         {
@@ -40,10 +53,5 @@ public class RelationshipManager : MonoBehaviour
                 relationshipEvents.RemoveAt(i);
             }
         }
-    }
-
-    public void GiveRelationshipQuestReward(RelationshipQuest relationshipQuest)
-    {
-
     }
 }

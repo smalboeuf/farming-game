@@ -25,13 +25,13 @@ public class QuestManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             print("Adding quest");
-            this.AcceptQuest(TestQuest);
+            AcceptQuest(TestQuest);
         }
 
         if (Input.GetKeyDown(KeyCode.O))
         {
             print("Completing quest");
-            this.CompleteQuest(TestQuest);
+            CompleteQuest(TestQuest);
         }
     }
 
@@ -102,6 +102,16 @@ public class QuestManager : MonoBehaviour
         {
             Manager.inventoryManager.AddCollectionEvents((CollectionQuest)quest);
         }
+
+        if (quest.IsRelationshipQuest())
+        {
+            Manager.relationshipManager.AddRelationshipEvents((RelationshipQuest)quest);
+        }
+
+        if (quest.IsExplorationQuest())
+        {
+            Manager.explorationManager.AddExplorationEvents((ExplorationQuest)quest);
+        }
     }
 
     public void CompleteQuest(Quest quest)
@@ -122,24 +132,7 @@ public class QuestManager : MonoBehaviour
 
         completedQuests.Add(quest);
 
-        // If quest is a collection quest, remove the collection events
-        if (quest.IsCollectionQuest())
-        {
-            Manager.inventoryManager.RemoveCollectionEvents((CollectionQuest)quest);
-        }
-
-        // Update the UI based on the new relationship quest values
-        if (quest.IsRelationshipQuest())
-        {
-            
-        }
-
-        if (quest.IsExplorationQuest())
-        {
-
-        }
-
-        //Give rewards
+        // Give rewards
         GiveQuestRewards(quest);
 
         RemoveQuestUI(quest);
@@ -152,7 +145,7 @@ public class QuestManager : MonoBehaviour
         //Add gold to players inventory
         Manager.inventoryManager.AddGold(quest.gold);
         //Add relationship points (need to create relationship system)
-        Manager.relationshipManager.AddExperienceToRelationship(quest.relationshipNPC, quest.relationshipPointsGained);
+        Manager.relationshipManager.AddExperienceToRelationship(quest.questGiver, quest.relationshipPointsGained);
         //Add skill experience
         Manager.skillsManager.AddExperienceToSkill(quest.skillType, quest.skillExperience);
 

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad3305e64b103e8438bb96cf594134c3, type: 3}
+  m_Name: TestRelationshipQuest
+  m_EditorClassIdentifier: 
+  id: 7cc7eb1e1656e244995fbdd11f89ec73
+  QuestName: TestRelationshipQuest
+  QuestDescription: Become a friend with someone
+  isActive: 0
+  isCompleted: 1
+  questType: 2
+  skillType: 0
+  skillExperience: 0
+  gold: 0
+  questGiver: {fileID: 971300434857038886, guid: 953973b7aae150a45901eb926375182c,
+    type: 3}
+  relationshipPointsGained: 200
+  questRewards:
+  - inventoryItem: {fileID: 11400000, guid: 58bb30da57dc92444bd2290ec1b5fcb5, type: 2}
+    amount: 0
+  prerequisiteQuest: {fileID: 0}
+  nextQuest: {fileID: 0}
+  npcRelationship: {fileID: 11400000, guid: f935b2e32201e4b439f79be2f3e74b3e, type: 2}
+  relationshipHeartGoal: 1

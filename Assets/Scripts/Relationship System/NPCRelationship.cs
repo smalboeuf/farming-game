@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New NPC Relationship", menuName = "Relationships/NPC Relationship")]
+[System.Serializable]
 public class NPCRelationship : ScriptableObject
 {
     public NPC npc;
     public int relationshipLevel;
-    public int maxRelationshipLevel;
+    public int maxRelationshipLevel = 10;
 
     public int currentRelationshipExp;
     public int maxRelationshipExp;

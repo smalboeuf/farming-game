@@ -35,6 +35,9 @@ public class Manager : MonoBehaviour
     [SerializeField] private DialogueManager setDialogueManager;
     public static DialogueManager dialogueManager;
 
+    [SerializeField] private ExplorationManager setExplorationManager;
+    public static ExplorationManager explorationManager;
+
     private void Awake()
     {
         gameTileManager = setTileManager;
@@ -47,6 +50,7 @@ public class Manager : MonoBehaviour
         relationshipManager = setRelationshipManager;
         skillsManager = setSkillsManager;
         dialogueManager = setDialogueManager;
+        explorationManager = setExplorationManager;
     }
 
     private void Start()

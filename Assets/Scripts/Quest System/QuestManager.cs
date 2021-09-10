@@ -6,39 +6,24 @@ public class QuestManager : MonoBehaviour
 {
     [Header("Quest Manager Data")]
     public List<Quest> activeQuests;
+    public List<Quest> questsToBeHandedIn;
     public List<Quest> completedQuests;
 
     [Header("UI GameObjects")]
+    [SerializeField] private GameObject questPanel;
     [SerializeField] private GameObject questPanelContent;
     [SerializeField] private GameObject questUIPrefab;
     public QuestDescriptionPanel questDescriptionPanel;
-
-    public Quest TestQuest;
 
     private void Start()
     {
         InitializeQuestPanel();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            print("Adding quest");
-            AcceptQuest(TestQuest);
-        }
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            print("Completing quest");
-            CompleteQuest(TestQuest);
-        }
-    }
-
     public void ToggleQuestPanel() {
-        gameObject.SetActive(!gameObject.activeSelf);
+        questPanel.gameObject.SetActive(!questPanel.gameObject.activeSelf);
         questDescriptionPanel.gameObject.SetActive(false);
-        if (gameObject.activeSelf == true)
+        if (questPanel.gameObject.activeSelf == true)
         {
             Manager.character.SetCanMove(false);
         }
@@ -110,18 +95,34 @@ public class QuestManager : MonoBehaviour
 
         if (quest.IsExplorationQuest())
         {
+            // Create exploration point on the map
+            Manager.explorationManager.InstantiateExplorationPoint((ExplorationQuest)quest);
+            // Add exploration event
             Manager.explorationManager.AddExplorationEvents((ExplorationQuest)quest);
+        }
+    }
+
+    public void FulfillQuestNeeds(Quest quest)
+    {
+        for (int i = 0; i < activeQuests.Count; i++)
+        {
+            if (activeQuests[i].ID == quest.ID)
+            {
+                // Quest is ready to be handed in
+                activeQuests.RemoveAt(i);
+                questsToBeHandedIn.Add(quest);
+            }
         }
     }
 
     public void CompleteQuest(Quest quest)
     {
         print("Complete quest" + quest);
-        //Change scriptable object variables
+        // Change scriptable object variables
         quest.isCompleted = true;
         quest.isActive = false;
 
-        //Move to completed quest
+        // Move to completed quest
         for (int i = 0; i < activeQuests.Count; i++)
         {
             if (activeQuests[i].ID == quest.ID)

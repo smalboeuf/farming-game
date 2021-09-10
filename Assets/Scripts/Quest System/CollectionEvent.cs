@@ -22,7 +22,8 @@ public class CollectionEvent : MonoBehaviour
         if (questEventBelongsTo.CheckIfAllItemsCollected())
         {
             //All items collected
-            Manager.questManager.CompleteQuest(questEventBelongsTo);
+            //Manager.questManager.CompleteQuest(questEventBelongsTo);
+            Manager.questManager.FulfillQuestNeeds(questEventBelongsTo);
             Manager.inventoryManager.RemoveCollectionEvents(questEventBelongsTo);
         }
     }

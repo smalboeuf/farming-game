@@ -40,8 +40,7 @@ public class RelationshipManager : MonoBehaviour
             new RelationshipEvent
             {
                 questEventBelongsTo = quest
-            }
-        );
+            });
     }
 
     public void RemoveRelationshipEvents(RelationshipQuest quest)

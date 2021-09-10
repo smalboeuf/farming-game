@@ -9,6 +9,10 @@ public class ExplorationArea : ScriptableObject
     [SerializeField]
     public string areaName;
 
+    // Location
+    public float x;
+    public float y;
+
     [SerializeField]
     private bool explored = false;
 

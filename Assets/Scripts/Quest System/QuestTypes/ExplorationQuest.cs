@@ -6,5 +6,4 @@ using UnityEngine;
 public class ExplorationQuest : Quest
 {
     public ExplorationArea explorationArea;
-    public string nameOfPlace;
 }

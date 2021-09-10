@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: TestArea
   m_EditorClassIdentifier: 
   areaName: The outer green fields
+  x: 45
+  y: 36
   explored: 0

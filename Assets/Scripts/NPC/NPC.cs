@@ -30,15 +30,24 @@ public class NPC : MonoBehaviour
 
     public void StartNPCInteraction() {
 
-        if (questGiver != null)
-        {
-            //Offer player a quest
-            List<Quest> availableQuests = questGiver.GetAvailableQuests();
-            print(availableQuests);
+        //if (questGiver != null)
+        //{
+        //    //Offer player a quest
+        //    List<Quest> availableQuests = questGiver.GetAvailableQuests();
+        //    print(availableQuests);
 
-            for (int i = 0; i < availableQuests.Count; i++)
+        //    for (int i = 0; i < availableQuests.Count; i++)
+        //    {
+        //        questGiver.DeliverQuest(availableQuests[i]);
+        //    }
+        //}
+
+        for (int i = 0; i < Manager.questManager.questsToBeHandedIn.Count; i++)
+        {
+            Quest questToBeHandedIn = Manager.questManager.questsToBeHandedIn[i];
+            if (questToBeHandedIn.questGiver.fullName == fullName)
             {
-                questGiver.DeliverQuest(availableQuests[i]);
+                // @TODO: Add option to dialogue for handing in the quest
             }
         }
 

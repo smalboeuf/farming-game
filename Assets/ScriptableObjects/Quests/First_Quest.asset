@@ -21,7 +21,8 @@ MonoBehaviour:
   skillType: 0
   skillExperience: 20
   gold: 10
-  relationshipNPC: {fileID: 0}
+  questGiver: {fileID: 971300434857038886, guid: 953973b7aae150a45901eb926375182c,
+    type: 3}
   relationshipPointsGained: 100
   questRewards:
   - inventoryItem: {fileID: 11400000, guid: c6e22ac9f6619e04eb4c70a97e6b71e4, type: 2}

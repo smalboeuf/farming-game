@@ -7,9 +7,18 @@ public class ExplorationManager : MonoBehaviour
 {
     public List<ExplorationEvent> explorationEvents = new List<ExplorationEvent>();
 
+    // Prefab
+    public GameObject explorationPoint;
+
     public void ExploreArea(ExplorationArea explorationArea)
     {
         CheckExplorationEvents(explorationArea);
+    }
+
+    public void InstantiateExplorationPoint(ExplorationQuest explorationQuest)
+    {
+        ExplorationArea explorationArea = explorationQuest.explorationArea;
+        Instantiate(explorationPoint, new Vector3(explorationArea.x, explorationArea.y, 0), Quaternion.identity);
     }
 
     public void AddExplorationEvents(ExplorationQuest explorationQuest)

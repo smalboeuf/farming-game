@@ -36,6 +36,32 @@ public class DateManager : MonoBehaviour
         Manager.gameTileManager.ResetGameTileIsWatered();
     }
 
+    public void NextDay()
+    {
+        //Check to see if next month
+        if ((day + 1) > daysPerMonth)
+        {
+            int differenceInDays = (day + 1) - daysPerMonth;
+            month++;
+            day = differenceInDays;
+
+            //Check if its the next year
+            if (month > monthsPerYear)
+            {
+                int differenceInMonths = month - monthsPerYear;
+                year++;
+                month = differenceInMonths;
+            }
+        }
+        else
+        {
+            day = day + 1;
+        }
+        Manager.cropsTileManager.IncreaseCropDays(1);
+        Manager.cropsTileManager.UpdateCropTiles();
+        Manager.gameTileManager.ResetGameTileIsWatered();
+    }
+
     // Start is called before the first frame update
     void Start()
     {

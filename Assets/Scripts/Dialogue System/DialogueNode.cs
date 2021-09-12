@@ -9,6 +9,18 @@ public abstract class DialogueNode : ScriptableObject
 
     public Quest questToGive;
 
+    public PortraitEmotion portraitEmotion = PortraitEmotion.Normal;
+
     public abstract bool CanBeFollowedByNode(DialogueNode node);
     public abstract void Accept(DialogueNodeVisitor visitor);
+
+    public enum PortraitEmotion
+    {
+        Normal,
+        Sad,
+        Disgusted,
+        Scared
+    }
 }
+
+

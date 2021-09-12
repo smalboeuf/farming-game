@@ -28,6 +28,7 @@ public class CharacterController : MonoBehaviour
 
         UpdateAnimationAndMove();
         InteractWithNPC();
+        GiveItemToNPC();
     }
 
     private void FixedUpdate()
@@ -71,15 +72,55 @@ public class CharacterController : MonoBehaviour
     {
         if (collision.tag == "NPC")
         {
-            npcInRange = collision.GetComponent<NPC>();
+            npcInRange = null;
         }
     }
 
     void InteractWithNPC()
     {
-        if (Input.GetKeyDown(KeyCode.F) && npcInRange)
+        if (Input.GetKeyDown(KeyCode.F) && npcInRange != null)
         {
             npcInRange.StartNPCInteraction();
         }
+    }
+
+    void GiveItemToNPC()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            print("Right clicked and trying to gift an item to an NPC");
+
+            InventoryItem selectedItem = Manager.hotbarManager.GetSelectedItem();
+
+            if (selectedItem != null && selectedItem.canBeGifted)
+            {
+                print("got here");
+                RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+                foreach (RaycastHit2D hit in hits)
+                {
+                    print(hit.collider.gameObject);
+                    if (hit.collider.gameObject.GetComponent<NPC>() != null)
+                    {
+                        // Giving item to NPC
+                        print("Giving item to NPC");
+                        // Remove item from the players inventory
+
+                        // Check to see if the item is for a quest
+                        
+                        // Increase the relationship between the player and the NPC
+                    }
+                }               
+            }
+        }
+    }
+
+    void HandleGivingItemToNPC()
+    {
+    }
+
+    private static Ray GetMouseRay()
+    {
+        return Camera.main.ScreenPointToRay(Input.mousePosition);
     }
 }

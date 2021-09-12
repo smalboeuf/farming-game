@@ -10,4 +10,12 @@ public class NarrationCharacter : ScriptableObject
 
     public string CharacterName => m_CharacterName;
     public Sprite CharacterSprite => m_CharacterSprite;
+
+    [Header("NPC Dialogue Portraits")]
+    public Sprite normalPortrait;
+    public Sprite sadPortrait;
+    public Sprite disgustedPortrait;
+    public Sprite scaredPortrait;
+
+    public Dialogue handInQuestDialog;
 }

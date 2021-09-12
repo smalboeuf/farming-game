@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New NPC", menuName = "NPC/New NPC")]
 [System.Serializable]
 public class NPC : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class NPC : MonoBehaviour
     private QuestGiver questGiver;
 
     public DialogueChannel dialogueChannel;
-    public Dialogue dialogue;
+    public Dialogue baseDialog;
 
     [SerializeField] private DialogueManager dialogueManager;
 
@@ -20,15 +19,16 @@ public class NPC : MonoBehaviour
     void Start()
     {
         questGiver = GetComponent<QuestGiver>();
-        dialogue.name = fullName;
+        baseDialog.name = fullName;
     }
-    
+
     public QuestGiver GetQuestGiver()
     {
         return questGiver;
     }
 
-    public void StartNPCInteraction() {
+    public void StartNPCInteraction()
+    {
 
         //if (questGiver != null)
         //{
@@ -57,6 +57,10 @@ public class NPC : MonoBehaviour
     public void StartDialogue()
     {
         //Manager.dialogueManager.StartDialogue(dialogue);
-        dialogueChannel.RaiseRequestDialogue(dialogue);
+
+        //Check if the player has a quest to turn in to the NPC
+        Quest questToHandIn = Manager.questManager.HasQuestToHandIn(this);
+
+        dialogueChannel.RaiseRequestDialogue(baseDialog);
     }
 }

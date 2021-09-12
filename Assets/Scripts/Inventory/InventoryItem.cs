@@ -23,6 +23,7 @@ public class InventoryItem : ScriptableObject
     public bool unique;
     public ItemType itemType;
 
+    public bool canBeGifted = true;
     //public bool triggerCollectionEvent;
     //public List<Quest> questsThatCollect; 
 

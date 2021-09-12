@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
-public class InventorySlot : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler
+public class InventorySlot : MonoBehaviour, IBeginDragHandler, IPointerClickHandler, IEndDragHandler, IDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
     [Header("UI components to change")]
@@ -18,7 +18,6 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     private Color normalColor = Color.white;
     private Color disabledColor = new Color(1, 1, 1, 0);
 
-
     //Events
     public event Action<InventorySlot> OnPointerEnterEvent;
     public event Action<InventorySlot> OnPointerExitEvent;
@@ -26,11 +25,12 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     public event Action<InventorySlot> OnEndDragEvent;
     public event Action<InventorySlot> OnDragEvent;
     public event Action<InventorySlot> OnDropEvent;
+    public event Action<InventorySlot> OnPointClickEvent;
 
 
     private InventoryItem slottedItem;
-    public InventoryItem Item {
-
+    public InventoryItem Item
+    {
         get
         {
             return slottedItem;
@@ -39,7 +39,8 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         {
             slottedItem = value;
 
-            if (slottedItem == null) {
+            if (slottedItem == null)
+            {
                 itemImage.color = disabledColor;
             }
             else if (slottedItem != null)
@@ -78,73 +79,78 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         return true;
     }
 
-    private void SetAlpha(float alphaValue) {
+    private void SetAlpha(float alphaValue)
+    {
         Color temp = itemImage.color;
         temp.a = alphaValue;
         itemImage.color = temp;
     }
 
-    public bool CanStackItem(InventoryItem item, int amount = 1) {
-    
+    public bool CanStackItem(InventoryItem item, int amount = 1)
+    {
+
         return Item != null && Item.ID == item.ID && Amount + amount <= item.maxStack;
     }
 
-
-    public void OnPointerEnter(PointerEventData eventData) {
+    // Drag events
+    public void OnPointerEnter(PointerEventData eventData)
+    {
 
         //Show tooltip for hovered Item
-        if (OnPointerEnterEvent != null) {
+        if (OnPointerEnterEvent != null)
+        {
             OnPointerEnterEvent(this);
         }
 
     }
 
-    public void OnPointerExit(PointerEventData eventData) {
+    public void OnPointerExit(PointerEventData eventData)
+    {
 
         //Hide tooltip for hovered Item
-        if (OnPointerExitEvent != null) {
+        if (OnPointerExitEvent != null)
+        {
             OnPointerExitEvent(this);
         }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (OnBeginDragEvent != null) {
+        if (OnBeginDragEvent != null)
+        {
             OnBeginDragEvent(this);
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (OnEndDragEvent != null) {
+        if (OnEndDragEvent != null)
+        {
             OnEndDragEvent(this);
         }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (OnDragEvent != null) {
+        if (OnDragEvent != null)
+        {
             OnDragEvent(this);
         }
     }
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (OnDropEvent != null) {
+        if (OnDropEvent != null)
+        {
             OnDropEvent(this);
         }
     }
 
-
-    // Start is called before the first frame update
-    void Start()
+    public void OnPointerClick(PointerEventData eventData)
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        if (OnPointClickEvent != null)
+        {
+            OnPointClickEvent(this);
+        }
     }
 }

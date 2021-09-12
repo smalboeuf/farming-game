@@ -156,4 +156,17 @@ public class QuestManager : MonoBehaviour
             Manager.inventoryManager.AddItem(quest.questRewards[i].inventoryItem, quest.questRewards[i].amount);
         }
     }
+
+    public Quest HasQuestToHandIn(NPC npc)
+    {
+        for (int i = 0; i < questsToBeHandedIn.Count; i++)
+        {
+            if (questsToBeHandedIn[i].questGiver.fullName == npc.fullName)
+            {
+                return questsToBeHandedIn[i];
+            }
+        }
+
+        return null;
+    }
 }

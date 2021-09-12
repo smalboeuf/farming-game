@@ -10,6 +10,8 @@ public class DialogueManager : MonoBehaviour, DialogueNodeVisitor
     private TextMeshProUGUI m_SpeakerText;
     [SerializeField]
     private TextMeshProUGUI m_DialogueText;
+    [SerializeField]
+    private Image m_portraitImage;
 
     [SerializeField]
     private RectTransform m_ChoicesBoxTransform;
@@ -51,10 +53,25 @@ public class DialogueManager : MonoBehaviour, DialogueNodeVisitor
 
         //m_DialogueText.text = node.DialogueLine.Text;
         StopAllCoroutines();
+        SetDialoguePortaitImage(node);
         StartCoroutine(TypeSentence(node.DialogueLine.Text));
         m_SpeakerText.text = node.DialogueLine.Speaker.CharacterName;
 
+
         node.Accept(this);
+    }
+
+    private void SetDialoguePortaitImage(DialogueNode node)
+    {
+        if (node.portraitEmotion == DialogueNode.PortraitEmotion.Normal)
+        {
+            m_portraitImage.sprite = node.DialogueLine.Speaker.normalPortrait;
+        }
+
+        if (node.portraitEmotion == DialogueNode.PortraitEmotion.Sad)
+        {
+            m_portraitImage.sprite = node.DialogueLine.Speaker.sadPortrait;
+        }
     }
 
     private void OnDialogueNodeEnd(DialogueNode node)

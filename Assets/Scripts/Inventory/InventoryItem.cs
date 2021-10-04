@@ -15,7 +15,6 @@ public class InventoryItem : ScriptableObject
     public string itemName;
     public string itemDescription;
     public Sprite itemImage;
-    public int currentStack;
     public int maxStack;
     public int sellPrice;
     public int buyPrice;
@@ -44,7 +43,8 @@ public class InventoryItem : ScriptableObject
         id = AssetDatabase.AssetPathToGUID(path);
     }
 
-    public ItemType GetItemType() {
+    public ItemType GetItemType()
+    {
         return itemType;
     }
 }

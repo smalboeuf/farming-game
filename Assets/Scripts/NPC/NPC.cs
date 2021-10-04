@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +9,11 @@ public class NPC : MonoBehaviour
     public string lastName;
     public string fullName;
     private QuestGiver questGiver;
+
+    [SerializeField] private List<InventoryItem> favouriteItems;
+    [SerializeField] private float favouriteItemMultiplier = 1.5f;
+
+    [SerializeField] private int baseItemExperience = 20;
 
     public DialogueChannel dialogueChannel;
     public Dialogue baseDialog;
@@ -25,6 +30,21 @@ public class NPC : MonoBehaviour
     public QuestGiver GetQuestGiver()
     {
         return questGiver;
+    }
+
+    public int GetRelationshipExperienceAmountByItem(InventoryItem inventoryItem)
+    {
+        for (int i = 0; i < favouriteItems.Count; i++)
+        {
+            if (favouriteItems[i].ID == inventoryItem.ID)
+            {
+                int itemExperience = (int)Mathf.Round(baseItemExperience * favouriteItemMultiplier);
+
+                return itemExperience;
+            }
+        }
+
+        return baseItemExperience;
     }
 
     public void StartNPCInteraction()

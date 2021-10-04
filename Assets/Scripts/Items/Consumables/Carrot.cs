@@ -13,8 +13,7 @@ public class Carrot : Consumable
         //Heal the health
         Manager.character.Heal(healing);
         //Remove a carrot from your inventory
-        Manager.inventoryManager.RemoveItemAtHotbarIndex(hotbarIndex ,item);
-        Manager.hotbarManager.UpdateHotbarSlots();
+        Manager.inventoryManager.RemoveItemAtHotbarIndex(hotbarIndex, item);
     }
 
 }

@@ -20,14 +20,16 @@ public class QuestManager : MonoBehaviour
         InitializeQuestPanel();
     }
 
-    public void ToggleQuestPanel() {
+    public void ToggleQuestPanel()
+    {
         questPanel.gameObject.SetActive(!questPanel.gameObject.activeSelf);
         questDescriptionPanel.gameObject.SetActive(false);
         if (questPanel.gameObject.activeSelf == true)
         {
             Manager.character.SetCanMove(false);
         }
-        else {
+        else
+        {
             Manager.character.SetCanMove(true);
         }
     }
@@ -109,7 +111,6 @@ public class QuestManager : MonoBehaviour
             if (activeQuests[i].ID == quest.ID)
             {
                 // Quest is ready to be handed in
-                activeQuests.RemoveAt(i);
                 questsToBeHandedIn.Add(quest);
             }
         }
@@ -131,6 +132,14 @@ public class QuestManager : MonoBehaviour
             }
         }
 
+        for (int i = 0; i < questsToBeHandedIn.Count; i++)
+        {
+            if (questsToBeHandedIn[i].ID == quest.ID)
+            {
+                questsToBeHandedIn.RemoveAt(i);
+            }
+        }
+
         completedQuests.Add(quest);
 
         // Give rewards
@@ -142,7 +151,7 @@ public class QuestManager : MonoBehaviour
     public void GiveQuestRewards(Quest quest)
     {
         //Update UI after all the things have been added
-        
+
         //Add gold to players inventory
         Manager.inventoryManager.AddGold(quest.gold);
         //Add relationship points (need to create relationship system)
@@ -169,4 +178,38 @@ public class QuestManager : MonoBehaviour
 
         return null;
     }
+
+    public void CheckIfGiftCompletesQuest(InventoryItem inventoryItem, NPC npc)
+    {
+        for (int i = 0; i < activeQuests.Count; i++)
+        {
+            if (activeQuests[i].questGiver.fullName == npc.fullName)
+            {
+                if (activeQuests[i].IsCollectionQuest())
+                {
+                    CollectionQuest collectionQuest = (CollectionQuest)activeQuests[i];
+                    // Complete quest
+                    for (int y = 0; i < collectionQuest.itemDemands.Count; i++)
+                    {
+                        print("got here");
+                        if (collectionQuest.itemDemands[y].item.ID == inventoryItem.ID)
+                        {
+                            collectionQuest.HandInItem(inventoryItem);
+
+                            if (collectionQuest.isItemsCollected())
+                            {
+                                // Complete the quest with the NPC
+                                print("Handed in item to NPC and completed quest");
+                                CompleteQuest(collectionQuest);
+
+                                // @TODO: TRIGGER SOME DIALOGUE FROM THE NPC TO THANK THE PLAYER FOR COMPLETING A QUEST
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
+
+//Take in the item, check if a quest asks for this item

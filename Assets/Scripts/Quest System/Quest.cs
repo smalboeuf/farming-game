@@ -21,7 +21,7 @@ public class Quest : ScriptableObject
     //Skills reward
     public SkillType skillType;
     public int skillExperience = 0;
-    
+
     //Gold rewards
     public int gold = 0;
 
@@ -37,8 +37,9 @@ public class Quest : ScriptableObject
     public Quest prerequisiteQuest;
     //Next quest if there is any
     public Quest nextQuest;
-    
-    public enum QuestType {
+
+    public enum QuestType
+    {
         Collection,
         Exploration,
         Relationship
@@ -71,6 +72,6 @@ public class Quest : ScriptableObject
     }
 
     public void QuestResult()
-    { 
+    {
     }
 }

@@ -9,14 +9,7 @@ public class CollectionEvent : MonoBehaviour
 
     public void CollectDemandItem(InventoryItem item, int amount)
     {
-        if ((itemCollectionDemand.amountCollected + amount) >= itemCollectionDemand.amountRequired)
-        {
-            itemCollectionDemand.amountCollected = itemCollectionDemand.amountRequired;
-            itemCollectionDemand.completed = true;
-        }
-        else {
-            itemCollectionDemand.amountCollected += amount;
-        }
+        itemCollectionDemand.collected = true;
 
         //Check if all items for quest is completed
         if (questEventBelongsTo.CheckIfAllItemsCollected())

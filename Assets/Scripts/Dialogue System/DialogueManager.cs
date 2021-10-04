@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour, DialogueNodeVisitor
 {
     [SerializeField]
+    private GameObject dialoguePanel;
+
+    [SerializeField]
     private TextMeshProUGUI m_SpeakerText;
     [SerializeField]
     private TextMeshProUGUI m_DialogueText;
@@ -29,7 +32,7 @@ public class DialogueManager : MonoBehaviour, DialogueNodeVisitor
         m_DialogueChannel.OnDialogueNodeStart += OnDialogueNodeStart;
         m_DialogueChannel.OnDialogueNodeEnd += OnDialogueNodeEnd;
 
-        gameObject.SetActive(false);
+        dialoguePanel.gameObject.SetActive(false);
         m_ChoicesBoxTransform.gameObject.SetActive(false);
     }
 
@@ -49,7 +52,7 @@ public class DialogueManager : MonoBehaviour, DialogueNodeVisitor
 
     private void OnDialogueNodeStart(DialogueNode node)
     {
-        gameObject.SetActive(true);
+        dialoguePanel.gameObject.SetActive(true);
 
         //m_DialogueText.text = node.DialogueLine.Text;
         StopAllCoroutines();
@@ -86,7 +89,7 @@ public class DialogueManager : MonoBehaviour, DialogueNodeVisitor
             Destroy(child.gameObject);
         }
 
-        gameObject.SetActive(false);
+        dialoguePanel.gameObject.SetActive(false);
         m_ChoicesBoxTransform.gameObject.SetActive(false);
     }
 
@@ -94,7 +97,7 @@ public class DialogueManager : MonoBehaviour, DialogueNodeVisitor
     {
         m_ListenToInput = true;
         m_NextNode = node.NextNode;
-           
+
         //Give quest if node has a quest to give
         if (node.questToGive != null)
         {

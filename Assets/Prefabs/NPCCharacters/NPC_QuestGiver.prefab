@@ -117,8 +117,11 @@ MonoBehaviour:
   firstName: Tom
   lastName: Riddleston
   fullName: Tom Riddleston
+  favouriteItems: []
+  favouriteItemMultiplier: 1.5
+  baseItemExperience: 20
   dialogueChannel: {fileID: 11400000, guid: e77b24fba92c2ce4c8a9530db5448b75, type: 2}
-  dialogue: {fileID: 11400000, guid: 6bfd457c5fe55ac46b5baf0680c198b0, type: 2}
+  baseDialog: {fileID: 11400000, guid: 6bfd457c5fe55ac46b5baf0680c198b0, type: 2}
   dialogueManager: {fileID: 0}
 --- !u!114 &971300434857038884
 MonoBehaviour:

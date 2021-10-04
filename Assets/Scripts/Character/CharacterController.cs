@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-
     public float speed;
     private Rigidbody2D rb;
     private Animator animator;
     private Vector3 change;
+    private Character character;
     private NPC npcInRange;
 
+    [SerializeField]
+    private ConfirmationDialogUI confirmationDialogUI;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        character = GetComponent<Character>();
     }
 
     // Update is called once per frame
@@ -26,20 +29,32 @@ public class CharacterController : MonoBehaviour
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
 
-        UpdateAnimationAndMove();
+        // Right click 
+        HandleInteractClick();
         InteractWithNPC();
-        GiveItemToNPC();
+        UpdateAnimationAndMove();
     }
 
     private void FixedUpdate()
     {
-        if (Manager.character.GetCanMove() == true) {
+        if (Manager.character.GetCanMove() == true)
+        {
             MoveCharacter();
         }
     }
 
-    void UpdateAnimationAndMove() {
+    public Vector2 GetCharacterFacingDirection()
+    {
+        if (animator != null)
+        {
+            return new Vector2(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
+        }
 
+        return new Vector2(0, 0);
+    }
+
+    void UpdateAnimationAndMove()
+    {
         if (Manager.character.GetCanMove() == true)
         {
             if (change != Vector3.zero)
@@ -56,7 +71,8 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    void MoveCharacter() {
+    private void MoveCharacter()
+    {
         rb.MovePosition(transform.position + change.normalized * speed * Time.deltaTime);
     }
 
@@ -76,7 +92,7 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    void InteractWithNPC()
+    private void InteractWithNPC()
     {
         if (Input.GetKeyDown(KeyCode.F) && npcInRange != null)
         {
@@ -84,39 +100,79 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    void GiveItemToNPC()
+    void HandleInteractClick()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            print("Right clicked and trying to gift an item to an NPC");
-
-            InventoryItem selectedItem = Manager.hotbarManager.GetSelectedItem();
-
-            if (selectedItem != null && selectedItem.canBeGifted)
+            if (character.GetCanMove() == true)
             {
-                print("got here");
-                RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                NPC npc = GetNPCOnMousePosition();
+                Vector3 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-                foreach (RaycastHit2D hit in hits)
+                // Gift item to NPC
+                if (npcInRange != null)
                 {
-                    print(hit.collider.gameObject);
-                    if (hit.collider.gameObject.GetComponent<NPC>() != null)
+                    if (npcInRange.fullName == npc.fullName)
                     {
-                        // Giving item to NPC
-                        print("Giving item to NPC");
-                        // Remove item from the players inventory
+                        InventoryItem selectedItem = Manager.hotbarManager.GetSelectedItem();
 
-                        // Check to see if the item is for a quest
-                        
-                        // Increase the relationship between the player and the NPC
+                        if (selectedItem != null && selectedItem.canBeGifted)
+                        {
+                            print("Give item to " + npc);
+                            // Giving item to NPC
+                            HandleGivingItemToNPC(npc);
+                        }
                     }
-                }               
+                }
+                else if (character.CanPickUpItem(clickedPosition))
+                {
+                    // Harvest crop
+                    character.HarvestCrop(clickedPosition);
+                }
+                else if (Manager.hotbarManager.GetSelectedItem() is Seed seed)
+                {
+                    // Plant seed
+                    seed.UseSeed(seed, (int)clickedPosition.x, (int)clickedPosition.y);
+                }
+                else if (Manager.hotbarManager.GetSelectedItem() is Consumable consumable)
+                {
+                    InventoryItem selectedItem = Manager.hotbarManager.GetSelectedItem();
+                    // Consume item in inventory
+                    confirmationDialogUI.ShowQuestion($"Are you sure you want to use the {selectedItem.itemName}?", () =>
+                    {
+                        consumable.UseConsumable(Manager.hotbarManager.selectedSlot, consumable);
+                    }, () => { });
+                }
             }
         }
     }
 
-    void HandleGivingItemToNPC()
+    private NPC GetNPCOnMousePosition()
     {
+        RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider.gameObject.GetComponent<NPC>() != null)
+            {
+                NPC npc = hit.collider.gameObject.GetComponent<NPC>();
+                return npc;
+            }
+        }
+
+        return null;
+    }
+
+    void HandleGivingItemToNPC(NPC npc)
+    {
+        print("Giving item to NPC");
+        InventoryItem itemGiven = Manager.hotbarManager.GetSelectedItem();
+        // Remove item from the players inventory
+        Manager.inventoryManager.RemoveItemAtHotbarIndex(Manager.hotbarManager.selectedSlot, itemGiven);
+        // Add relationship experience from gift
+        Manager.relationshipManager.AddExperienceToRelationshipBasedOnItem(itemGiven, npc);
+        // Check to see if the item is for a quest
+        Manager.questManager.CheckIfGiftCompletesQuest(itemGiven, npc);
     }
 
     private static Ray GetMouseRay()

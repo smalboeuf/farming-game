@@ -12,7 +12,8 @@ public class DateManager : MonoBehaviour
     [SerializeField] private int month = 0;
     [SerializeField] private int year = 0;
 
-    public void IncreaseDays(int amount) {
+    public void IncreaseDays(int amount)
+    {
 
         //Check to see if next month
         if (day + amount > daysPerMonth)
@@ -22,13 +23,15 @@ public class DateManager : MonoBehaviour
             day = differenceInDays;
 
             //Check if its the next year
-            if (month > monthsPerYear) {
+            if (month > monthsPerYear)
+            {
                 int differenceInMonths = month - monthsPerYear;
                 year++;
                 month = differenceInMonths;
             }
         }
-        else {
+        else
+        {
             day = day + amount;
         }
         Manager.cropsTileManager.IncreaseCropDays(amount);
@@ -38,6 +41,7 @@ public class DateManager : MonoBehaviour
 
     public void NextDay()
     {
+        print("next day triggered");
         //Check to see if next month
         if ((day + 1) > daysPerMonth)
         {
@@ -65,7 +69,7 @@ public class DateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

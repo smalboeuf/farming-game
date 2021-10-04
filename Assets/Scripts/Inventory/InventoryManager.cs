@@ -24,6 +24,8 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] List<CollectionEvent> collectionEvents = new List<CollectionEvent>();
 
+    [SerializeField] GameObject itemPickupPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,10 +33,6 @@ public class InventoryManager : MonoBehaviour
         {
             itemSlots[i].OnPointerEnterEvent += ShowTooltip;
             itemSlots[i].OnPointerExitEvent += HideTooltip;
-            // itemSlots[i].OnBeginDragEvent += BeginDrag;
-            // itemSlots[i].OnEndDragEvent += EndDrag;
-            // itemSlots[i].OnDragEvent += Drag;
-            // itemSlots[i].OnDropEvent += Drop;
             itemSlots[i].OnPointClickEvent += HandlePointerClick;
         }
     }
@@ -62,6 +60,25 @@ public class InventoryManager : MonoBehaviour
     public void HideTooltip(InventorySlot inventorySlot)
     {
         itemTooltip.HideTooltip();
+    }
+
+    public void PlayerDropItem()
+    {
+        if (draggedSlot != null)
+        {
+            print("Dropping item");
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            GameObject itemPickupGameObject = itemPickupPrefab;
+            ItemPickup newItemPickup = itemPickupGameObject.GetComponent<ItemPickup>();
+            newItemPickup.SetItem(draggedSlot.Item);
+            newItemPickup.SetStackQuantity(draggedSlot.Amount);
+            newItemPickup.SetImage();
+            var itemPickup = Instantiate(itemPickupGameObject, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z), Quaternion.identity);
+            draggedSlot.Item = null;
+            draggedSlot.Amount = 0;
+            ClearDraggedItem();
+            Manager.hotbarManager.UpdateHotbarSlots();
+        }
     }
 
     private void HandlePointerClick(InventorySlot inventorySlot)
@@ -93,7 +110,6 @@ public class InventoryManager : MonoBehaviour
 
     private void Drop(InventorySlot dropInventorySlot)
     {
-        print("DropinventorySlot " + dropInventorySlot);
         if (dropInventorySlot.CanStackItem(draggedSlot.Item))
         {
             AddStacks(dropInventorySlot);
@@ -252,7 +268,6 @@ public class InventoryManager : MonoBehaviour
         {
             if (collectionEvents[i].itemCollectionDemand.item.ID == item.ID)
             {
-                print("CollectionEvent triggered");
                 collectionEvents[i].CollectDemandItem(item, amount);
             }
         }
@@ -300,18 +315,17 @@ public class InventoryManager : MonoBehaviour
 
     public bool RemoveItemAtHotbarIndex(int hotbarIndex, InventoryItem item)
     {
-
         if (itemSlots[hotbarIndex].Amount > 1)
         {
             itemSlots[hotbarIndex].Amount--;
-
+            Manager.hotbarManager.UpdateHotbarSlots();
             return true;
         }
         else if (itemSlots[hotbarIndex].Amount == 1)
         {
 
             itemSlots[hotbarIndex].Item = null;
-
+            Manager.hotbarManager.UpdateHotbarSlots();
             return true;
         }
 

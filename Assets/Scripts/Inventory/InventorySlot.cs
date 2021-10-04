@@ -27,7 +27,6 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IPointerClickHand
     public event Action<InventorySlot> OnDropEvent;
     public event Action<InventorySlot> OnPointClickEvent;
 
-
     private InventoryItem slottedItem;
     public InventoryItem Item
     {

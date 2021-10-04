@@ -19,48 +19,39 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0) && canMove == true) {
+        if (Input.GetMouseButtonDown(0) && canMove == true)
+        {
             Vector3 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (hotbarManager.GetSelectedItem() is Tool tool) {
+            if (hotbarManager.GetSelectedItem() is Tool tool)
+            {
 
                 if (IsInRange(clickedPosition) && IsAValidCoordinate((int)clickedPosition.x, (int)clickedPosition.y))
                 {
-                   tool.UseTool((int)clickedPosition.x, (int)clickedPosition.y);
+                    tool.UseTool((int)clickedPosition.x, (int)clickedPosition.y);
                 }
             }
         }
-
-        if (Input.GetMouseButtonDown(1) && canMove == true) {
-            Vector3 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            if (CanPickUpItem(clickedPosition)) {
-                HarvestCrop(clickedPosition);
-
-            } else if (hotbarManager.GetSelectedItem() is Consumable consumable) {
-                consumable.UseConsumable(hotbarManager.selectedSlot, consumable);
-            } else if (hotbarManager.GetSelectedItem() is Seed seed) {
-                seed.UseSeed(seed, (int)clickedPosition.x, (int)clickedPosition.y);
-            }
-        }
     }
 
-
-    public bool GetCanMove() {
+    public bool GetCanMove()
+    {
         return canMove;
     }
 
-    public void SetCanMove(bool newCanMove) {
+    public void SetCanMove(bool newCanMove)
+    {
         canMove = newCanMove;
     }
 
-    private bool CanPickUpItem(Vector3 pos) {
+    public bool CanPickUpItem(Vector3 pos)
+    {
 
         GameTile currentTile = Manager.gameTileManager.gameTileMap[(int)pos.x, (int)pos.y];
 
@@ -68,13 +59,15 @@ public class Character : MonoBehaviour
         {
             return true;
         }
-        else {
+        else
+        {
             return false;
         }
 
     }
 
-    private void HarvestCrop(Vector3 tilePos) {
+    public void HarvestCrop(Vector3 tilePos)
+    {
 
         GameTile currentTile = Manager.gameTileManager.gameTileMap[(int)tilePos.x, (int)tilePos.y];
         Seed seedPlantedInTile = currentTile.GetPlantedSeed();
@@ -86,27 +79,34 @@ public class Character : MonoBehaviour
         currentTile.ResetPlantedCrop();
     }
 
-    private bool IsInRange(Vector3 clickedPos) {
+    private bool IsInRange(Vector3 clickedPos)
+    {
 
-        if (Vector2.Distance(gameObject.transform.position, clickedPos) <= range) {
+        if (Vector2.Distance(gameObject.transform.position, clickedPos) <= range)
+        {
             return true;
-        } else {
+        }
+        else
+        {
             return false;
         }
     }
 
-    public void Heal(int amount) {
+    public void Heal(int amount)
+    {
 
         if (amount + currentHP > maxHP)
         {
             currentHP = maxHP;
         }
-        else {
+        else
+        {
             currentHP = currentHP + amount;
-        }    
+        }
     }
 
-    public bool IsAValidCoordinate(int xPos, int yPos) {
+    public bool IsAValidCoordinate(int xPos, int yPos)
+    {
         if (xPos >= 0 && yPos >= 0)
         {
             return true;
@@ -116,5 +116,5 @@ public class Character : MonoBehaviour
             return false;
         }
     }
-   
+
 }

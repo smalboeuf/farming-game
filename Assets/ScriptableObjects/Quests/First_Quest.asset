@@ -29,5 +29,7 @@ MonoBehaviour:
     amount: 1
   prerequisiteQuest: {fileID: 0}
   nextQuest: {fileID: 11400000, guid: 40777d0c1575c4b4aa1a681668361340, type: 2}
-  itemDemands:
+  itemDemands: []
+  handedInItems:
+  - {fileID: 11400000, guid: c8c2984730e8c9a4d9e1b76fd308e554, type: 2}
   - {fileID: 11400000, guid: c8c2984730e8c9a4d9e1b76fd308e554, type: 2}

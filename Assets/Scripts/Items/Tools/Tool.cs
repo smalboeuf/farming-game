@@ -4,13 +4,12 @@ using UnityEngine;
 
 public abstract class Tool : InventoryItem
 {
-
     public virtual void Grass(GameTile currentTile) { }
     public virtual void Stone(GameTile currentTile) { }
     public virtual void Wall(GameTile currentTile) { }
 
-
-    public void UseTool(int xPos, int yPos) {
+    public void UseTool(int xPos, int yPos)
+    {
 
         GameTile currentTile = Manager.gameTileManager.gameTileMap[xPos, yPos];
 
@@ -33,7 +32,7 @@ public abstract class Tool : InventoryItem
                 break;
 
         }
-        
-       
+
+
     }
 }

@@ -51,6 +51,11 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public GameObject GetItemPickupPrefab()
+    {
+        return itemPickupPrefab;
+    }
+
     //Inventory Drag Events
     public void ShowTooltip(InventorySlot inventorySlot)
     {
@@ -73,6 +78,7 @@ public class InventoryManager : MonoBehaviour
             newItemPickup.SetItem(draggedSlot.Item);
             newItemPickup.SetStackQuantity(draggedSlot.Amount);
             newItemPickup.SetImage();
+            newItemPickup.SetWasDropped(true);
             var itemPickup = Instantiate(itemPickupGameObject, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z), Quaternion.identity);
             draggedSlot.Item = null;
             draggedSlot.Amount = 0;

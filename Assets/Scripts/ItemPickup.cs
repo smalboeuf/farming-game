@@ -9,6 +9,7 @@ public class ItemPickup : MonoBehaviour
     [SerializeField] private int stackQuantity;
 
     [SerializeField] private SpriteRenderer itemSprite;
+    [SerializeField] bool wasDropped = false;
 
     private bool canBePickedUp = false;
 
@@ -42,6 +43,11 @@ public class ItemPickup : MonoBehaviour
         }
     }
 
+    public void SetWasDropped(bool dropped)
+    {
+        wasDropped = dropped;
+    }
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Player")
@@ -67,21 +73,23 @@ public class ItemPickup : MonoBehaviour
 
     IEnumerator OnSpawnEffects()
     {
-        Vector2 characterFacing = GetPlayerFacingDirection();
-
-        if (characterFacing.x == 0 && characterFacing.y == 0)
+        if (wasDropped)
         {
-            characterFacing = new Vector2(0, -1);
+            Vector2 characterFacing = GetPlayerFacingDirection();
+
+            if (characterFacing.x == 0 && characterFacing.y == 0)
+            {
+                characterFacing = new Vector2(0, -1);
+            }
+
+            rb.velocity = characterFacing * dropItemForce;
+
+            yield return new WaitForSeconds(0.25f);
+
+            rb.velocity = Vector2.zero;
         }
 
-        rb.velocity = characterFacing * dropItemForce;
-
-        yield return new WaitForSeconds(0.25f);
-
-        rb.velocity = Vector2.zero;
-
         yield return new WaitForSeconds(1.5f);
-
         canBePickedUp = true;
     }
 

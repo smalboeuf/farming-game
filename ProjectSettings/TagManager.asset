@@ -51,6 +51,9 @@ TagManager:
   - name: Player
     uniqueID: 2829143133
     locked: 0
+  - name: Folliage
+    uniqueID: 2159718139
+    locked: 0
   - name: Overhead
     uniqueID: 1214459213
     locked: 0

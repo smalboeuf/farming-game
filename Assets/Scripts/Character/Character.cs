@@ -79,7 +79,7 @@ public class Character : MonoBehaviour
         currentTile.ResetPlantedCrop();
     }
 
-    private bool IsInRange(Vector3 clickedPos)
+    public bool IsInRange(Vector3 clickedPos)
     {
 
         if (Vector2.Distance(gameObject.transform.position, clickedPos) <= range)

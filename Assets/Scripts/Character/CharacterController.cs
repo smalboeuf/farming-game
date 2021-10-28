@@ -104,14 +104,15 @@ public class CharacterController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (character.GetCanMove() == true)
+            if (character.GetCanMove())
             {
-                NPC npc = GetNPCOnMousePosition();
+                Vegetation vegetation = GetVegetationOnMousePosition();
                 Vector3 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
                 // Gift item to NPC
                 if (npcInRange != null)
                 {
+                    NPC npc = GetNPCOnMousePosition();
                     if (npcInRange.fullName == npc.fullName)
                     {
                         InventoryItem selectedItem = Manager.hotbarManager.GetSelectedItem();
@@ -123,6 +124,10 @@ public class CharacterController : MonoBehaviour
                             HandleGivingItemToNPC(npc);
                         }
                     }
+                }
+                else if (vegetation != null && vegetation.CanBeHarvested() && character.IsInRange(clickedPosition))
+                {
+                    vegetation.HarvestVegetation();
                 }
                 else if (character.CanPickUpItem(clickedPosition))
                 {
@@ -157,6 +162,23 @@ public class CharacterController : MonoBehaviour
             {
                 NPC npc = hit.collider.gameObject.GetComponent<NPC>();
                 return npc;
+            }
+        }
+
+        return null;
+    }
+
+    private Vegetation GetVegetationOnMousePosition()
+    {
+        RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+        foreach (RaycastHit2D hit in hits)
+        {
+            print(hit.collider.gameObject);
+            if (hit.collider.gameObject.GetComponent<Vegetation>() != null)
+            {
+                Vegetation vegetation = hit.collider.gameObject.GetComponent<Vegetation>();
+                return vegetation;
             }
         }
 

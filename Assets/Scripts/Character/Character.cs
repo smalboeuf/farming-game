@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    private CharacterProfile characterProfile;
     public float range = 10f;
     int maxHP = 100;
     int currentHP = 90;
@@ -16,16 +17,9 @@ public class Character : MonoBehaviour
     public HotbarManager hotbarManager;
     public GameTileManager tileManager;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetMouseButtonDown(0) && canMove == true)
         {
             Vector3 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -115,6 +109,12 @@ public class Character : MonoBehaviour
         {
             return false;
         }
+    }
+
+    private void LoadCharacterData()
+    {
+        SaveData loadedData = SaveSystem.LoadSaveData();
+        characterProfile = loadedData._characterProfile;
     }
 
 }

@@ -9,26 +9,30 @@ public class AppearanceChanger : MonoBehaviour
     public Image customizablePart;
     [SerializeField] private string optionTextPrefix = "";
     [SerializeField] private TextMeshProUGUI optionText;
-
-    public List<Sprite> options = new List<Sprite>();
+    [SerializeField] private AppearanceCategoryCollection collectionOptions;
 
     private int currentOption = 0;
 
     private void Start()
     {
-        customizablePart.sprite = options[currentOption];
+        customizablePart.sprite = collectionOptions.GetCollectionOption(currentOption);
         optionText.text = GetOptionText(currentOption);
+    }
+
+    public int GetCurrentOption()
+    {
+        return currentOption;
     }
 
     public void NextOption()
     {
         currentOption++;
-        if (currentOption >= options.Count)
+        if (currentOption >= collectionOptions.GetCollectionSize())
         {
             currentOption = 0;
         }
 
-        customizablePart.sprite = options[currentOption];
+        customizablePart.sprite = collectionOptions.GetCollectionOption(currentOption);
         optionText.text = GetOptionText(currentOption);
     }
 
@@ -38,10 +42,10 @@ public class AppearanceChanger : MonoBehaviour
 
         if (currentOption < 0)
         {
-            currentOption = options.Count - 1;
+            currentOption = collectionOptions.GetCollectionSize() - 1;
         }
 
-        customizablePart.sprite = options[currentOption];
+        customizablePart.sprite = collectionOptions.GetCollectionOption(currentOption);
         optionText.text = GetOptionText(currentOption);
     }
 

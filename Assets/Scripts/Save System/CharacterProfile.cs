@@ -7,8 +7,8 @@ public class CharacterProfile
 {
     public string name;
     public int hairOption;
-    public Color hairColor;
-    public Color eyeColor;
+    public ColorSaveModel hairColor;
+    public ColorSaveModel eyeColor;
     public int shirtOption;
     public int pantsOption;
     public int bootsOption;

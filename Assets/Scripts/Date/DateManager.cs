@@ -79,7 +79,6 @@ public class DateManager : MonoBehaviour
         {
             IncreaseDays(1);
             Debug.Log(day + " " + month + " " + year);
-
         }
     }
 }

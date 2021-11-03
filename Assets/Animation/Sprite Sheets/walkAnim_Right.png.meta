@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: 5761e1c5c714d504ca88e9d443ad9908
+guid: 30c79cf921dfdab40b94df7547d57948
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7167564009631669020
-    second: walkAnim_Left_0
+      213: -2617647261435580789
+    second: walkAnim_Right_0
   - first:
-      213: 6405577978417939916
-    second: walkAnim_Left_1
+      213: -7340153412953783637
+    second: walkAnim_Right_1
   - first:
-      213: 2450388062362174252
-    second: walkAnim_Left_2
+      213: -1843761213209043200
+    second: walkAnim_Right_2
   - first:
-      213: 2064275503864980900
-    second: walkAnim_Left_3
+      213: -4742828962980004272
+    second: walkAnim_Right_3
   - first:
-      213: 1099229358575056233
-    second: walkAnim_Left_4
+      213: 6264458848234942489
+    second: walkAnim_Right_4
   - first:
-      213: 3816506726563589661
-    second: walkAnim_Left_5
+      213: 4552614729096659889
+    second: walkAnim_Right_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,6 +41,7 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -72,9 +73,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -105,7 +109,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walkAnim_Left_0
+      name: walkAnim_Right_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +123,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e4a7053282b78c90800000000000000
-      internalID: -7167564009631669020
+      spriteID: b8eabd24faf3cabd0800000000000000
+      internalID: -2617647261435580789
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walkAnim_Left_1
+      name: walkAnim_Right_1
       rect:
         serializedVersion: 2
         x: 48
@@ -140,14 +144,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc58aa0bb3f25e850800000000000000
-      internalID: 6405577978417939916
+      spriteID: ba2c4085c59822a90800000000000000
+      internalID: -7340153412953783637
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walkAnim_Left_2
+      name: walkAnim_Right_2
       rect:
         serializedVersion: 2
         x: 96
@@ -161,14 +165,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2384f2c5f6810220800000000000000
-      internalID: 2450388062362174252
+      spriteID: 00f180cf1f4a966e0800000000000000
+      internalID: -1843761213209043200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walkAnim_Left_3
+      name: walkAnim_Right_3
       rect:
         serializedVersion: 2
         x: 144
@@ -182,14 +186,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a5a96e32a7c5ac10800000000000000
-      internalID: 2064275503864980900
+      spriteID: 05e742fcf261e2eb0800000000000000
+      internalID: -4742828962980004272
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walkAnim_Left_4
+      name: walkAnim_Right_4
       rect:
         serializedVersion: 2
         x: 192
@@ -203,14 +207,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 965fb84174f314f00800000000000000
-      internalID: 1099229358575056233
+      spriteID: 910b817c124dfe650800000000000000
+      internalID: 6264458848234942489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walkAnim_Left_5
+      name: walkAnim_Right_5
       rect:
         serializedVersion: 2
         x: 240
@@ -224,8 +228,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1e26b7a5a4f6f430800000000000000
-      internalID: 3816506726563589661
+      spriteID: 1b3840fa9f22e2f30800000000000000
+      internalID: 4552614729096659889
       vertices: []
       indices: 
       edges: []

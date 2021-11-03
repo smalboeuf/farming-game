@@ -11,6 +11,9 @@ public class CharacterController : MonoBehaviour
     private Character character;
     private NPC npcInRange;
 
+    [SerializeField] private PlayerModel playerModel;
+
+
     [SerializeField]
     private ConfirmationDialogUI confirmationDialogUI;
 
@@ -60,14 +63,15 @@ public class CharacterController : MonoBehaviour
             if (change != Vector3.zero)
             {
                 MoveCharacter();
-                animator.SetFloat("moveX", change.x);
-                animator.SetFloat("moveY", change.y);
-                animator.SetBool("moving", true);
+                // animator.SetFloat("moveX", change.x);
+                // animator.SetFloat("moveY", change.y);
+                // animator.SetBool("moving", true);
             }
-            else
-            {
-                animator.SetBool("moving", false);
-            }
+            // else
+            // {
+            //     animator.SetBool("moving", false);
+            // }
+            playerModel.HandleModelAnimators(change);
         }
     }
 

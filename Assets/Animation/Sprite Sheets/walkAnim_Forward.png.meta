@@ -1,25 +1,31 @@
 fileFormatVersion: 2
-guid: 30c79cf921dfdab40b94df7547d57948
+guid: 73509086631c6904b881709fb1bd4f99
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2617647261435580789
-    second: walkAnim_Right_0
+      213: -7318703849628666982
+    second: walkAnim_Forward_0
   - first:
-      213: -7340153412953783637
-    second: walkAnim_Right_1
+      213: -5553205871915731437
+    second: walkAnim_Forward_1
   - first:
-      213: -1843761213209043200
-    second: walkAnim_Right_2
+      213: -1694434291422000680
+    second: walkAnim_Forward_2
   - first:
-      213: -4742828962980004272
-    second: walkAnim_Right_3
+      213: 7727433044000312788
+    second: walkAnim_Forward_3
   - first:
-      213: 6264458848234942489
-    second: walkAnim_Right_4
+      213: -542393445992417904
+    second: walkAnim_Forward_4
   - first:
-      213: 4552614729096659889
-    second: walkAnim_Right_5
+      213: 4494993803850451583
+    second: walkAnim_Forward_5
+  - first:
+      213: -2977295501845919787
+    second: walkAnim_Forward_6
+  - first:
+      213: 6589360947690553196
+    second: walkAnim_Forward_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,6 +47,7 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -72,9 +79,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -105,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walkAnim_Right_0
+      name: walkAnim_Forward_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +129,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8eabd24faf3cabd0800000000000000
-      internalID: -2617647261435580789
+      spriteID: a93799aff9dbe6a90800000000000000
+      internalID: -7318703849628666982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walkAnim_Right_1
+      name: walkAnim_Forward_1
       rect:
         serializedVersion: 2
         x: 48
@@ -140,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba2c4085c59822a90800000000000000
-      internalID: -7340153412953783637
+      spriteID: 31679df7eac0fe2b0800000000000000
+      internalID: -5553205871915731437
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walkAnim_Right_2
+      name: walkAnim_Forward_2
       rect:
         serializedVersion: 2
         x: 96
@@ -161,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00f180cf1f4a966e0800000000000000
-      internalID: -1843761213209043200
+      spriteID: 8d90d8c4df82c78e0800000000000000
+      internalID: -1694434291422000680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walkAnim_Right_3
+      name: walkAnim_Forward_3
       rect:
         serializedVersion: 2
         x: 144
@@ -182,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05e742fcf261e2eb0800000000000000
-      internalID: -4742828962980004272
+      spriteID: 4dd014d696b5d3b60800000000000000
+      internalID: 7727433044000312788
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walkAnim_Right_4
+      name: walkAnim_Forward_4
       rect:
         serializedVersion: 2
         x: 192
@@ -203,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 910b817c124dfe650800000000000000
-      internalID: 6264458848234942489
+      spriteID: 0953f1bd8080978f0800000000000000
+      internalID: -542393445992417904
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walkAnim_Right_5
+      name: walkAnim_Forward_5
       rect:
         serializedVersion: 2
         x: 240
@@ -224,8 +234,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b3840fa9f22e2f30800000000000000
-      internalID: 4552614729096659889
+      spriteID: f7a86129c0d616e30800000000000000
+      internalID: 4494993803850451583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walkAnim_Forward_6
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d70b15f3858ea6d0800000000000000
+      internalID: -2977295501845919787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walkAnim_Forward_7
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6f3de7bedc127b50800000000000000
+      internalID: 6589360947690553196
       vertices: []
       indices: 
       edges: []

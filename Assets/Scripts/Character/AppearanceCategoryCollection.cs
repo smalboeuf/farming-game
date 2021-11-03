@@ -6,7 +6,7 @@ using UnityEngine;
 public class AppearanceCategoryCollection : ScriptableObject
 {
     [SerializeField] private string collectionName;
-    [SerializeField] private List<Sprite> collectionOptions;
+    [SerializeField] private List<AppearanceOption> collectionOptions;
 
     public string GetCollectionName()
     {
@@ -15,7 +15,7 @@ public class AppearanceCategoryCollection : ScriptableObject
 
     public Sprite GetCollectionOption(int optionChoice)
     {
-        return collectionOptions[optionChoice];
+        return collectionOptions[optionChoice].GetOptionSprite();
     }
 
     public int GetCollectionSize()

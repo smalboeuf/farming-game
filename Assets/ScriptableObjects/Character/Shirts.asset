@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectionName: Shirts
   collectionOptions:
-  - {fileID: 21300000, guid: f8a4ecb06d4f0e745ac54fbcb6606238, type: 3}
-  - {fileID: 21300000, guid: 91182394921dd594d93c32d1afca5fe3, type: 3}
+  - {fileID: 11400000, guid: eb0264a67ff4458438fe85055e8582e0, type: 2}
+  - {fileID: 11400000, guid: 4f58a3a511b41704182b3de3e67f8fa2, type: 2}

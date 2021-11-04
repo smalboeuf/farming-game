@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectionName: Hair
   collectionOptions:
-  - {fileID: 21300000, guid: ab3be4b975c01f547b12dae64767b4b1, type: 3}
-  - {fileID: 21300000, guid: 65d07e1ea246b514087c0d29f538d46e, type: 3}
+  - {fileID: 11400000, guid: e046558416de0a442bd5d7f88e262c0b, type: 2}
+  - {fileID: 11400000, guid: 5708135a11fd5cc4b83d5751640c7b08, type: 2}

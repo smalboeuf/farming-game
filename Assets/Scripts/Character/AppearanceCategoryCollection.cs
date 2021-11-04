@@ -22,4 +22,9 @@ public class AppearanceCategoryCollection : ScriptableObject
     {
         return collectionOptions.Count;
     }
+
+    public AppearanceOption GetAppearanceOption(int option)
+    {
+        return collectionOptions[option];
+    }
 }

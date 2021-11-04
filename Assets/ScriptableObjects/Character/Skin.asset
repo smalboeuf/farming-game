@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectionName: Skin
   collectionOptions:
-  - {fileID: 21300000, guid: 91ec68d5d8e79474db198dcbf2fdb011, type: 3}
-  - {fileID: 21300000, guid: f5f41a03b33919544a92885fceaaa760, type: 3}
-  - {fileID: 21300000, guid: 55b2f5d0b48013747b556da4a841a202, type: 3}
-  - {fileID: 21300000, guid: 87be23595fc2d504b9d62f99e2ef692c, type: 3}
-  - {fileID: 21300000, guid: b7e7dafe24c6ed740a5e20087d0e1d51, type: 3}
+  - {fileID: 11400000, guid: 83fd4f38430c94d43bfac39b9c0f925b, type: 2}
+  - {fileID: 11400000, guid: b1178b7d1faf5534fba3efa717bfc1c2, type: 2}
+  - {fileID: 11400000, guid: 165250a1d15a6c74bb891ea3c9b3a9dd, type: 2}
+  - {fileID: 11400000, guid: 003324da5b48825449ee90739913bd86, type: 2}
+  - {fileID: 11400000, guid: a71bb2e79e80e8d4eb16a178064128a0, type: 2}

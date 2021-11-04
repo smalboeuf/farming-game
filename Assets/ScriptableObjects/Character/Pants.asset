@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectionName: Pants
   collectionOptions:
-  - {fileID: 21300000, guid: fba2fdb9afca97046b6fe741d69b3d2c, type: 3}
+  - {fileID: 11400000, guid: ebf30c5c995250c48a6325069a88b311, type: 2}

@@ -11,6 +11,7 @@ public class CharacterProfile
     public int eyeOption;
     public ColorSaveModel eyeColor;
     public int shirtOption;
+    public int handsOption;
     public int pantsOption;
     public int bootsOption;
     public int skinOption;

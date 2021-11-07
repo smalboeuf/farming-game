@@ -27,6 +27,7 @@ public class CustomizeCharacterPanel : MonoBehaviour
             eyeColor = new ColorSaveModel(eyeColor.GetColor().r, eyeColor.GetColor().g, eyeColor.GetColor().b, eyeColor.GetColor().a),
             eyeOption = eyes.GetCurrentOption(),
             shirtOption = shirt.GetCurrentOption(),
+            handsOption = skin.GetCurrentOption(),
             pantsOption = pants.GetCurrentOption(),
             bootsOption = boots.GetCurrentOption(),
             skinOption = skin.GetCurrentOption()

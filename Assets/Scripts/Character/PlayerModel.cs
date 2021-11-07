@@ -9,6 +9,7 @@ public class PlayerModel : MonoBehaviour
     [SerializeField] private SpriteRenderer hairSpriteRenderer;
     [SerializeField] private Animator eyesAnimator;
     [SerializeField] private SpriteRenderer eyesSpriteRenderer;
+    [SerializeField] private Animator handsAnimator;
     [SerializeField] private Animator shirtAnimator;
     [SerializeField] private Animator pantsAnimator;
     [SerializeField] private Animator bootsAnimator;
@@ -18,6 +19,7 @@ public class PlayerModel : MonoBehaviour
     [SerializeField] private AppearanceCategoryCollection hairCollection;
     [SerializeField] private AppearanceCategoryCollection eyesCollection;
     [SerializeField] private AppearanceCategoryCollection shirtCollection;
+    [SerializeField] private AppearanceCategoryCollection handsCollection;
     [SerializeField] private AppearanceCategoryCollection pantsCollection;
     [SerializeField] private AppearanceCategoryCollection bootsCollection;
     [SerializeField] private AppearanceCategoryCollection skinCollection;
@@ -44,6 +46,9 @@ public class PlayerModel : MonoBehaviour
 
         // Set Shirt Animator
         shirtAnimator.runtimeAnimatorController = shirtCollection.GetAppearanceOption(selectedProfile.shirtOption).GetAnimatorController();
+
+        // Set Hands Animator
+        handsAnimator.runtimeAnimatorController = handsCollection.GetAppearanceOption(selectedProfile.handsOption).GetAnimatorController();
 
         // Set Pants Animator
         pantsAnimator.runtimeAnimatorController = pantsCollection.GetAppearanceOption(selectedProfile.pantsOption).GetAnimatorController();
@@ -74,6 +79,11 @@ public class PlayerModel : MonoBehaviour
             shirtAnimator.SetFloat("moveY", change.y);
             shirtAnimator.SetBool("moving", true);
 
+            // Hands
+            handsAnimator.SetFloat("moveX", change.x);
+            handsAnimator.SetFloat("moveY", change.y);
+            handsAnimator.SetBool("moving", true);
+
             // Pants
             pantsAnimator.SetFloat("moveX", change.x);
             pantsAnimator.SetFloat("moveY", change.y);
@@ -99,6 +109,9 @@ public class PlayerModel : MonoBehaviour
 
             // Shirt
             shirtAnimator.SetBool("moving", false);
+
+            // Hands
+            handsAnimator.SetBool("moving", false);
 
             // Pants
             pantsAnimator.SetBool("moving", false);

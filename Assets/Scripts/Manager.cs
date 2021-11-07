@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
+    [SerializeField] private PlayerModel playerModel;
 
     [SerializeField] private GameTileManager setTileManager;
     public static GameTileManager gameTileManager;
@@ -57,6 +58,11 @@ public class Manager : MonoBehaviour
     {
         inventoryManager.SetStartingItems();
         inventoryManager.InitializeHotbar();
+        LoadExistingSaveFile();
     }
 
+    private void LoadExistingSaveFile()
+    {
+        playerModel.SetPlayerModel();
+    }
 }

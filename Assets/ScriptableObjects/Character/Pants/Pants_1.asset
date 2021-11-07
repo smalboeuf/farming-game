@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Pants_1
   m_EditorClassIdentifier: 
   optionSprite: {fileID: 21300000, guid: fba2fdb9afca97046b6fe741d69b3d2c, type: 3}
-  animatorController: {fileID: 9100000, guid: b4fcc8d4550f2a449bd2e05f27793485, type: 2}
+  animatorController: {fileID: 9100000, guid: 401290cc3252d114caced07072953715, type: 2}

@@ -15,3 +15,5 @@ MonoBehaviour:
   collectionName: Hands
   collectionOptions:
   - {fileID: 11400000, guid: 3953ef224157b1c468f2a13013428aa0, type: 2}
+  - {fileID: 11400000, guid: 794c2245d4095fb4983a30142e761c59, type: 2}
+  - {fileID: 11400000, guid: f093f33b56202bd4ca7f1cb985533b7d, type: 2}

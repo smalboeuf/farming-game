@@ -30,34 +30,38 @@ public class PlayerModel : MonoBehaviour
     {
         // Get the load file
         SaveData saveData = SaveSystem.LoadSaveData();
-        selectedProfile = saveData._characterProfile;
 
-        // Set Hair Animator
-        hairAnimator.runtimeAnimatorController = hairCollection.GetAppearanceOption(selectedProfile.hairOption).GetAnimatorController();
+        if (saveData != null)
+        {
+            selectedProfile = saveData._characterProfile;
 
-        // Set Hair Color
-        hairSpriteRenderer.color = new Color(selectedProfile.hairColor._r, selectedProfile.hairColor._g, selectedProfile.hairColor._b, selectedProfile.hairColor._a);
+            // Set Hair Animator
+            hairAnimator.runtimeAnimatorController = hairCollection.GetAppearanceOption(selectedProfile.hairOption).GetAnimatorController();
 
-        // Set Eyes Animator
-        eyesAnimator.runtimeAnimatorController = eyesCollection.GetAppearanceOption(selectedProfile.eyeOption).GetAnimatorController();
+            // Set Hair Color
+            hairSpriteRenderer.color = new Color(selectedProfile.hairColor._r, selectedProfile.hairColor._g, selectedProfile.hairColor._b, selectedProfile.hairColor._a);
 
-        // Set Eyes Color
-        eyesSpriteRenderer.color = new Color(selectedProfile.eyeColor._r, selectedProfile.eyeColor._g, selectedProfile.eyeColor._b, selectedProfile.eyeColor._a);
+            // Set Eyes Animator
+            eyesAnimator.runtimeAnimatorController = eyesCollection.GetAppearanceOption(selectedProfile.eyeOption).GetAnimatorController();
 
-        // Set Shirt Animator
-        shirtAnimator.runtimeAnimatorController = shirtCollection.GetAppearanceOption(selectedProfile.shirtOption).GetAnimatorController();
+            // Set Eyes Color
+            eyesSpriteRenderer.color = new Color(selectedProfile.eyeColor._r, selectedProfile.eyeColor._g, selectedProfile.eyeColor._b, selectedProfile.eyeColor._a);
 
-        // Set Hands Animator
-        handsAnimator.runtimeAnimatorController = handsCollection.GetAppearanceOption(selectedProfile.handsOption).GetAnimatorController();
+            // Set Shirt Animator
+            shirtAnimator.runtimeAnimatorController = shirtCollection.GetAppearanceOption(selectedProfile.shirtOption).GetAnimatorController();
 
-        // Set Pants Animator
-        pantsAnimator.runtimeAnimatorController = pantsCollection.GetAppearanceOption(selectedProfile.pantsOption).GetAnimatorController();
+            // Set Hands Animator
+            handsAnimator.runtimeAnimatorController = handsCollection.GetAppearanceOption(selectedProfile.handsOption).GetAnimatorController();
 
-        // Set Boots Animator
-        bootsAnimator.runtimeAnimatorController = bootsCollection.GetAppearanceOption(selectedProfile.bootsOption).GetAnimatorController();
+            // Set Pants Animator
+            pantsAnimator.runtimeAnimatorController = pantsCollection.GetAppearanceOption(selectedProfile.pantsOption).GetAnimatorController();
 
-        // Set Skin Animator
-        skinAnimator.runtimeAnimatorController = skinCollection.GetAppearanceOption(selectedProfile.skinOption).GetAnimatorController();
+            // Set Boots Animator
+            bootsAnimator.runtimeAnimatorController = bootsCollection.GetAppearanceOption(selectedProfile.bootsOption).GetAnimatorController();
+
+            // Set Skin Animator
+            skinAnimator.runtimeAnimatorController = skinCollection.GetAppearanceOption(selectedProfile.skinOption).GetAnimatorController();
+        }
     }
 
     public void HandleModelAnimators(Vector3 change)

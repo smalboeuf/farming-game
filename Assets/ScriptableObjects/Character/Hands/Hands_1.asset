@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c17cdd693300ce64cbdad070ea2dc70a, type: 3}
-  m_Name: New Appearance Option
+  m_Name: Hands_1
   m_EditorClassIdentifier: 
-  optionSprite: {fileID: 0}
-  animatorController: {fileID: 0}
+  optionSprite: {fileID: 21300000, guid: 1c97741ed7ad9ff4397a48e8d7a619bf, type: 3}
+  animatorController: {fileID: 9100000, guid: b39a1bd28da45864fb0fbd18b5e1f6f3, type: 2}

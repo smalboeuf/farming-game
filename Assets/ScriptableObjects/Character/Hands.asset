@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39de9b72e6afc02408489b3f7fdfcb43, type: 3}
   m_Name: Hands
   m_EditorClassIdentifier: 
-  collectionName: 
-  collectionOptions: []
+  collectionName: Hands
+  collectionOptions:
+  - {fileID: 11400000, guid: 3953ef224157b1c468f2a13013428aa0, type: 2}

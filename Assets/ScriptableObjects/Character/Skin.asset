@@ -16,6 +16,3 @@ MonoBehaviour:
   collectionOptions:
   - {fileID: 11400000, guid: 83fd4f38430c94d43bfac39b9c0f925b, type: 2}
   - {fileID: 11400000, guid: b1178b7d1faf5534fba3efa717bfc1c2, type: 2}
-  - {fileID: 11400000, guid: 165250a1d15a6c74bb891ea3c9b3a9dd, type: 2}
-  - {fileID: 11400000, guid: 003324da5b48825449ee90739913bd86, type: 2}
-  - {fileID: 11400000, guid: a71bb2e79e80e8d4eb16a178064128a0, type: 2}

@@ -6,21 +6,30 @@ using UnityEngine.Tilemaps;
 public abstract class Seed : InventoryItem
 {
 
-    [SerializeField] private int daysToGrow;
-    [SerializeField] private int daysForMidPlant;
-    [SerializeField] private int daysForFinalPlant;
+    [SerializeField] private int m_daysToGrow;
+    [SerializeField] private int m_daysForMidPlant;
+    [SerializeField] private int m_daysForFinalPlant;
 
-    [SerializeField] private Tile plantedTile;
-    [SerializeField] private Tile midPlantedTile;
-    [SerializeField] private Tile finalPlantedTile;
+    [SerializeField] private Tile m_plantedTile;
+    [SerializeField] private Tile m_midPlantedTile;
+    [SerializeField] private Tile m_finalPlantedTile;
 
     [SerializeField] private InventoryItem crop;
 
+    public int daysToGrow => m_daysToGrow;
+    public int daysForMidPlant => m_daysForMidPlant;
+    public int daysForFinalPlant => m_daysForFinalPlant;
 
-    public void UseSeed(Seed seed, int xPos, int yPos) {
-        
+    public Tile plantedTile => m_plantedTile;
+    public Tile midPlantedTile => m_midPlantedTile;
+    public Tile finalPlantedTile => m_finalPlantedTile;
+
+
+    public void UseSeed(Seed seed, int xPos, int yPos)
+    {
         //Check to see if can plant
-        if (Manager.gameTileManager.gameTileMap[xPos, yPos].CanPlantSeed()) {
+        if (Manager.gameTileManager.gameTileMap[xPos, yPos].CanPlantSeed())
+        {
             //Plant it
             Manager.cropsTileManager.PlantSeed(seed, xPos, yPos);
             //if successful, remove 1 seed from your inventory
@@ -28,35 +37,11 @@ public abstract class Seed : InventoryItem
 
             //Update UI
             Manager.hotbarManager.UpdateHotbarSlots();
-           
         }
     }
 
-    public Tile GetPlantedTile() {
-        return plantedTile;
-    }
-
-    public Tile GetMidPlantedTile() {
-        return midPlantedTile;
-    }
-
-    public Tile GetFinalPlantedTile () {
-        return finalPlantedTile;
-    } 
-
-    public int GetDaysToGrow() {
-        return daysToGrow;
-    }
-
-    public int GetDaysForMidPlant() {
-        return daysForMidPlant;
-    }
-
-    public int GetDaysForFinalPlant() {
-        return daysForFinalPlant;
-    }
-
-    public InventoryItem GetCropForHarvesting() {
+    public InventoryItem GetCropForHarvesting()
+    {
         return crop;
     }
 }

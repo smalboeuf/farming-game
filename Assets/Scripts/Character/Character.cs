@@ -6,21 +6,26 @@ public class Character : MonoBehaviour
 {
     private CharacterProfile characterProfile;
     public float range = 10f;
-    int maxHP = 100;
-    int currentHP = 90;
-    int maxEnergy = 100;
-    int currentEnergy = 100;
+    public Health characterHealth;
+    public Energy characterEnergy;
+    bool m_canMove = true;
 
-    bool canMove = true;
+    public bool CanMove => m_canMove;
 
     public InventoryManager inventoryManager;
     public HotbarManager hotbarManager;
     public GameTileManager tileManager;
 
+    private void Start()
+    {
+        characterHealth = GetComponent<Health>();
+        characterEnergy = GetComponent<Energy>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && canMove == true)
+        if (Input.GetMouseButtonDown(0) && m_canMove == true)
         {
             Vector3 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (hotbarManager.GetSelectedItem() is Tool tool)
@@ -34,37 +39,23 @@ public class Character : MonoBehaviour
         }
     }
 
-    public bool GetCanMove()
-    {
-        return canMove;
-    }
-
     public void SetCanMove(bool newCanMove)
     {
-        canMove = newCanMove;
+        m_canMove = newCanMove;
     }
 
     public bool CanPickUpItem(Vector3 pos)
     {
-
         GameTile currentTile = Manager.gameTileManager.gameTileMap[(int)pos.x, (int)pos.y];
 
-        if (currentTile.GetCanBeHarvested() == true)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-
+        return currentTile.canBeHarvested;
     }
 
     public void HarvestCrop(Vector3 tilePos)
     {
 
         GameTile currentTile = Manager.gameTileManager.gameTileMap[(int)tilePos.x, (int)tilePos.y];
-        Seed seedPlantedInTile = currentTile.GetPlantedSeed();
+        Seed seedPlantedInTile = currentTile.plantedSeed;
 
         //Add item to inventory
         Manager.inventoryManager.AddItem(seedPlantedInTile.GetCropForHarvesting(), 1);
@@ -83,19 +74,6 @@ public class Character : MonoBehaviour
         else
         {
             return false;
-        }
-    }
-
-    public void Heal(int amount)
-    {
-
-        if (amount + currentHP > maxHP)
-        {
-            currentHP = maxHP;
-        }
-        else
-        {
-            currentHP = currentHP + amount;
         }
     }
 

@@ -6,9 +6,11 @@ using UnityEngine.Tilemaps;
 
 public class GameTileManager : MonoBehaviour
 {
+    [SerializeField] int m_xSize;
+    [SerializeField] int m_ySize;
 
-    [SerializeField] int xSize;
-    [SerializeField] int ySize;
+    public int xSize => m_xSize;
+    public int ySize => m_ySize;
 
     public GameTile[,] gameTileMap;
 
@@ -126,18 +128,16 @@ public class GameTileManager : MonoBehaviour
     [SerializeField] private Tile everythingExceptTopRightAndBottomLeftWatered;
     [SerializeField] private Tile everythingExceptTopLeftAndBottomRightWatered;
 
-
-
-
-
     // Start is called before the first frame update
     void Start()
     {
         gameTileMap = new GameTile[xSize, ySize];
         tilemap = GetComponent<Tilemap>();
 
-        for (int x = 0; x < xSize; x++) {
-            for (int y = 0; y < ySize; y++) {
+        for (int x = 0; x < xSize; x++)
+        {
+            for (int y = 0; y < ySize; y++)
+            {
 
                 gameTileMap[x, y] = new GameTile(x, y, FindTileType(x, y), FindIfIsTilled(x, y), FindIfCanBeHarvested(x, y), false, null, 0);
             }
@@ -146,28 +146,21 @@ public class GameTileManager : MonoBehaviour
         Manager.cropsTileManager.LoadCrops();
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool IsAValidTile(int xPos, int yPos)
     {
 
-    }
-
-
-    public bool IsAValidTile(int xPos, int yPos) {
-
-        if (xPos >= 0 && yPos >= 0 && xPos < xSize && yPos < ySize) {
+        if (xPos >= 0 && yPos >= 0 && xPos < xSize && yPos < ySize)
+        {
             return true;
         }
 
         return false;
     }
 
-
     private void UpdateTileSprite(int xPos, int yPos)
     {
-        
-        bool currentTileIsTilled = Manager.gameTileManager.gameTileMap[xPos, yPos].GetIsTilled();
-        bool currentTileIsWatered = Manager.gameTileManager.gameTileMap[xPos, yPos].GetIsWatered();
+        bool currentTileIsTilled = Manager.gameTileManager.gameTileMap[xPos, yPos].isTilled;
+        bool currentTileIsWatered = Manager.gameTileManager.gameTileMap[xPos, yPos].isWatered;
 
         bool one = false;
         bool two = false;
@@ -182,30 +175,28 @@ public class GameTileManager : MonoBehaviour
         {
             currentTileIsTilled = false;
         }
-        else {
-
-           one = Manager.gameTileManager.gameTileMap[xPos - 1, yPos + 1].GetIsTilled();
-           two = Manager.gameTileManager.gameTileMap[xPos, yPos + 1].GetIsTilled();
-           three = Manager.gameTileManager.gameTileMap[xPos + 1, yPos + 1].GetIsTilled();
-           four = Manager.gameTileManager.gameTileMap[xPos - 1, yPos].GetIsTilled();
-           five = Manager.gameTileManager.gameTileMap[xPos + 1, yPos].GetIsTilled();
-           six = Manager.gameTileManager.gameTileMap[xPos - 1, yPos - 1].GetIsTilled();
-           seven = Manager.gameTileManager.gameTileMap[xPos, yPos - 1].GetIsTilled();
-           eight = Manager.gameTileManager.gameTileMap[xPos + 1, yPos - 1].GetIsTilled();
+        else
+        {
+            one = Manager.gameTileManager.gameTileMap[xPos - 1, yPos + 1].isTilled;
+            two = Manager.gameTileManager.gameTileMap[xPos, yPos + 1].isTilled;
+            three = Manager.gameTileManager.gameTileMap[xPos + 1, yPos + 1].isTilled;
+            four = Manager.gameTileManager.gameTileMap[xPos - 1, yPos].isTilled;
+            five = Manager.gameTileManager.gameTileMap[xPos + 1, yPos].isTilled;
+            six = Manager.gameTileManager.gameTileMap[xPos - 1, yPos - 1].isTilled;
+            seven = Manager.gameTileManager.gameTileMap[xPos, yPos - 1].isTilled;
+            eight = Manager.gameTileManager.gameTileMap[xPos + 1, yPos - 1].isTilled;
         }
-     
 
         if (currentTileIsTilled)
         {
-
-
             if (two && seven && !four && !five)
             {
                 if (currentTileIsWatered)
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), topAndBottomTileWatered);
                 }
-                else {
+                else
+                {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), topAndBottomTile);
                 }
 
@@ -220,8 +211,6 @@ public class GameTileManager : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(xPos, yPos, 0), leftAndRightTile);
                 }
-
-
             }
             else if (one && two && four && seven && five && !three && !eight && !six)
             {
@@ -782,12 +771,11 @@ public class GameTileManager : MonoBehaviour
 
             }
         }
-
-        
     }
 
 
-    public void ResetGameTileIsWatered() {
+    public void ResetGameTileIsWatered()
+    {
 
         for (int x = 0; x < xSize; x++)
         {
@@ -799,24 +787,15 @@ public class GameTileManager : MonoBehaviour
         }
     }
 
-
-    public int GetXSize()
+    private TileType FindTileType(int xPos, int yPos)
     {
-        return xSize;
-    }
-
-    public int GetYSize()
-    {
-        return ySize;
-    }
-
-    private TileType FindTileType(int xPos, int yPos) {
 
         if (grassList.Contains((Tile)tilemap.GetTile(new Vector3Int(xPos, yPos, 0))))
         {
             return TileType.Grass;
         }
-        else {
+        else
+        {
             return TileType.Stone;
         }
 
@@ -828,37 +807,44 @@ public class GameTileManager : MonoBehaviour
     }
 
 
-    private bool FindIfIsTilled(int xPos, int yPos) {
+    private bool FindIfIsTilled(int xPos, int yPos)
+    {
 
         //Check for each tile type that can farm
 
-        if (IsAGrassTile(xPos, yPos)) {
+        if (IsAGrassTile(xPos, yPos))
+        {
             return false;
         }
 
-        if (IsASnowTile(xPos, yPos)) {
+        if (IsASnowTile(xPos, yPos))
+        {
             return false;
         }
 
         return true;
     }
 
-    private bool IsABasicFarmTile(int xPos, int yPos) {
+    private bool IsABasicFarmTile(int xPos, int yPos)
+    {
         return basicFarmTiles.Contains((Tile)tilemap.GetTile(new Vector3Int(xPos, yPos, 0)));
     }
 
-    private bool IsAGrassTile(int xPos, int yPos) {
+    private bool IsAGrassTile(int xPos, int yPos)
+    {
         return grassList.Contains((Tile)tilemap.GetTile(new Vector3Int(xPos, yPos, 0)));
     }
 
-    private bool IsASnowTile(int xPos, int yPos) {
+    private bool IsASnowTile(int xPos, int yPos)
+    {
         return snowList.Contains((Tile)tilemap.GetTile(new Vector3Int(xPos, yPos, 0)));
     }
 
     //Tools
 
-    public void TillGrass(int xPos, int yPos) {
-        
+    public void TillGrass(int xPos, int yPos)
+    {
+
         //Set tile status
         Manager.gameTileManager.gameTileMap[xPos, yPos].SetIsTilled(true);
 
@@ -870,10 +856,11 @@ public class GameTileManager : MonoBehaviour
         UpdateTileSprite(xPos + 1, yPos);
         UpdateTileSprite(xPos - 1, yPos - 1);
         UpdateTileSprite(xPos, yPos - 1);
-        UpdateTileSprite(xPos + 1, yPos -1);
+        UpdateTileSprite(xPos + 1, yPos - 1);
     }
 
-    public void WaterTilledTile(int xPos, int yPos) {
+    public void WaterTilledTile(int xPos, int yPos)
+    {
 
         GameTile currentTile = Manager.gameTileManager.gameTileMap[xPos, yPos];
 
@@ -891,12 +878,14 @@ public class GameTileManager : MonoBehaviour
     }
 
 
-    private bool CoordinatesAreValid(int xPos, int yPos) {
+    private bool CoordinatesAreValid(int xPos, int yPos)
+    {
         if (xPos > 0 && yPos > 0)
         {
             return true;
         }
-        else {
+        else
+        {
             return false;
         }
     }

@@ -15,7 +15,7 @@ public class AppearanceCategoryCollection : ScriptableObject
 
     public Sprite GetCollectionOption(int optionChoice)
     {
-        return collectionOptions[optionChoice].GetOptionSprite();
+        return collectionOptions[optionChoice].optionSprite;
     }
 
     public int GetCollectionSize()

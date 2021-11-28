@@ -40,7 +40,7 @@ public class CharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Manager.character.GetCanMove() == true)
+        if (Manager.character.CanMove)
         {
             MoveCharacter();
         }
@@ -58,19 +58,12 @@ public class CharacterController : MonoBehaviour
 
     void UpdateAnimationAndMove()
     {
-        if (Manager.character.GetCanMove() == true)
+        if (Manager.character.CanMove == true)
         {
             if (change != Vector3.zero)
             {
                 MoveCharacter();
-                // animator.SetFloat("moveX", change.x);
-                // animator.SetFloat("moveY", change.y);
-                // animator.SetBool("moving", true);
             }
-            // else
-            // {
-            //     animator.SetBool("moving", false);
-            // }
             playerModel.HandleModelAnimators(change);
         }
     }
@@ -108,7 +101,7 @@ public class CharacterController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (character.GetCanMove())
+            if (character.CanMove)
             {
                 Vegetation vegetation = GetVegetationOnMousePosition();
                 Vector3 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -149,7 +142,7 @@ public class CharacterController : MonoBehaviour
                     // Consume item in inventory
                     confirmationDialogUI.ShowQuestion($"Are you sure you want to use the {selectedItem.itemName}?", () =>
                     {
-                        consumable.UseConsumable(Manager.hotbarManager.selectedSlot, consumable);
+                        consumable.OnUse();
                     }, () => { });
                 }
             }
@@ -178,7 +171,6 @@ public class CharacterController : MonoBehaviour
 
         foreach (RaycastHit2D hit in hits)
         {
-            print(hit.collider.gameObject);
             if (hit.collider.gameObject.GetComponent<Vegetation>() != null)
             {
                 Vegetation vegetation = hit.collider.gameObject.GetComponent<Vegetation>();

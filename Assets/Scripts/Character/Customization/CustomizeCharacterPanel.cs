@@ -23,8 +23,8 @@ public class CustomizeCharacterPanel : MonoBehaviour
         {
             name = nameInput.text,
             hairOption = hair.GetCurrentOption(),
-            hairColor = new ColorSaveModel(hairColor.GetColor().r, hairColor.GetColor().g, hairColor.GetColor().b, hairColor.GetColor().a),
-            eyeColor = new ColorSaveModel(eyeColor.GetColor().r, eyeColor.GetColor().g, eyeColor.GetColor().b, eyeColor.GetColor().a),
+            hairColor = new ColorSaveModel(hairColor.color.r, hairColor.color.g, hairColor.color.b, hairColor.color.a),
+            eyeColor = new ColorSaveModel(eyeColor.color.r, eyeColor.color.g, eyeColor.color.b, eyeColor.color.a),
             eyeOption = eyes.GetCurrentOption(),
             shirtOption = shirt.GetCurrentOption(),
             handsOption = skin.GetCurrentOption(),

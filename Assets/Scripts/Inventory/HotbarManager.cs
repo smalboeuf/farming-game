@@ -7,17 +7,16 @@ public class HotbarManager : MonoBehaviour
 
     [Header("Inventory Information")]
     public PlayerInventory playerInventory;
-   
+
     [SerializeField] private GameObject blankInventorySlot;
     [SerializeField] private GameObject hotbarPanel;
-
 
     [SerializeField] InventoryManager inventoryManager;
     public HotbarSlot[] hotbarSlots;
 
+    private int m_selectedSlot = 0;
 
-    public int selectedSlot = 0;
-
+    public int selectedSlot => m_selectedSlot;
 
     private KeyCode[] keyCodes = {
          KeyCode.Alpha1,
@@ -30,10 +29,8 @@ public class HotbarManager : MonoBehaviour
          KeyCode.Alpha8,
     };
 
-
-    public void GetHotbarPress()
+    public void UpdateHotbarPress()
     {
-
         for (int i = 0; i < keyCodes.Length; i++)
         {
             if (Input.GetKeyDown(keyCodes[i]))
@@ -45,9 +42,9 @@ public class HotbarManager : MonoBehaviour
 
     public void UpdateHotbarSelection(int hotbarIndex)
     {
-        selectedSlot = hotbarIndex;
+        m_selectedSlot = hotbarIndex;
 
-        UpdateHotBarSelectionUI(selectedSlot);
+        UpdateHotBarSelectionUI(m_selectedSlot);
     }
 
     public void UpdateHotBarSelectionUI(int hotbarIndex)
@@ -57,7 +54,8 @@ public class HotbarManager : MonoBehaviour
 
     }
 
-    public void ClearHotbarSelections() {
+    public void ClearHotbarSelections()
+    {
 
         for (int i = 0; i < hotbarSlots.Length; i++)
         {
@@ -65,13 +63,16 @@ public class HotbarManager : MonoBehaviour
         }
     }
 
-    public InventoryItem GetSelectedItem() {
-        return hotbarSlots[selectedSlot].itemSlot.Item;
+    public InventoryItem GetSelectedItem()
+    {
+        return hotbarSlots[m_selectedSlot].itemSlot.Item;
     }
 
-    public void UpdateHotbarSlots() {
+    public void UpdateHotbarSlots()
+    {
 
-        for (int i = 0; i < hotbarSlots.Length; i++) {
+        for (int i = 0; i < hotbarSlots.Length; i++)
+        {
             hotbarSlots[i].SetHotbarSlot();
         }
     }
@@ -85,70 +86,6 @@ public class HotbarManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetHotbarPress();
+        UpdateHotbarPress();
     }
-
-    /*public bool IsAHoe() {
-
-
-       if (playerHotbar.myHotbar[selectedSlot])
-       {
-           if (playerHotbar.myHotbar[selectedSlot].itemType == InventoryItem.ItemType.Hoe)
-           {
-               return true;
-           }
-           else
-           {
-               return false;
-           }
-       }
-       else {
-           return false;
-       }
-
-    }*/
-
-    /*public bool IsSeeds() {
-
-        if (playerHotbar.myHotbar[selectedSlot])
-        {
-            if (playerHotbar.myHotbar[selectedSlot].itemType == InventoryItem.ItemType.Seeds)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            return false;
-        }
-    }*/
-
-    /* public bool CanWaterSeeds() {
-
-        if (playerHotbar.myHotbar[selectedSlot])
-        {
-            if (playerHotbar.myHotbar[selectedSlot].itemType == InventoryItem.ItemType.Bucket && playerHotbar.myHotbar[selectedSlot].itemName == "Water Bucket")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            return false;
-        }
-    } */
-
-
-
-
-
-
 }

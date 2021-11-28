@@ -4,138 +4,111 @@ using UnityEngine;
 
 public class GameTile
 {
-
     private int x;
     private int y;
 
-    private TileType tileType;
-    private bool isTilled;
-    private bool canBeHarvested;
-    private bool isWatered;
+    private TileType m_tileType;
+    private bool m_isTilled;
+    private bool m_canBeHarvested;
+    private bool m_isWatered;
     //private FarmingTileStatus farmingTileStatus;
-    private Seed plantedSeed;
-    private int daysPlanted;
+    private Seed m_plantedSeed;
+    private int m_daysPlanted;
 
-
+    public TileType tileType => m_tileType;
+    public bool isTilled => m_isTilled;
+    public bool canBeHarvested => m_canBeHarvested;
+    public bool isWatered => m_isWatered;
+    public Seed plantedSeed => m_plantedSeed;
+    public int daysPlanted => m_daysPlanted;
 
     //Constructor
-    public GameTile(int xPos, int yPos, TileType type, bool tileIsTilled, bool canHarvest, bool tileIsWatered, Seed newPlantedSeed, int amountPlanted) {
+    public GameTile(int xPos, int yPos, TileType type, bool tileIsTilled, bool canHarvest, bool tileIsWatered, Seed newPlantedSeed, int amountPlanted)
+    {
         x = xPos;
         y = yPos;
-        tileType = type;
-        isTilled = tileIsTilled;
-        canBeHarvested = canHarvest;
+        m_tileType = type;
+        m_isTilled = tileIsTilled;
+        m_canBeHarvested = canHarvest;
         //farmingTileStatus = farmTileStatus;
-        plantedSeed = newPlantedSeed;
-        daysPlanted = amountPlanted;
+        m_plantedSeed = newPlantedSeed;
+        m_daysPlanted = amountPlanted;
     }
 
-
-    public int GetX() {
+    public int GetX()
+    {
         return x;
     }
 
-    public int GetY() {
+    public int GetY()
+    {
         return y;
-    }
-
-    public bool GetIsWatered() {
-        return isWatered;
     }
 
     public void SetIsWatered(bool newIsWatered)
     {
-        isWatered = newIsWatered;
+        m_isWatered = newIsWatered;
     }
 
- 
-
-
-    public TileType GetTileType()
+    public void SetTileType(TileType newTiletype)
     {
-        return tileType;
+        m_tileType = newTiletype;
     }
 
-    public void SetTileType(TileType newTiletype) {
-        tileType = newTiletype;
+    public void SetIsTilled(bool newCanBeTilled)
+    {
+        m_isTilled = newCanBeTilled;
     }
 
-
-    //public FarmingTileStatus GetFarmingTileStatus()
-    //{
-    //    return farmingTileStatus;
-    //}
-
-    //public void SetFarmingTileStatus(FarmingTileStatus newFarmingTileStatus) {
-    //    farmingTileStatus = newFarmingTileStatus;
-    //}
-
-    public bool GetIsTilled() {
-        return isTilled;
+    public void SetCanBeHarvested(bool newCanBeHarvested)
+    {
+        m_canBeHarvested = newCanBeHarvested;
     }
 
-    public void SetIsTilled(bool newCanBeTilled) {
-        isTilled = newCanBeTilled;
+    public void SetPlantedSeed(Seed seed)
+    {
+        m_plantedSeed = seed;
     }
 
-    public bool GetCanBeHarvested() {
-        return canBeHarvested;
-    }
-
-    public void SetCanBeHarvested(bool newCanBeHarvested) {
-        canBeHarvested = newCanBeHarvested;
-    }
-
-
-    public Seed GetPlantedSeed() {
-        return plantedSeed; 
-    }
-
-    public void SetPlantedSeed(Seed seed) {
-        plantedSeed = seed;
-    }
-
-    public bool CanPlantSeed() {
-
-        if (isTilled == true && plantedSeed == null) {
+    public bool CanPlantSeed()
+    {
+        if (m_isTilled && m_plantedSeed == null)
+        {
             return true;
         }
         return false;
     }
 
-    public int GetDaysPlanted() {
-        return daysPlanted;
+    public void SetDaysPlanted(int amountOfDays)
+    {
+        m_daysPlanted = amountOfDays;
     }
 
-    public void SetDaysPlanted(int amountOfDays) {
-        daysPlanted = amountOfDays;
-    }
+    public void IncreaseDaysPlanted(int amountOfDays)
+    {
+        m_daysPlanted = m_daysPlanted + amountOfDays;
 
-    public void IncreaseDaysPlanted(int amountOfDays) {
-        daysPlanted = daysPlanted + amountOfDays;
-
-        if (daysPlanted >= plantedSeed.GetDaysForFinalPlant()) {
+        if (m_daysPlanted >= m_plantedSeed.daysForFinalPlant)
+        {
             SetCanBeHarvested(true);
             //SetFarmingTileStatus(FarmingTileStatus.Crops);
         }
     }
 
-    public void ResetPlantedCrop() {
-
-        canBeHarvested = false;
-       // farmingTileStatus = FarmingTileStatus.Tilled;
-        plantedSeed = null;
-        daysPlanted = 0;
+    public void ResetPlantedCrop()
+    {
+        m_canBeHarvested = false;
+        // farmingTileStatus = FarmingTileStatus.Tilled;
+        m_plantedSeed = null;
+        m_daysPlanted = 0;
 
         //Change Sprites on the CropsTileManager
         Manager.cropsTileManager.UpdateCropTiles();
     }
-
 }
 
-
-
-public enum FarmingTileStatus {
+public enum FarmingTileStatus
+{
     Basic,
     Tilled,
     TilledAndWatered,
@@ -144,14 +117,16 @@ public enum FarmingTileStatus {
     Crops
 }
 
-public enum TileType {
+public enum TileType
+{
     Grass,
     Stone,
     Snow,
     Wall,
 }
 
-public enum CanBeFarmedTiles {
+public enum CanBeFarmedTiles
+{
     Grass,
     Snow
 }

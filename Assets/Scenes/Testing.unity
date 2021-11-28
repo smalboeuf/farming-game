@@ -13519,6 +13519,8 @@ GameObject:
   - component: {fileID: 1011608134}
   - component: {fileID: 1011608133}
   - component: {fileID: 1011608138}
+  - component: {fileID: 1011608131}
+  - component: {fileID: 1011608130}
   - component: {fileID: 1011608137}
   - component: {fileID: 1011608129}
   - component: {fileID: 1011608136}
@@ -13550,6 +13552,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1011608130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011608128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed2f55424e5928449af2915ae6f41aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxEnergy: 100
+  currentEnergy: 100
+--- !u!114 &1011608131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011608128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e68932e3496714b48825aa7feb310c50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  currentHP: 100
 --- !u!4 &1011608132
 Transform:
   m_ObjectHideFlags: 0
@@ -13595,6 +13625,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2
+  characterHealth: {fileID: 0}
+  characterEnergy: {fileID: 0}
   inventoryManager: {fileID: 1310230419}
   hotbarManager: {fileID: 1844140677}
   tileManager: {fileID: 1853852958}
@@ -25235,7 +25267,6 @@ MonoBehaviour:
   - {fileID: 360211994}
   - {fileID: 788062771}
   - {fileID: 731491386}
-  selectedSlot: 0
 --- !u!1 &1849162922
 GameObject:
   m_ObjectHideFlags: 0

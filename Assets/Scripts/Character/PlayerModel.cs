@@ -36,31 +36,31 @@ public class PlayerModel : MonoBehaviour
             selectedProfile = saveData._characterProfile;
 
             // Set Hair Animator
-            hairAnimator.runtimeAnimatorController = hairCollection.GetAppearanceOption(selectedProfile.hairOption).GetAnimatorController();
+            hairAnimator.runtimeAnimatorController = hairCollection.GetAppearanceOption(selectedProfile.hairOption).animatorController;
 
             // Set Hair Color
             hairSpriteRenderer.color = new Color(selectedProfile.hairColor._r, selectedProfile.hairColor._g, selectedProfile.hairColor._b, selectedProfile.hairColor._a);
 
             // Set Eyes Animator
-            eyesAnimator.runtimeAnimatorController = eyesCollection.GetAppearanceOption(selectedProfile.eyeOption).GetAnimatorController();
+            eyesAnimator.runtimeAnimatorController = eyesCollection.GetAppearanceOption(selectedProfile.eyeOption).animatorController;
 
             // Set Eyes Color
             eyesSpriteRenderer.color = new Color(selectedProfile.eyeColor._r, selectedProfile.eyeColor._g, selectedProfile.eyeColor._b, selectedProfile.eyeColor._a);
 
             // Set Shirt Animator
-            shirtAnimator.runtimeAnimatorController = shirtCollection.GetAppearanceOption(selectedProfile.shirtOption).GetAnimatorController();
+            shirtAnimator.runtimeAnimatorController = shirtCollection.GetAppearanceOption(selectedProfile.shirtOption).animatorController;
 
             // Set Hands Animator
-            handsAnimator.runtimeAnimatorController = handsCollection.GetAppearanceOption(selectedProfile.handsOption).GetAnimatorController();
+            handsAnimator.runtimeAnimatorController = handsCollection.GetAppearanceOption(selectedProfile.handsOption).animatorController;
 
             // Set Pants Animator
-            pantsAnimator.runtimeAnimatorController = pantsCollection.GetAppearanceOption(selectedProfile.pantsOption).GetAnimatorController();
+            pantsAnimator.runtimeAnimatorController = pantsCollection.GetAppearanceOption(selectedProfile.pantsOption).animatorController;
 
             // Set Boots Animator
-            bootsAnimator.runtimeAnimatorController = bootsCollection.GetAppearanceOption(selectedProfile.bootsOption).GetAnimatorController();
+            bootsAnimator.runtimeAnimatorController = bootsCollection.GetAppearanceOption(selectedProfile.bootsOption).animatorController;
 
             // Set Skin Animator
-            skinAnimator.runtimeAnimatorController = skinCollection.GetAppearanceOption(selectedProfile.skinOption).GetAnimatorController();
+            skinAnimator.runtimeAnimatorController = skinCollection.GetAppearanceOption(selectedProfile.skinOption).animatorController;
         }
     }
 

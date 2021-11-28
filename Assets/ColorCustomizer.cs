@@ -9,22 +9,19 @@ public class ColorCustomizer : MonoBehaviour
     [SerializeField] private Slider hueSlider;
     [SerializeField] private Slider saturationSlider;
     [SerializeField] private Slider valueSlider;
-    private Color color;
+    private Color m_color;
+
+    public Color color => m_color;
 
     private void Start()
     {
-        color = Color.HSVToRGB(hueSlider.value, saturationSlider.value, valueSlider.value);
+        m_color = Color.HSVToRGB(hueSlider.value, saturationSlider.value, valueSlider.value);
         image.color = Color.HSVToRGB(hueSlider.value, saturationSlider.value, valueSlider.value);
     }
 
     public void OnEdit()
     {
-        color = Color.HSVToRGB(hueSlider.value, saturationSlider.value, valueSlider.value);
+        m_color = Color.HSVToRGB(hueSlider.value, saturationSlider.value, valueSlider.value);
         image.color = Color.HSVToRGB(hueSlider.value, saturationSlider.value, valueSlider.value);
-    }
-
-    public Color GetColor()
-    {
-        return color;
     }
 }

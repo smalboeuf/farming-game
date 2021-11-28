@@ -13,7 +13,7 @@ public abstract class Tool : InventoryItem
 
         GameTile currentTile = Manager.gameTileManager.gameTileMap[xPos, yPos];
 
-        switch (currentTile.GetTileType())
+        switch (currentTile.tileType)
         {
             case TileType.Grass:
                 Grass(currentTile);
@@ -32,7 +32,5 @@ public abstract class Tool : InventoryItem
                 break;
 
         }
-
-
     }
 }

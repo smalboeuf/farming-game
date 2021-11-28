@@ -11,5 +11,4 @@ public class NarrationLine : ScriptableObject
     public NarrationCharacter Speaker => m_Speaker;
 
     public string Text => m_Text;
-    
 }

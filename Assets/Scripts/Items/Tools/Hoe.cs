@@ -6,9 +6,10 @@ using UnityEngine;
 public class Hoe : Tool
 {
 
-    public override void Grass(GameTile currentTile) {
+    public override void Grass(GameTile currentTile)
+    {
 
-        if (currentTile.GetIsTilled() == false)
+        if (!currentTile.isTilled)
         {
             //Change the sprite 
             Manager.gameTileManager.TillGrass(currentTile.GetX(), currentTile.GetY());
@@ -17,10 +18,9 @@ public class Hoe : Tool
 
             //Sound of tilling grass
         }
-        else {
-            //Do nothing and make thump sound
+        else
+        {
+            // TODO: Do nothing and make thump sound
         }
-   
     }
-
 }

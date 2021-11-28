@@ -11,7 +11,9 @@ public class AppearanceChanger : MonoBehaviour
     [SerializeField] private TextMeshProUGUI optionText;
     [SerializeField] private AppearanceCategoryCollection collectionOptions;
 
-    private int currentOption = 0;
+    private int m_currentOption = 0;
+
+    public int currentOption => m_currentOption;
 
     private void Start()
     {
@@ -26,10 +28,10 @@ public class AppearanceChanger : MonoBehaviour
 
     public void NextOption()
     {
-        currentOption++;
+        m_currentOption++;
         if (currentOption >= collectionOptions.GetCollectionSize())
         {
-            currentOption = 0;
+            m_currentOption = 0;
         }
 
         customizablePart.sprite = collectionOptions.GetCollectionOption(currentOption);
@@ -38,11 +40,11 @@ public class AppearanceChanger : MonoBehaviour
 
     public void PreviousOption()
     {
-        currentOption--;
+        m_currentOption--;
 
         if (currentOption < 0)
         {
-            currentOption = collectionOptions.GetCollectionSize() - 1;
+            m_currentOption = collectionOptions.GetCollectionSize() - 1;
         }
 
         customizablePart.sprite = collectionOptions.GetCollectionOption(currentOption);

@@ -11,19 +11,17 @@ public class WateringCan : Tool
     [SerializeField] private int amountOfUses;
 
 
-    public override void Grass(GameTile currentTile) {
-
-        if (currentTile.GetIsTilled() == true)
+    public override void Grass(GameTile currentTile)
+    {
+        if (currentTile.isTilled)
         {
             //Do nothing, thump sound
-
             Manager.gameTileManager.WaterTilledTile(currentTile.GetX(), currentTile.GetY());
             currentTile.SetIsWatered(true);
-
         }
-        else {
+        else
+        {
             //Do nothing and still make sounds
         }
-
     }
 }
